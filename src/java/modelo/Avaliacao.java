@@ -4,18 +4,17 @@ import dao.AvaliacaoDAO;
 import java.util.List;
 
 public class Avaliacao {
-    private String codigo;
+    private int codigo;
     private int avaliacao1;
     private int avaliacao2;
-    private int avaliacaoFinal;
+    private int avaliacaoFinal;    
 
-    public Avaliacao(String codigo, int avaliacao1, int avaliacao2, int avaliacaoFinal) {
+    public Avaliacao(int codigo, int avaliacao1, int avaliacao2, int avaliacaoFinal) {
         this.codigo = codigo;
         this.avaliacao1 = avaliacao1;
         this.avaliacao2 = avaliacao2;
         this.avaliacaoFinal = avaliacaoFinal;
     }
-
    
     public int getAvaliacao1() {
         return avaliacao1;
@@ -45,11 +44,11 @@ public class Avaliacao {
         return AvaliacaoDAO.obterAvaliacao();
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 }

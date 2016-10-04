@@ -19,7 +19,7 @@ public class AvaliacaoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from avaliacao");
             while (rs.next()) {
-                Avaliacao avaliacao = new Avaliacao(rs.getString("codigo"),                     
+                Avaliacao avaliacao = new Avaliacao(rs.getInt("codigo"),                     
                         rs.getInt("avaliacao1"),                        
                         rs.getInt("avaliacao2"),
                         rs.getInt("avaliacaoFinal"));                  

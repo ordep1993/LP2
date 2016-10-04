@@ -15,13 +15,10 @@
                 <th>Nome Matricula</th>
                 <th colspan="2">Ação</th>                         
             </tr>
-            <c:forEach items="${matriculas}" var="curso">
+            <c:forEach items="${matriculas}" var="matricula">
                 <tr>
                     <td><c:out value="${matricula.codigo}"/></td>
-                    <td><c:out value="${matricula.curso}"/></td>
-                    <td><c:out value="${matricula.disciplina}"/></td>
-                    <td><c:out value="${matricula.turma}"/></td>
-                    <td><c:out value="${matricula.aluno}"/></td>
+
                     <td><a href="ManterMatriculaController?acao=prepararEditar&codigo=<c:out value="${matricula.codigo}"/>">Editar</a></td>
                     <td><a href="ManterMatriculaController?acao=prepararExcluir&codigo=<c:out value="${matricula.codigo}"/>">Excluir</a></td>          
                 </tr>      

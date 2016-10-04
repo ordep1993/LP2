@@ -51,7 +51,7 @@ public class Professor {
         return nome;
     }
 
-    public void setMome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 

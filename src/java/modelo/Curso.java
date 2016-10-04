@@ -7,15 +7,14 @@ public class Curso{
     private int codigo;
     private String descricao;
     private int cargaHoraria;
-    private Professor cordenador;
-    private String codigoCordenador;
+    private Professor coordenador;
+    private String codigoCoordenador;
 
-    public Curso(int codigo, String descricao, int cargaHoraria, Professor cordenador, String codigoCordenador) {
+    public Curso(int codigo, String descricao, int cargaHoraria, Professor coordenador) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.cargaHoraria = cargaHoraria;
-        this.cordenador = cordenador;
-        this.codigoCordenador = codigoCordenador;
+        this.coordenador = coordenador;
     }
     
     
@@ -44,23 +43,23 @@ public class Curso{
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Professor getCordenador() {
-        return cordenador;
+    public Professor getCoordenador() {
+        return coordenador;
     }
 
-    public void setCordenador(Professor cordenador) {
-        this.cordenador = cordenador;
+    public void setCoordenador(Professor coordenador) {
+        this.coordenador = coordenador;
     }
     
     public static List<Curso> obterCursos() throws ClassNotFoundException{
         return CursoDAO.obterCursos();
     }
 
-    public String getCodigoCordenador() {
-        return codigoCordenador;
+    public String getCodigoCoordenador() {
+        return codigoCoordenador;
     }
 
-    public void setCodigoCordenador(String codigoCordenador) {
-        this.codigoCordenador = codigoCordenador;
+    public void setCodigoCoordenador(String codigoCoordenador) {
+        this.codigoCoordenador = codigoCoordenador;
     }
 }

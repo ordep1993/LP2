@@ -32,7 +32,7 @@ public class PesquisarServidorController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+        try (PrintWriter out = response.getWriter()) {
            request.setAttribute("servidores",Servidor.obterServidor());
            RequestDispatcher view = request.getRequestDispatcher("/pesquisarServidor.jsp");
            view.forward(request, response);

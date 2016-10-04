@@ -17,6 +17,7 @@
                 <th> Ano</th>
                 <th> Semestre</th>
                 <th> MaxAluno</th>
+                <th colspan="2">Ação</th>                
             </tr>
             <c:forEach items="${turmas}" var="turma">
                 <tr>
@@ -30,7 +31,7 @@
             </c:forEach>
          </table>
         <form action="ManterTurmaController?acao=prepararIncluir" method="post">
-            <input type="submit" name"btnIncluir" value="incluir">
+            <input type="submit" name="btnIncluir" value="incluir">
         </form>
         </form>
     </body>

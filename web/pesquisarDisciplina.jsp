@@ -13,6 +13,9 @@
             <tr>
                 <th>Código Disciplina</th>
                 <th>Nome Disciplina</th>
+                <th>Num Aulas</th>
+                <th>Ementa</th>
+                <th>Bibliografia</th>
                 <th colspan="2">Ação</th>                         
             </tr>
             <c:forEach items="${disciplinas}" var="disciplina">

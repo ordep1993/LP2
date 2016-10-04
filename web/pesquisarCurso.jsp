@@ -18,7 +18,7 @@
             <c:forEach items="${cursos}" var="curso">
                 <tr>
                     <td><c:out value="${curso.codigo}"/></td>
-                    <td><c:out value="${curso.nome}"/></td>
+                    <td><c:out value="${curso.descricao}"/></td>
                     <td><a href="ManterCursoController?acao=prepararEditar&codCurso="<c:out value="${curso.codigo}"/>">Editar</a></td>
                     <td><a href="ManterCursoController?acao=prepararExcluir&codCurso="<c:out value="${curso.codigo}"/>">Excluir</a></td>
                 </tr> 

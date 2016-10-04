@@ -15,16 +15,12 @@ public class Matricula {
     private String codigoTurma;
     private String codigoAluno;
 
-    public Matricula(int codigo, Curso curso, Disciplina disciplina, Turma turma, Aluno aluno, String codigoCurso, String codigoDisciplina, String codigoTurma, String codigoAluno) {
+    public Matricula(int codigo, Curso curso, Disciplina disciplina, Turma turma, Aluno aluno) {
         this.codigo = codigo;
         this.curso = curso;
         this.disciplina = disciplina;
         this.turma = turma;
         this.aluno = aluno;
-        this.codigoCurso = codigoCurso;
-        this.codigoDisciplina = codigoDisciplina;
-        this.codigoTurma = codigoTurma;
-        this.codigoAluno = codigoAluno;
     }
    
     public int getCodigo() {

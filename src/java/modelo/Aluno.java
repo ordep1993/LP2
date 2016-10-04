@@ -21,9 +21,9 @@ public class Aluno {
      private int semestreInicio;
      private boolean estadoAluno;
      
-     public Aluno(int matricula, String mome, String dataNasc, int cpf, String dataExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, int anoInicio, int semestreInicio, boolean estadoAluno) {
+     public Aluno(int matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, int anoInicio, int semestreInicio, boolean estadoAluno) {
         this.matricula = matricula;
-        this.nome = mome;
+        this.nome = nome;
         this.dataNasc = dataNasc;
         this.cpf = cpf;
         this.dataExpedicao = dataExpedicao;

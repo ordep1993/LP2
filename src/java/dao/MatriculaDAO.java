@@ -23,15 +23,11 @@ public class MatriculaDAO {
                 null,
                 null,
                 null,
-                null,
-                rs.getString("codigoCurso"),
-                rs.getString("codigoDisciplina"),
-                rs.getString("codigoTurma"),
-                rs.getString("codigoAluno"));        
-                matricula.setCodigoCurso(rs.getString("curso"));
-                matricula.setCodigoDisciplina(rs.getString("disciplina"));
-                matricula.setCodigoTurma(rs.getString("turma"));
-                matricula.setCodigoAluno(rs.getString("aluno"));
+                null);      
+                matricula.setCodigoCurso(rs.getString("codigoCurso"));
+                matricula.setCodigoDisciplina(rs.getString("codigoDisciplina"));
+                matricula.setCodigoTurma(rs.getString("codigoTurma"));
+                matricula.setCodigoAluno(rs.getString("codigoAluno"));
                 matriculas.add(matricula);        
             }
         } catch (SQLException e) {
@@ -39,7 +35,7 @@ public class MatriculaDAO {
         } finally {
             fecharConexao(conexao, comando);
         }
-        return null;
+        return matriculas;
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {

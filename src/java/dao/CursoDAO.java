@@ -22,9 +22,8 @@ public class CursoDAO {
                 Curso curso = new Curso(rs.getInt("codigo"),
                         rs.getString("descricao"),
                         rs.getInt("cargaHoraria"),
-                        null,
-                        rs.getString("cordenador"));
-                curso.setCodigoCordenador(rs.getString("cordenador"));
+                        null);
+                curso.setCodigoCoordenador(rs.getString("codigoCoordenador"));
                 cursos.add(curso);
             }
         } catch (SQLException e) {

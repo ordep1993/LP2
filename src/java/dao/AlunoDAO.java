@@ -14,7 +14,6 @@ public class AlunoDAO {
         Connection conexao = null;
         Statement comando = null;
         List<Aluno> alunos = new ArrayList<Aluno>();
-        
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
@@ -38,6 +37,8 @@ public class AlunoDAO {
                         rs.getBoolean("estadoAluno"));
                         alunos.add(aluno);
             }
+            
+            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

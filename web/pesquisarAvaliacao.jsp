@@ -12,10 +12,11 @@
         <h1>Pesquisar Avaliações</h1>
         <table border="1">
             <tr>
-                <th> Codigo</th> 
+                <th> Codigo </th>
                 <th> Avaliação 1</th> 
                 <th> Avaliação 2</th>
                 <th> Avaliação Final</th>
+                <th colspan="2">Ação</th>  
             </tr>
             <c:forEach items="${avaliacoes}" var="avaliacao">
                 <tr>
@@ -29,7 +30,7 @@
             </c:forEach>
          </table>
         <form action="ManterAvaliacaoController?acao=prepararIncluir" method="post">
-            <input type="submit" name"btnIncluir" value="incluir">
+            <input type="submit" name="btnIncluir" value="incluir">
         </form>
         </form>
     </body>

@@ -28,6 +28,7 @@
                 <th> Bairro</th>
                 <th> CEP</th>
                 <th> Data Admissão</th>
+                <th colspan="2">Ação</th>  
             </tr>
             <c:forEach items="${servidores}" var="servidor">
                 <tr>

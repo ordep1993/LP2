@@ -11,8 +11,22 @@
         <h1>Pesquisa de Alunos</h1>
         <table border="1">
             <tr>
-                <th>Código Aluno</th>
-                <th>Nome Aluno</th>
+                <th>Matricula</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>CPF</th>
+                <th>Data de Expedicao</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Celular</th>
+                <th>Logradouro</th>
+                <th>Numero</th>
+                <th>Complemento</th>
+                <th>Bairro</th>
+                <th>Cep</th>
+                <th>Ano Inicio</th>
+                <th>Semestre Inicio</th>
+                <th>Estado do Aluno</th>
                 <th colspan="2">Ação</th>                         
             </tr>
             <c:forEach items="${alunos}" var="aluno">
