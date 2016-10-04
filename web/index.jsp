@@ -15,18 +15,18 @@
             <td><a href="PesquisarServidorController"><button>Servidores</button></a></td>		
             <td><a href="pesquisaCursoController"><button>Cursos</button></a></td>		
                 <td><a href="pesquisaAvaliacaoController"><button>Avaliações</button></a></td>		
-		<td><button>Emissão de Relatórios</button></td>
+		<td><button>Emissão de Relatórios XX</button></td>  
 	</tr>
 	<tr>
             <td><a href="PesquisaProfessorController"><button>Professores</button></a></td>		
                 <td><a href="PesquisaDisciplinaController"><button>Disciplinas</button></a></td>		
-		<td><button>Certificados</button></td>		
+		<td><button>Certificados XX</button></td>		
                 <td><a href="PesquisaMatriculaController"><button>Matrículas</button></a></td>
 	</tr>
 	<tr>
             <td><a href="pesquisaAlunoController"><button>Alunos</button></a></td>		
 		<td><a href="PesquisarTurmaController"><button>Turmas</button></a></td>		
-		<td><button>Histórico Escolar</button></td>		
+		<td><button>Histórico Escolar XX</button></td>		
 	</tr>
 	
 </table>
