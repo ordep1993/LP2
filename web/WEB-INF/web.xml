@@ -32,6 +32,10 @@
         <servlet-name>PesquisarTurmaController</servlet-name>
         <servlet-class>controller.PesquisarTurmaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterTurmaController</servlet-name>
+        <servlet-class>controller.ManterTurmaController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>pesquisaAlunoController</servlet-name>
         <url-pattern>/pesquisaAlunoController</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>PesquisarTurmaController</servlet-name>
         <url-pattern>/PesquisarTurmaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterTurmaController</servlet-name>
+        <url-pattern>/ManterTurmaController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
