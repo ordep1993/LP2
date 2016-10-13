@@ -48,6 +48,22 @@
         <servlet-name>ManterProfessorController</servlet-name>
         <servlet-class>controller.ManterProfessorController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterAvaliacaoController</servlet-name>
+        <servlet-class>controller.ManterAvaliacaoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterAlunoController</servlet-name>
+        <servlet-class>controller.ManterAlunoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterDisciplinaController</servlet-name>
+        <servlet-class>controller.ManterDisciplinaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterServidorController</servlet-name>
+        <servlet-class>controller.ManterServidorController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>pesquisaAlunoController</servlet-name>
         <url-pattern>/pesquisaAlunoController</url-pattern>
@@ -95,6 +111,22 @@
     <servlet-mapping>
         <servlet-name>ManterProfessorController</servlet-name>
         <url-pattern>/ManterProfessorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterAvaliacaoController</servlet-name>
+        <url-pattern>/ManterAvaliacaoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterAlunoController</servlet-name>
+        <url-pattern>/ManterAlunoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterDisciplinaController</servlet-name>
+        <url-pattern>/ManterDisciplinaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterServidorController</servlet-name>
+        <url-pattern>/ManterServidorController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
