@@ -43,8 +43,8 @@ public class ManterProfessorController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
      try {
          request.setAttribute("operacao", "Incluir");
-         request.setAttribute("matriculas", Professor.obterProfessor());
-         RequestDispatcher view = request.getRequestDispatcher("/manterTurma.jsp");
+         request.setAttribute("professores", Professor.obterProfessor());
+         RequestDispatcher view = request.getRequestDispatcher("/manterProfessor.jsp");
          view.forward(request,response);
      }catch (ServletException ex){
      }catch (IOException ex){

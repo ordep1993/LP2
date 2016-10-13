@@ -19,40 +19,12 @@
         <form action="ManterCursoController?acao=confirmar${operacao}" method="post" name="frmManterCurso" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Código do curso:</td> 
-                    <td><input type="text" name="txtCodCurso" value="${curso.codCurso}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td>Código:</td> 
+                    <td><input type="text" name="txtCodigo" value="${curso.codigo}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Nome do curso:</td> 
-                    <td><input type="text" name="txtNomeCurso" value="${curso.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Total de períodos:</td> 
-                    <td><input type="text" name="txtTotalPeriodos" value="${curso.totalPeriodos}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Carga horária:</td> 
-                    <td><input type="text" name="txtCargaHoraria" value="${curso.cargaHoraria}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr> 
-                    <td>Tipo Curso:</td> 
-                    <td>
-                        <select name="optTipoCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                            <option value="Técnico" <c:if test="${curso.tipoCurso == 'Técnico'}"> selected</c:if>>Técnico</option>
-                            <option value="Superior" <c:if test="${curso.tipoCurso == 'Superior'}"> selected</c:if>>Superior</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Coordenador:</td>
-                    <td>
-                        <select name="optCoordenador" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                            <option value="0" <c:if test="${curso.coordenador.matricula == null}"> selected</c:if>> </option>  
-                            <c:forEach items="${professores}" var="professor">
-                                <option value="${professor.matricula}" <c:if test="${curso.coordenador.matricula == professor.matricula}"> selected</c:if>>${professor.nome}</option>  
-                            </c:forEach>
-                        </select>
-                    </td>
+                    <td><input type="text" name="txtDescricao" value="${curso.descricao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
