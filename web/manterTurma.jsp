@@ -19,19 +19,19 @@
         <form action="ManterTurmaController?acao=confirmar${operacao}" method="post" name="frmManterTurma" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Código do curso:</td> 
+                    <td>Código da Turma:</td> 
                     <td><input type="text" name="txtCodigo" value="${turma.codigo}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Nome do curso:</td> 
+                    <td>Ano:</td> 
                     <td><input type="text" name="txtAno" value="${turma.ano}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Total de períodos:</td> 
+                    <td>Semestre:</td> 
                     <td><input type="text" name="txtSemestre" value="${turma.semestre}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Carga horária:</td> 
+                    <td>Máximo de Alunos:</td> 
                     <td><input type="text" name="txtMaxAlunos" value="${turma.maxAlunos}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>              
                 <tr>
