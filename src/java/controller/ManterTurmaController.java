@@ -16,7 +16,7 @@ public class ManterTurmaController extends HttpServlet{
             String acao = request.getParameter("acao");
             if(acao.equals("prepararIncluir")){
                 prepararIncluir(request , response);
-            } else {
+            }/* else {
                 if(acao.equals("confirmarIncluir")){
                     //confirmarIncluir(request , response);
                 } else {
@@ -37,19 +37,23 @@ public class ManterTurmaController extends HttpServlet{
                     }
                 }
                 
-            }
+            }*/
         }
-
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
      try {
          request.setAttribute("operacao", "Incluir");
          request.setAttribute("turmas", Turma.obterTurma());
          RequestDispatcher view = request.getRequestDispatcher("/manterTurma.jsp");
-         view.forward(request , response);
+         view.forward(request,response);
      }catch (ServletException ex){
      }catch (IOException ex){
      }catch (ClassNotFoundException ex){
     }
+    }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+                throws ServletException, IOException {
+                processRequest(request,response);
     }
      
 }

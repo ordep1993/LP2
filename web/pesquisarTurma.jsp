@@ -31,7 +31,7 @@
             </c:forEach>
          </table>
         <form action="ManterTurmaController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="incluir">
+            <input type="submit" name="btnIncluir" value="Incluir">
         </form>
         </form>
     </body>
