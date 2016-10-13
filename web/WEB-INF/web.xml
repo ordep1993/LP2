@@ -36,6 +36,18 @@
         <servlet-name>ManterTurmaController</servlet-name>
         <servlet-class>controller.ManterTurmaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterCursoController</servlet-name>
+        <servlet-class>controller.ManterCursoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterMatriculaController</servlet-name>
+        <servlet-class>controller.ManterMatriculaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterProfessorController</servlet-name>
+        <servlet-class>controller.ManterProfessorController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>pesquisaAlunoController</servlet-name>
         <url-pattern>/pesquisaAlunoController</url-pattern>
@@ -71,6 +83,18 @@
     <servlet-mapping>
         <servlet-name>ManterTurmaController</servlet-name>
         <url-pattern>/ManterTurmaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterCursoController</servlet-name>
+        <url-pattern>/ManterCursoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterMatriculaController</servlet-name>
+        <url-pattern>/ManterMatriculaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterProfessorController</servlet-name>
+        <url-pattern>/ManterProfessorController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
