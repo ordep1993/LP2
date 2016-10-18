@@ -1,26 +1,28 @@
 package modelo;
 
 import dao.TurmaDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Turma {
-    private String codigo;
+
+    private int codigo;
     private int ano;
     private int semestre;
     private int maxAlunos;
 
-    public Turma(String codigo, int ano, int semestre, int maxAlunos) {
+    public Turma(int codigo, int ano, int semestre, int maxAlunos) {
         this.codigo = codigo;
         this.ano = ano;
         this.semestre = semestre;
         this.maxAlunos = maxAlunos;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -47,7 +49,20 @@ public class Turma {
     public void setMaxAlunos(int maxAlunos) {
         this.maxAlunos = maxAlunos;
     }
-       public static List<Turma> obterTurma() throws ClassNotFoundException {
+
+    public static List<Turma> obterTurma() throws ClassNotFoundException {
         return TurmaDAO.obterTurma();
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        TurmaDAO.gravar(this);
+    }
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        //  TurmaDAO.alterar(this);
+    }
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        //  TurmaDAO.excluir(this);
     }
 }
