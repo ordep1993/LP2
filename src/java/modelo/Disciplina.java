@@ -1,6 +1,7 @@
 package modelo;
 
 import dao.DisciplinaDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Disciplina {
@@ -62,7 +63,9 @@ public class Disciplina {
     public void setBibliografia(String bibliografia) {
         this.bibliografia = bibliografia;
     }
-
+    public void gravar() throws SQLException,ClassNotFoundException{
+        DisciplinaDAO.gravar(this);
+    }
     public static List<Disciplina> obterDisciplina() throws ClassNotFoundException {
         return DisciplinaDAO.obterDisciplina();
     }

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,7 @@ public class ManterDisciplinaController extends HttpServlet {
         } else if (acao.equals("prepararEditar")) {
             //prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
-            //confirmarEditar(request , response);
+            confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
             //prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
@@ -40,6 +41,7 @@ public class ManterDisciplinaController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
         }
     }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -78,5 +80,24 @@ public class ManterDisciplinaController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        String descricao = request.getParameter("txtDescricao");
+        int numAula = Integer.parseInt(request.getParameter("txtnumAula"));
+        String ementa = request.getParameter("txtEmenta");
+        String bibliografia = request.getParameter("txtBibliografia");
+        try{
+            Disciplina disciplina = new Disciplina(codigo, descricao, numAula, ementa, bibliografia);
+            disciplina.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarDisciplinaController");
+            view.forward(request, response);
+        }catch (ServletException ex) {
+        }catch (IOException ex) {
+        }catch (ClassNotFoundException ex) {
+        }catch (SQLException ex){
+            
+        }
+    }
 
 }

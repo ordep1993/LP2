@@ -19,7 +19,7 @@ public class ManterAlunoController extends HttpServlet {
         if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
         } else if (acao.equals("confirmarIncluir")) {
-            //confirmarIncluir(request , response);
+            confirmarIncluir(request , response);
         } else if (acao.equals("prepararEditar")) {
             //prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
@@ -81,5 +81,23 @@ public class ManterAlunoController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+        int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
+        String nome = request.getParameter("txtNome");
+        String dataNasc = request.getParameter("txtDataNasc");
+        int cpf = Integer.parseInt(request.getParameter("txtCPF"));
+        String email = request.getParameter("txtEmail");
+        int telefone = Integer.parseInt(request.getParameter("txtTelefone"));
+        int celular = Integer.parseInt(request.getParameter("txtCelular"));
+        String logradouro = request.getParameter("txtLogradouro");
+        int numero = Integer.parseInt(request.getParameter("txtNumero"));
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        int cep = Integer.parseInt(request.getParameter("txtCEP"));
+        int anoInicio = Integer.parseInt(request.getParameter("txtAnoInicio"));
+        int semestreInicio = Integer.parseInt(request.getParameter("txtSemestreInicio"));
+        int estado = Integer.parseInt(request.getParameter("txtEstado")); 
+    }
 
 }
