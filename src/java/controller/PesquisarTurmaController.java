@@ -33,7 +33,7 @@ public class PesquisarTurmaController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try  {
-           request.setAttribute("turmas",Turma.obterTurma());
+           request.setAttribute("turmas",Turma.obterTurmas());
            RequestDispatcher view = request.getRequestDispatcher("/pesquisarTurma.jsp");
            view.forward(request, response);
                      

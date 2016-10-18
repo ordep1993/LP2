@@ -49,9 +49,13 @@ public class Turma {
     public void setMaxAlunos(int maxAlunos) {
         this.maxAlunos = maxAlunos;
     }
+    
+    public static void obterTurma(int codigo) throws ClassNotFoundException {
+        TurmaDAO.obterTurma(codigo);
+    }
 
-    public static List<Turma> obterTurma() throws ClassNotFoundException {
-        return TurmaDAO.obterTurma();
+    public static List<Turma> obterTurmas() throws ClassNotFoundException {
+        return TurmaDAO.obterTurmas();
     }
 
     public void gravar() throws SQLException, ClassNotFoundException {
