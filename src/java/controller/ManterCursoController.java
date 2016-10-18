@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Curso;
+import modelo.Professor;
 
 /**
  *
@@ -25,7 +26,7 @@ public class ManterCursoController extends HttpServlet {
         if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
         } else if (acao.equals("confirmarIncluir")) {
-            //confirmarIncluir(request , response);
+            //confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
             //prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
@@ -48,6 +49,26 @@ public class ManterCursoController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
         }
     }
+
+    /*public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        String descricao = request.getParameter("txtDescricao");
+        int cargaHoraria = Integer.parseInt(request.getParameter("txtcargaHoraria"));
+        int coordenador = Integer.parseInt(request.getParameter("txtcoordenador"));
+        try {
+            Professor professor = null;
+            if (coordenador != 0) {
+               // professor = Professor.obterProfessor(coordenador);
+            }
+            Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
+            curso.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaCursoController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+    }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

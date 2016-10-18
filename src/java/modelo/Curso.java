@@ -1,6 +1,7 @@
 package modelo;
 
 import dao.CursoDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Curso{
@@ -61,5 +62,9 @@ public class Curso{
 
     public void setCodigoCoordenador(String codigoCoordenador) {
         this.codigoCoordenador = codigoCoordenador;
+    }
+    
+    public void gravar() throws SQLException, ClassNotFoundException{
+        CursoDAO.gravar(this);
     }
 }

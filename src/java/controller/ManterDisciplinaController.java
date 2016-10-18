@@ -18,11 +18,11 @@ public class ManterDisciplinaController extends HttpServlet {
         if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
         } else if (acao.equals("confirmarIncluir")) {
-            //confirmarIncluir(request , response);
+            confirmarIncluir(request , response);
         } else if (acao.equals("prepararEditar")) {
             //prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
-            confirmarEditar(request , response);
+            //confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
             //prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
@@ -81,7 +81,7 @@ public class ManterDisciplinaController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
         int numAula = Integer.parseInt(request.getParameter("txtnumAula"));
