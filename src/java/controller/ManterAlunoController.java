@@ -3,6 +3,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +35,7 @@ public class ManterAlunoController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Incluir");
-            request.setAttribute("alunos", Aluno.obterAluno());
+            request.setAttribute("alunos", Aluno.obterAlunos());
             RequestDispatcher view = request.getRequestDispatcher("/manterAluno.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -87,6 +88,7 @@ public class ManterAlunoController extends HttpServlet {
         String nome = request.getParameter("txtNome");
         String dataNasc = request.getParameter("txtDataNasc");
         int cpf = Integer.parseInt(request.getParameter("txtCPF"));
+        String dataExpedicao = request.getParameter("txtDataExpedicao");
         String email = request.getParameter("txtEmail");
         int telefone = Integer.parseInt(request.getParameter("txtTelefone"));
         int celular = Integer.parseInt(request.getParameter("txtCelular"));
@@ -97,7 +99,24 @@ public class ManterAlunoController extends HttpServlet {
         int cep = Integer.parseInt(request.getParameter("txtCEP"));
         int anoInicio = Integer.parseInt(request.getParameter("txtAnoInicio"));
         int semestreInicio = Integer.parseInt(request.getParameter("txtSemestreInicio"));
-        int estado = Integer.parseInt(request.getParameter("txtEstado")); 
+        boolean estadoAluno = Boolean.parseBoolean(request.getParameter("txtEstado")); 
+        
+        try{
+        /*  caso seja necessário
+            Professor professor = null;
+            if (coordenador != 0) {
+                professor = Professor.obterProfessor(coordenador);
+        }
+         */
+        Aluno aluno = new Aluno(matricula, nome, dataNasc, cpf, dataExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, cep, anoInicio, semestreInicio, estadoAluno);
+        aluno.gravar();
+        RequestDispatcher view = request.getRequestDispatcher("PesquisarAlunoController");
+        view.forward(request, response);
+        }catch (ServletException ex){
+        }catch (IOException ex){
+        }catch (ClassNotFoundException ex){    
+        }catch (SQLException ex){    
+        }     
+    }
     }
 
-}

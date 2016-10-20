@@ -1,6 +1,7 @@
 package modelo;
 
 import dao.AlunoDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Aluno {
@@ -38,6 +39,10 @@ public class Aluno {
         this.anoInicio = anoInicio;
         this.semestreInicio = semestreInicio;
         this.estadoAluno = estadoAluno;
+    }
+
+    public Aluno(int aInt, String string, String string0, int aInt0, String string1, String string2, int aInt1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getMatricula() {
@@ -168,7 +173,15 @@ public class Aluno {
         this.estadoAluno = estadoAluno;
     }
     
-    public static List<Aluno> obterAluno() throws ClassNotFoundException{
-        return AlunoDAO.obterAluno();
+    public static void obterAluno(int matricula) throws ClassNotFoundException{
+        AlunoDAO.obterAluno(matricula);
+    }
+    
+    public static List<Aluno> obterAlunos() throws ClassNotFoundException {
+        return AlunoDAO.obterAlunos();
+    }
+    
+    public void gravar() throws SQLException , ClassNotFoundException {
+        AlunoDAO.gravar(this);
     }
 }
