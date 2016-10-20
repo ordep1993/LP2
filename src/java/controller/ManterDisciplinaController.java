@@ -84,7 +84,7 @@ public class ManterDisciplinaController extends HttpServlet {
     public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
-        int numAula = Integer.parseInt(request.getParameter("txtnumAula"));
+        int numAula = Integer.parseInt(request.getParameter("txtNumAula"));
         String ementa = request.getParameter("txtEmenta");
         String bibliografia = request.getParameter("txtBibliografia");
         try{
