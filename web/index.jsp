@@ -14,7 +14,7 @@
 	<tr>
             <td><a href="PesquisarServidorController"><button>Servidores</button></a></td>		
             <td><a href="pesquisaCursoController"><button>Cursos</button></a></td>		
-                <td><a href="pesquisaAvaliacaoController"><button>Avaliações</button></a></td>		
+                <td><a href="PesquisarAvaliacaoController"><button>Avaliações</button></a></td>		
 		<td><button>Emissão de Relatórios XX</button></td>  
 	</tr>
 	<tr>

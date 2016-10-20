@@ -33,7 +33,7 @@ public class PesquisarAvaliacaoController extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            request.setAttribute("avaliacoes", Avaliacao.obterAvaliacao());
+            request.setAttribute("avaliacoes", Avaliacao.obterAvaliacoes());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisarAvaliacao.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {

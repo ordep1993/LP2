@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>pesquisaAlunoController</servlet-name>
+        <servlet-name>PesquisarAlunoController</servlet-name>
         <servlet-class>controller.PesquisarAlunoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>pesquisaAvaliacaoController</servlet-name>
+        <servlet-name>PesquisarAvaliacaoController</servlet-name>
         <servlet-class>controller.PesquisarAvaliacaoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>pesquisaCursoController</servlet-name>
+        <servlet-name>PesquisarCursoController</servlet-name>
         <servlet-class>controller.PesquisarCursoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisaDisciplinaController</servlet-name>
+        <servlet-name>PesquisarDisciplinaController</servlet-name>
         <servlet-class>controller.PesquisarDisciplinaController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisaMatriculaController</servlet-name>
+        <servlet-name>PesquisarMatriculaController</servlet-name>
         <servlet-class>controller.PesquisarMatriculaController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisaProfessorController</servlet-name>
+        <servlet-name>PesquisarProfessorController</servlet-name>
         <servlet-class>controller.PesquisarProfessorController</servlet-class>
     </servlet>
     <servlet>
@@ -65,28 +65,28 @@
         <servlet-class>controller.ManterServidorController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>pesquisaAlunoController</servlet-name>
-        <url-pattern>/pesquisaAlunoController</url-pattern>
+        <servlet-name>PesquisarAlunoController</servlet-name>
+        <url-pattern>/PesquisarAlunoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>pesquisaAvaliacaoController</servlet-name>
-        <url-pattern>/pesquisaAvaliacaoController</url-pattern>
+        <servlet-name>PesquisarAvaliacaoController</servlet-name>
+        <url-pattern>/PesquisarAvaliacaoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>pesquisaCursoController</servlet-name>
-        <url-pattern>/pesquisaCursoController</url-pattern>
+        <servlet-name>PesquisarCursoController</servlet-name>
+        <url-pattern>/PesquisarCursoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisaDisciplinaController</servlet-name>
-        <url-pattern>/PesquisaDisciplinaController</url-pattern>
+        <servlet-name>PesquisarDisciplinaController</servlet-name>
+        <url-pattern>/PesquisarDisciplinaController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisaMatriculaController</servlet-name>
-        <url-pattern>/PesquisaMatriculaController</url-pattern>
+        <servlet-name>PesquisarMatriculaController</servlet-name>
+        <url-pattern>/PesquisarMatriculaController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisaProfessorController</servlet-name>
-        <url-pattern>/PesquisaProfessorController</url-pattern>
+        <servlet-name>PesquisarProfessorController</servlet-name>
+        <url-pattern>/PesquisarProfessorController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PesquisarServidorController</servlet-name>
