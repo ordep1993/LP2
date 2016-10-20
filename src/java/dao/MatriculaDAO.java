@@ -10,7 +10,7 @@ import modelo.Matricula;
 
 public class MatriculaDAO {
 
-    public static List<Matricula> obterMatricula() throws ClassNotFoundException {
+    public static List<Matricula> obterMatriculas() throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         List<Matricula> matriculas = new ArrayList<Matricula>();

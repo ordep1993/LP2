@@ -96,7 +96,7 @@ public class Matricula {
     }
 
     
-    public static List<Matricula> obterMatricula() throws ClassNotFoundException {
-        return MatriculaDAO.obterMatricula();
+    public static List<Matricula> obterMatriculas() throws ClassNotFoundException {
+        return MatriculaDAO.obterMatriculas();
     }
 }

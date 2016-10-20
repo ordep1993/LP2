@@ -34,7 +34,7 @@ public class PesquisarMatriculaController extends HttpServlet {
             throws ServletException, IOException {
       
         try {
-            request.setAttribute("matriculas" , Matricula.obterMatricula());
+            request.setAttribute("matriculas" , Matricula.obterMatriculas());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisarMatricula.jsp");
             view.forward(request,response);
         } catch (ClassNotFoundException ex){

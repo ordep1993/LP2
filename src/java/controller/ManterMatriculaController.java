@@ -48,7 +48,7 @@ public class ManterMatriculaController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
      try {
          request.setAttribute("operacao", "Incluir");
-         request.setAttribute("matriculas", Matricula.obterMatricula());
+         request.setAttribute("matriculas", Matricula.obterMatriculas());
          RequestDispatcher view = request.getRequestDispatcher("/manterMatricula.jsp");
          view.forward(request,response);
      }catch (ServletException ex){
