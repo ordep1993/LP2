@@ -6,10 +6,6 @@ import java.util.List;
 
 public class Disciplina {
 
-    public static Object obterAvaliacao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     private int codigo;
     private String descricao;
     private int numAula;
@@ -63,10 +59,16 @@ public class Disciplina {
     public void setBibliografia(String bibliografia) {
         this.bibliografia = bibliografia;
     }
-    public void gravar() throws SQLException,ClassNotFoundException{
-        DisciplinaDAO.gravar(this);
+    
+        public static void obterDisciplina(int codigo) throws ClassNotFoundException {
+        DisciplinaDAO.obterDisciplina(codigo);
     }
-    public static List<Disciplina> obterDisciplina() throws ClassNotFoundException {
-        return DisciplinaDAO.obterDisciplina();
+
+    public static List<Disciplina> obterDisciplinas() throws ClassNotFoundException {
+        return DisciplinaDAO.obterDisciplinas();
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        DisciplinaDAO.gravar(this);
     }
 }

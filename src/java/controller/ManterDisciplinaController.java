@@ -33,7 +33,7 @@ public class ManterDisciplinaController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Incluir");
-            request.setAttribute("disciplinas", Disciplina.obterDisciplina());
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
             RequestDispatcher view = request.getRequestDispatcher("/manterDisciplina.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {

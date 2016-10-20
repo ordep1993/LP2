@@ -13,7 +13,7 @@ import modelo.Disciplina;
 
 public class DisciplinaDAO {
 
-    public static List<Disciplina> obterDisciplina() throws ClassNotFoundException {
+    public static List<Disciplina> obterDisciplinas() throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         List<Disciplina> disciplinas = new ArrayList<Disciplina>();
@@ -36,6 +36,30 @@ public class DisciplinaDAO {
             fecharConexao(conexao, comando);
         }
         return disciplinas;
+    }
+    
+        public static Disciplina obterDisciplina(int codigo) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Disciplina disciplina = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from disciplina where codigo = " + codigo);
+            rs.first();
+            disciplina = new Disciplina(rs.getInt("codigo"),
+                    rs.getString("descricao"),
+                    rs.getInt("numAula"),
+                    rs.getString("ementa"),
+                    rs.getString("bibliografia"));
+                    //NULL PARA SER SETADO
+                //turma.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador")); CASO TENHA CHAVE ESTRANGEIRA
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao , comando);
+        }
+        return disciplina;
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
