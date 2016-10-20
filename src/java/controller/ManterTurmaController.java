@@ -30,7 +30,7 @@ public class ManterTurmaController extends HttpServlet {
         }
     }
 
-    private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
+    private void  prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Incluir");
             request.setAttribute("turmas", Turma.obterTurmas());
