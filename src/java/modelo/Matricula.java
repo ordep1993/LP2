@@ -1,6 +1,7 @@
 package modelo;
 
 import dao.MatriculaDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Matricula {
@@ -95,8 +96,15 @@ public class Matricula {
         this.codigoAluno = codigoAluno;
     }
 
+    public static void obterMatricula(int codigo) throws ClassNotFoundException {
+        MatriculaDAO.obterMatricula(codigo);
+    }
     
     public static List<Matricula> obterMatriculas() throws ClassNotFoundException {
         return MatriculaDAO.obterMatriculas();
+    }
+    
+    public void gravar() throws SQLException , ClassNotFoundException  {
+        MatriculaDAO.gravar(this);
     }
 }

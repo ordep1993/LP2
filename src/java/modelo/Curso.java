@@ -4,7 +4,8 @@ import dao.CursoDAO;
 import java.sql.SQLException;
 import java.util.List;
 
-public class Curso{
+public class Curso {
+
     private int codigo;
     private String descricao;
     private int cargaHoraria;
@@ -17,9 +18,7 @@ public class Curso{
         this.cargaHoraria = cargaHoraria;
         this.coordenador = coordenador;
     }
-    
-    
-    
+
     public int getCodigo() {
         return codigo;
     }
@@ -51,10 +50,6 @@ public class Curso{
     public void setCoordenador(Professor coordenador) {
         this.coordenador = coordenador;
     }
-    
-    public static List<Curso> obterCursos() throws ClassNotFoundException{
-        return CursoDAO.obterCursos();
-    }
 
     public String getCodigoCoordenador() {
         return codigoCoordenador;
@@ -64,7 +59,15 @@ public class Curso{
         this.codigoCoordenador = codigoCoordenador;
     }
     
-    public void gravar() throws SQLException, ClassNotFoundException{
+    public static void obterCurso(int codigo) throws ClassNotFoundException {
+        CursoDAO.obterCurso(codigo);
+    }
+
+    public static List<Curso> obterCursos() throws ClassNotFoundException {
+        return CursoDAO.obterCursos();
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
         CursoDAO.gravar(this);
     }
 }

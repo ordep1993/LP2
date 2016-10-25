@@ -34,7 +34,7 @@ public class PesquisarProfessorController extends HttpServlet {
             throws ServletException, IOException {
       
         try {
-            request.setAttribute("professores" , Professor.obterProfessor());
+            request.setAttribute("professores" , Professor.obterProfessores());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisarProfessor.jsp");
             view.forward(request,response);
         } catch (ClassNotFoundException ex){

@@ -6,11 +6,13 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Curso;
 import modelo.Matricula;
 
 
@@ -24,7 +26,7 @@ public class ManterMatriculaController extends HttpServlet {
                 prepararIncluir(request , response);
             } else {
                 if(acao.equals("confirmarIncluir")){
-                    //confirmarIncluir(request , response);
+                    confirmarIncluir(request , response);
                 } else {
                     if (acao.equals("prepararEditar")){
                         //prepararEditar(request , response);
@@ -55,6 +57,28 @@ public class ManterMatriculaController extends HttpServlet {
      }catch (IOException ex){
      }catch (ClassNotFoundException ex){
     }
+    }
+        public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        int codigoCurso = Integer.parseInt(request.getParameter("txtCodigoCurso"));
+        int codigoDisciplina = Integer.parseInt(request.getParameter("txtCodigoDisciplina"));
+        int codigoTurma = Integer.parseInt(request.getParameter("txtCodigoTurma"));
+        int codigoAluno = Integer.parseInt(request.getParameter("txtCodigoAluno"));
+        try{
+            Curso curso = null;
+            if (codigoCurso != 0) {
+                curso = Curso.obterProfessor(codigo);
+        }
+       
+        Matricula matricula = new Matricula(codigo, codigoCurso , codigoDisciplina , codigoTurma , codigoAluno);
+        matricula.gravar();
+        RequestDispatcher view = request.getRequestDispatcher("PesquisarMatriculaController");
+        view.forward(request, response);
+        }catch (ServletException ex){
+        }catch (IOException ex){
+        }catch (ClassNotFoundException ex){    
+        }catch (SQLException ex){    
+        }     
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,25 +1,27 @@
 package modelo;
 
 import dao.ServidorDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Servidor {
+
     private int matricula;
-     private String nome;
-     private String dataNasc;
-     private int cpf;
-     private String dataExpedicao;
-     private String orgaoExpedidor;
-     private String ufExpedicao;
-     private String email;
-     private int telefone;
-     private int celular;
-     private String logradouro;
-     private int numero;
-     private String complemento;
-     private String bairro;
-     private int cep;
-     private String dataAdmissao;
+    private String nome;
+    private String dataNasc;
+    private int cpf;
+    private String dataExpedicao;
+    private String orgaoExpedidor;
+    private String ufExpedicao;
+    private String email;
+    private int telefone;
+    private int celular;
+    private String logradouro;
+    private int numero;
+    private String complemento;
+    private String bairro;
+    private int cep;
+    private String dataAdmissao;
 
     public Servidor(int matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String orgaoExpedidor, String ufExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, String dataAdmissao) {
         this.matricula = matricula;
@@ -40,8 +42,6 @@ public class Servidor {
         this.dataAdmissao = dataAdmissao;
     }
 
-     
-     
     public int getMatricula() {
         return matricula;
     }
@@ -169,9 +169,16 @@ public class Servidor {
     public void setDataAdmissao(String dataAdmissao) {
         this.dataAdmissao = dataAdmissao;
     }
-    
-    
-        public static List<Servidor> obterServidor() throws ClassNotFoundException {
-        return ServidorDAO.obterServidor();
+
+    public static void obterServidor(int codigo) throws ClassNotFoundException {
+        ServidorDAO.obterServidor(codigo);
+    }
+
+    public static List<Servidor> obterServidores() throws ClassNotFoundException {
+        return ServidorDAO.obterServidores();
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        ServidorDAO.gravar(this);
     }
 }
