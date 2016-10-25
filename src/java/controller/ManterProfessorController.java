@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ public class ManterProfessorController extends HttpServlet {
                 prepararIncluir(request , response);
             } else {
                 if(acao.equals("confirmarIncluir")){
-                    //confirmarIncluir(request , response);
+                    confirmarIncluir(request , response);
                 } else {
                     if (acao.equals("prepararEditar")){
                         //prepararEditar(request , response);
@@ -43,7 +44,7 @@ public class ManterProfessorController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
      try {
          request.setAttribute("operacao", "Incluir");
-         request.setAttribute("professores", Professor.obterProfessor());
+         request.setAttribute("professores", Professor.obterProfessores());
          RequestDispatcher view = request.getRequestDispatcher("/manterProfessor.jsp");
          view.forward(request,response);
      }catch (ServletException ex){
@@ -92,4 +93,26 @@ public class ManterProfessorController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        int ano = Integer.parseInt(request.getParameter("txtAno"));
+        int semestre = Integer.parseInt(request.getParameter("txtSemestre"));
+        int maxAlunos = Integer.parseInt(request.getParameter("txtMaxAlunos"));
+        try{
+        /*  caso seja necessário
+            Professor professor = null;
+            if (coordenador != 0) {
+                professor = Professor.obterProfessor(coordenador);
+        }
+         */
+        Professor professor = new Professor(codigo, ano, semestre, maxAlunos);
+        professor.gravar();
+        RequestDispatcher view = request.getRequestDispatcher("PesquisarProfessorController");
+        view.forward(request, response);
+        }catch (ServletException ex){
+        }catch (IOException ex){
+        }catch (ClassNotFoundException ex){    
+        }catch (SQLException ex){    
+        }     
+    }
 }
