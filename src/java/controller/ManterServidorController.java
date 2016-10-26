@@ -32,7 +32,7 @@ public class ManterServidorController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Incluir");
-            request.setAttribute("servidores", Servidor.obterServidor());
+            request.setAttribute("servidores", Servidor.obterServidores());
             RequestDispatcher view = request.getRequestDispatcher("/manterServidor.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {

@@ -15,44 +15,33 @@ public class ManterProfessorController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-         String acao = request.getParameter("acao");
-            if(acao.equals("prepararIncluir")){
-                prepararIncluir(request , response);
-            } else {
-                if(acao.equals("confirmarIncluir")){
-                    confirmarIncluir(request , response);
-                } else {
-                    if (acao.equals("prepararEditar")){
-                        //prepararEditar(request , response);
-                    } else {
-                        if (acao.equals("confirmarEditar")){
-                            //confirmarEditar(request , response);
-                        } else {
-                            if (acao.equals("prepararExcluir")){
-                                //prepararExcluir(request , response);
-                            } else {
-                                if (acao.equals("confirmarExcluir")){
-                                    //confirmarExcluir(request , response);
-                                }
-                            }
-                        }
-                    }
-                }
-                
-            }
+        String acao = request.getParameter("acao");
+        if (acao.equals("prepararIncluir")) {
+            prepararIncluir(request, response);
+        } else if (acao.equals("confirmarIncluir")) {
+            confirmarIncluir(request, response);
+        } else if (acao.equals("prepararEditar")) {
+            //prepararEditar(request , response);
+        } else if (acao.equals("confirmarEditar")) {
+            //confirmarEditar(request , response);
+        } else if (acao.equals("prepararExcluir")) {
+            //prepararExcluir(request , response);
+        } else if (acao.equals("confirmarExcluir")) {
+            //confirmarExcluir(request , response);
         }
+    }
+
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
-     try {
-         request.setAttribute("operacao", "Incluir");
-         request.setAttribute("professores", Professor.obterProfessores());
-         RequestDispatcher view = request.getRequestDispatcher("/manterProfessor.jsp");
-         view.forward(request,response);
-     }catch (ServletException ex){
-     }catch (IOException ex){
-     }catch (ClassNotFoundException ex){
+        try {
+            request.setAttribute("operacao", "Incluir");
+            request.setAttribute("professores", Professor.obterProfessores());
+            RequestDispatcher view = request.getRequestDispatcher("/manterProfessor.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
     }
-    }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -94,25 +83,36 @@ public class ManterProfessorController extends HttpServlet {
     }// </editor-fold>
 
     public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
-        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
-        int ano = Integer.parseInt(request.getParameter("txtAno"));
-        int semestre = Integer.parseInt(request.getParameter("txtSemestre"));
-        int maxAlunos = Integer.parseInt(request.getParameter("txtMaxAlunos"));
-        try{
-        /*  caso seja necessário
+        int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
+        String nome = request.getParameter("txtNome");
+        String dataNasc = request.getParameter("txtDataNasc");
+        int cpf = Integer.parseInt(request.getParameter("txtCPF"));
+        String dataExpedicao = request.getParameter("txtDataExpedicao");
+        String orgaoExpedidor = request.getParameter("txtOrgaoExpedidor");
+        String ufExpedicao = request.getParameter("txtUFExpedicao");
+        String email = request.getParameter("txtEmail");
+        int telefone = Integer.parseInt(request.getParameter("txtTelefone"));
+        int celular = Integer.parseInt(request.getParameter("txtCelular"));
+        String logradouro = request.getParameter("txtLogradouro");
+        int numero = Integer.parseInt(request.getParameter("txtNumero"));
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        int cep = Integer.parseInt(request.getParameter("txtCEP"));
+        try {
+            /*  caso seja necessário
             Professor professor = null;
             if (coordenador != 0) {
                 professor = Professor.obterProfessor(coordenador);
         }
-         */
-        Professor professor = new Professor(codigo, ano, semestre, maxAlunos);
-        professor.gravar();
-        RequestDispatcher view = request.getRequestDispatcher("PesquisarProfessorController");
-        view.forward(request, response);
-        }catch (ServletException ex){
-        }catch (IOException ex){
-        }catch (ClassNotFoundException ex){    
-        }catch (SQLException ex){    
-        }     
+             */
+            Professor professor = new Professor(matricula, nome, dataNasc, cpf, dataExpedicao, orgaoExpedidor, ufExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, cep);
+            professor.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarProfessorController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
     }
 }

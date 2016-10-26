@@ -1,6 +1,7 @@
 package modelo;
 
 import dao.ProfessorDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Professor {
@@ -166,4 +167,8 @@ public class Professor {
         public static List<Professor> obterProfessores() throws ClassNotFoundException {
         return ProfessorDAO.obterProfessores();
     }
+        
+    public void gravar() throws SQLException, ClassNotFoundException {
+        ProfessorDAO.gravar(this);
+    } 
 }
