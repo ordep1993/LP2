@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,7 @@ public class ManterServidorController extends HttpServlet {
         if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
         } else if (acao.equals("confirmarIncluir")) {
-            //confirmarIncluir(request , response);
+            confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
             //prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
@@ -80,4 +81,38 @@ public class ManterServidorController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+        int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
+        String nome = request.getParameter("txtNome");
+        String dataNasc = request.getParameter("txtDataNasc");
+        int cpf = Integer.parseInt(request.getParameter("txtCPF"));
+        String dataExpedicao = request.getParameter("txtDataExpedicao");
+        String orgaoExpedidor = request.getParameter("txtOrgaoExpedidor");
+        String ufExpedicao = request.getParameter("txtUFExpedicao");
+        String email = request.getParameter("txtEmail");
+        int telefone = Integer.parseInt(request.getParameter("txtTelefone"));
+        int celular = Integer.parseInt(request.getParameter("txtCelular"));
+        String logradouro = request.getParameter("txtLogradouro");
+        int numero = Integer.parseInt(request.getParameter("txtNumero"));
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        int cep = Integer.parseInt(request.getParameter("txtCEP"));
+        String dataAdmissao = request.getParameter("txtDataAdmissao");
+        try {
+            /*  caso seja necessário
+            Professor professor = null;
+            if (coordenador != 0) {
+                professor = Professor.obterProfessor(coordenador);
+        }
+             */
+            Servidor servidor = new Servidor(matricula, nome, dataNasc, cpf, dataExpedicao, orgaoExpedidor, ufExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, cep, dataAdmissao);
+            servidor.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarServidorController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
 }

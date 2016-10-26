@@ -83,6 +83,11 @@
                         <td><input type="text" name="txtCEP" value="${servidor.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                         </td>
                     </tr>
+                    <tr> 
+                        <td>Data de Admissão:</td> 
+                        <td><input type="text" name="txtDataAdmissao" value="${servidor.dataAdmissao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </td>
+                    </tr>                    
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
