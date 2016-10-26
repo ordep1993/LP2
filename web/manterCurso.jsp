@@ -27,6 +27,18 @@
                     <td><input type="text" name="txtDescricao" value="${curso.descricao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
+                    <td>Código:</td> 
+                    <td><input type="text" name="txtCodigo" value="${curso.codigo}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Carga Horária:</td> 
+                    <td><input type="text" name="txtCargaHoraria" value="${curso.cargaHoraria}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>      
+                <tr>
+                    <td>Código do Coordenador:</td> 
+                    <td><input type="text" name="txtCodigoCoordenador" value="${curso.codigoCoordenador}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>                 
+                <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>

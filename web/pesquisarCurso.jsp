@@ -11,14 +11,18 @@
         <h1>Pesquisa de Cursos</h1>
         <table border="1">
             <tr>
-                <th>Código Curso</th>
+                <th>Código do Curso</th>
                 <th>Nome Cursos</th>
+                <th>Carga Horária</th>
+                <th>Código do Coordenador</th>
                 <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${cursos}" var="curso">
                 <tr>
                     <td><c:out value="${curso.codigo}"/></td>
                     <td><c:out value="${curso.descricao}"/></td>
+                    <td><c:out value="${curso.cargaHoraria}"/></td>
+                    <td><c:out value="${curso.codigoCoordenador}"/></td>
                     <td><a href="ManterCursoController?acao=prepararEditar&codCurso="<c:out value="${curso.codigo}"/>">Editar</a></td>
                     <td><a href="ManterCursoController?acao=prepararExcluir&codCurso="<c:out value="${curso.codigo}"/>">Excluir</a></td>
                 </tr> 

@@ -49,7 +49,8 @@ public class CursoDAO {
                     rs.getString("descricao"),
                         rs.getInt("cargaHoraria"),
                         null);
-           // curso.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador"));
+            curso.setCodigoCoordenador(rs.getString("codigoCoordenador"));
+            //curso.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador"));
         }catch(SQLException e){
             e.printStackTrace();
         }finally{

@@ -26,7 +26,7 @@ public class ManterCursoController extends HttpServlet {
         if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
         } else if (acao.equals("confirmarIncluir")) {
-            //confirmarIncluir(request, response);
+            confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
             //prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
@@ -50,25 +50,25 @@ public class ManterCursoController extends HttpServlet {
         }
     }
 
-    /*public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
-        int cargaHoraria = Integer.parseInt(request.getParameter("txtcargaHoraria"));
-        int coordenador = Integer.parseInt(request.getParameter("txtcoordenador"));
+        int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
+        int CodigoCoordenador = Integer.parseInt(request.getParameter("txtCodigoCoordenador"));
         try {
-            Professor professor = null;
-            if (coordenador != 0) {
-               // professor = Professor.obterProfessor(coordenador);
+            Professor coordenador = null;
+            if (CodigoCoordenador != 0) {
+               coordenador = Professor.obterProfessor(coordenador);
             }
             Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
             curso.gravar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaCursoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
             view.forward(request, response);
         } catch (ServletException ex) {
         } catch (IOException ex) {
         } catch (ClassNotFoundException ex) {
         }
-    }*/
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
