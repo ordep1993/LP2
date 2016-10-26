@@ -97,7 +97,7 @@ public class ProfessorDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into professor ( matricula, nome, dataNasc, cpf, dataExpedicao, orgaoExpedidor, ufExpedicao, email, telefone,celular, logradouro,numero, complemento,bairro, cep) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into professor ( matricula , nome , dataNasc , cpf , dataExpedicao , orgaoExpedidor , ufExpedicao , email , telefone , celular , logradouro , numero , complemento , bairro, cep) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, professor.getMatricula());
             comando.setString(2, professor.getNome());
@@ -114,12 +114,7 @@ public class ProfessorDAO {
             comando.setString(13, professor.getComplemento());
             comando.setString(14, professor.getBairro());
             comando.setInt(15, professor.getCep());
-         
-            /* if (curso.getCoordenador() == null){ CASO TENHA CHAVE ESTRANGEIRA
-                comando.setNull(6 , Types.NULL);
-            }else {
-                comando.setInt(6, curso.getCoordenador().getMatricula());
-            }*/
+        
             comando.execute();
             comando.close();
             conexao.close();
