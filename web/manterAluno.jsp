@@ -29,6 +29,10 @@
                         <td>CPF:</td> 
                         <td><input type="text" name="txtCPF" value="${aluno.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
+                    <tr>
+                        <td>Data de Expedicao:</td> 
+                        <td><input type="text" name="txtDataExpedicao" value="${aluno.dataExpedicao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    </tr>                    
                     <tr> 
                         <td>Email:</td> 
                         <td><input type="text" name="txtEmail" value="${aluno.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
@@ -78,7 +82,7 @@
                     </tr>
                     <tr> 
                         <td>Estado do Aluno:</td> 
-                        <td><input type="text" name="txtEstado" value="${aluno.estadoAluno}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input type="text" name="txtEstadoAluno" value="${aluno.estadoAluno}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </td>
                     </tr>
                 <tr>

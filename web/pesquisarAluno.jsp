@@ -47,8 +47,8 @@
                     <td><c:out value="${aluno.anoInicio}"/></td>
                     <td><c:out value="${aluno.semestreInicio}"/></td>
                     <td><c:out value="${aluno.estadoAluno}"/></td>
-                    <td><a href="ManterAlunoController?acao=prepararEditar&matricula=<c:out value="${aluno.matricula}"/>">Editar</a></td>
-                    <td><a href="ManterAlunoController?acao=prepararExcluir&matricula=<c:out value="${aluno.matricula}"/>">Excluir</a></td>          
+                    <td><a href="ManterAlunoController?acao=prepararEditar&codigo=<c:out value="${aluno.matricula}"/>">Editar</a></td>
+                    <td><a href="ManterAlunoController?acao=prepararExcluir&codigo=<c:out value="${aluno.matricula}"/>">Excluir</a></td>          
                 </tr>      
             </c:forEach>
         </table>

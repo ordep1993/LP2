@@ -20,9 +20,10 @@ public class Aluno {
      private int cep;
      private int anoInicio;
      private int semestreInicio;
-     private boolean estadoAluno;
+     private int estadoAluno;
+   //  private boolean estadoAluno;
      
-     public Aluno(int matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, int anoInicio, int semestreInicio, boolean estadoAluno) {
+     public Aluno(int matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, int anoInicio, int semestreInicio, int estadoAluno) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataNasc = dataNasc;
@@ -39,12 +40,10 @@ public class Aluno {
         this.anoInicio = anoInicio;
         this.semestreInicio = semestreInicio;
         this.estadoAluno = estadoAluno;
+       // this.estadoAluno = estadoAluno;
     }
 
-    public Aluno(int aInt, String string, String string0, int aInt0, String string1, String string2, int aInt1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+ 
     public int getMatricula() {
         return matricula;
     }
@@ -164,14 +163,23 @@ public class Aluno {
     public void setSemestreInicio(int semestreInicio) {
         this.semestreInicio = semestreInicio;
     }
+    
+    public int getEstadoAluno() {
+        return estadoAluno;
+    }
 
-    public boolean isEstadoAluno() {
+    public void setEstadoAluno(int estadoAluno) {
+        this.estadoAluno = estadoAluno;
+    }
+
+  /*  public boolean isEstadoAluno() {
         return estadoAluno;
     }
 
     public void setEstadoAluno(boolean estadoAluno) {
         this.estadoAluno = estadoAluno;
-    }
+    }*/
+    
     
     public static void obterAluno(int matricula) throws ClassNotFoundException{
         AlunoDAO.obterAluno(matricula);

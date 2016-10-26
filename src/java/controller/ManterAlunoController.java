@@ -99,7 +99,8 @@ public class ManterAlunoController extends HttpServlet {
         int cep = Integer.parseInt(request.getParameter("txtCEP"));
         int anoInicio = Integer.parseInt(request.getParameter("txtAnoInicio"));
         int semestreInicio = Integer.parseInt(request.getParameter("txtSemestreInicio"));
-        boolean estadoAluno = Boolean.parseBoolean(request.getParameter("txtEstado")); 
+        int estadoAluno = Integer.parseInt(request.getParameter("txtEstadoAluno"));
+//    boolean estadoAluno = Boolean.parseBoolean(request.getParameter("txtEstadoAluno")); 
         
         try{
         /*  caso seja necessário

@@ -35,7 +35,7 @@ public class AlunoDAO {
                         rs.getInt("cep"),
                         rs.getInt("anoInicio"),
                         rs.getInt("semestreInicio"),
-                        rs.getBoolean("estadoAluno"));
+                        rs.getInt("estadoAluno"));
                 alunos.add(aluno);
             }
 
@@ -47,14 +47,14 @@ public class AlunoDAO {
         return alunos;
     }
 
-    public static Aluno obterAluno(int matricula) throws ClassNotFoundException {
+    public static Aluno obterAluno(int codigo) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Aluno aluno = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from aluno where matricula = " + matricula);
+            ResultSet rs = comando.executeQuery("select * from aluno where matricula = " + codigo);
             rs.first();
             aluno = new Aluno(rs.getInt("matricula"),
                     rs.getString("nome"),
@@ -71,7 +71,7 @@ public class AlunoDAO {
                     rs.getInt("cep"),
                     rs.getInt("anoInicio"),
                     rs.getInt("semestreInicio"),
-                    rs.getBoolean("estadoAluno"));
+                    rs.getInt("estadoAluno"));
             //NULL PARA SER SETADO
             //turma.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador")); CASO TENHA CHAVE ESTRANGEIRA
         } catch (SQLException e) {
@@ -116,12 +116,9 @@ public class AlunoDAO {
             comando.setInt(13, aluno.getCep());
             comando.setInt(14, aluno.getAnoInicio());
             comando.setInt(15, aluno.getSemestreInicio());
-            comando.setBoolean(16 , aluno.isEstadoAluno());
-            /* if (curso.getCoordenador() == null){ CASO TENHA CHAVE ESTRANGEIRA
-                comando.setNull(6 , Types.NULL);
-            }else {
-                comando.setInt(6, curso.getCoordenador().getMatricula());
-            }*/
+            comando.setInt(16 , aluno.getEstadoAluno());
+            //comando.setBoolean(16 , aluno.isEstadoAluno());
+
             comando.execute();
             comando.close();
             conexao.close();
