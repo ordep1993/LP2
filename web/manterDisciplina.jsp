@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>Número de Aulas:</td> 
-                    <td><input type="text" name="txtNumAula" value="${disciplina.NumAula}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtNumAula" value="${disciplina.numAula}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr> 
                 <tr>
                     <td>Ementa:</td> 

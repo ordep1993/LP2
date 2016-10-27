@@ -20,7 +20,7 @@ public class ManterDisciplinaController extends HttpServlet {
         } else if (acao.equals("confirmarIncluir")) {
             confirmarIncluir(request , response);
         } else if (acao.equals("prepararEditar")) {
-            //prepararEditar(request , response);
+            prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
             //confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
@@ -100,4 +100,20 @@ public class ManterDisciplinaController extends HttpServlet {
         }
     }
 
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Editar");
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+            
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Disciplina disciplina = Disciplina.obterDisciplina(codigo);
+            request.setAttribute("disciplina", disciplina);
+            
+            RequestDispatcher view = request.getRequestDispatcher("/manterDisciplina.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+    }
 }

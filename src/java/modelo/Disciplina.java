@@ -60,8 +60,8 @@ public class Disciplina {
         this.bibliografia = bibliografia;
     }
     
-        public static void obterDisciplina(int codigo) throws ClassNotFoundException {
-        DisciplinaDAO.obterDisciplina(codigo);
+        public static Disciplina obterDisciplina(int codigo) throws ClassNotFoundException {
+        return DisciplinaDAO.obterDisciplina(codigo); 
     }
 
     public static List<Disciplina> obterDisciplinas() throws ClassNotFoundException {

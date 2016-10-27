@@ -26,7 +26,7 @@ public class ManterMatriculaController extends HttpServlet {
                 prepararIncluir(request , response);
             } else {
                 if(acao.equals("confirmarIncluir")){
-                    confirmarIncluir(request , response);
+                   // confirmarIncluir(request , response);
                 } else {
                     if (acao.equals("prepararEditar")){
                         //prepararEditar(request , response);
@@ -58,7 +58,7 @@ public class ManterMatriculaController extends HttpServlet {
      }catch (ClassNotFoundException ex){
     }
     }
-        public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+        /*public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         int codigoCurso = Integer.parseInt(request.getParameter("txtCodigoCurso"));
         int codigoDisciplina = Integer.parseInt(request.getParameter("txtCodigoDisciplina"));

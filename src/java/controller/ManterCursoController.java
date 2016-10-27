@@ -26,7 +26,7 @@ public class ManterCursoController extends HttpServlet {
         if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
         } else if (acao.equals("confirmarIncluir")) {
-            confirmarIncluir(request, response);
+          //  confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
             //prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
@@ -50,7 +50,7 @@ public class ManterCursoController extends HttpServlet {
         }
     }
 
-    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+   /* public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
         int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
