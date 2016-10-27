@@ -170,8 +170,8 @@ public class Servidor {
         this.dataAdmissao = dataAdmissao;
     }
 
-    public static void obterServidor(int codigo) throws ClassNotFoundException {
-        ServidorDAO.obterServidor(codigo);
+    public static Servidor obterServidor(int codigo) throws ClassNotFoundException {
+        return ServidorDAO.obterServidor(codigo);
     }
 
     public static List<Servidor> obterServidores() throws ClassNotFoundException {

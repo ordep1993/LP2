@@ -20,7 +20,7 @@ public class ManterServidorController extends HttpServlet {
         } else if (acao.equals("confirmarIncluir")) {
             confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
-            //prepararEditar(request , response);
+            prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
             //confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
@@ -113,6 +113,23 @@ public class ManterServidorController extends HttpServlet {
         } catch (IOException ex) {
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
+        }
+    }
+
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Editar");
+            request.setAttribute("servidores", Servidor.obterServidores());
+            
+             int matricula = Integer.parseInt(request.getParameter("codigo"));
+            Servidor servidor = Servidor.obterServidor(matricula);
+            request.setAttribute("servidor", servidor);
+            
+            RequestDispatcher view = request.getRequestDispatcher("/manterServidor.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
         }
     }
 }

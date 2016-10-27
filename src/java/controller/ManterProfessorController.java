@@ -21,7 +21,7 @@ public class ManterProfessorController extends HttpServlet {
         } else if (acao.equals("confirmarIncluir")) {
             confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
-            //prepararEditar(request , response);
+            prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
             //confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
@@ -113,6 +113,22 @@ public class ManterProfessorController extends HttpServlet {
         } catch (IOException ex) {
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
+        }
+    }
+     private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Editar");
+            request.setAttribute("professores", Professor.obterProfessores());
+            
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Professor professor = Professor.obterProfessor(codigo);
+            request.setAttribute("professor", professor);
+            
+            RequestDispatcher view = request.getRequestDispatcher("/manterProfessor.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
         }
     }
 }
