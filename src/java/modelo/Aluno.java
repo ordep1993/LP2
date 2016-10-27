@@ -5,25 +5,26 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Aluno {
-     private int matricula;
-     private String nome;
-     private String dataNasc;
-     private int cpf;
-     private String dataExpedicao;
-     private String email;
-     private int telefone;
-     private int celular;
-     private String logradouro;
-     private int numero;
-     private String complemento;
-     private String bairro;
-     private int cep;
-     private int anoInicio;
-     private int semestreInicio;
-     private int estadoAluno;
-   //  private boolean estadoAluno;
-     
-     public Aluno(int matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, int anoInicio, int semestreInicio, int estadoAluno) {
+
+    private int matricula;
+    private String nome;
+    private String dataNasc;
+    private int cpf;
+    private String dataExpedicao;
+    private String email;
+    private int telefone;
+    private int celular;
+    private String logradouro;
+    private int numero;
+    private String complemento;
+    private String bairro;
+    private int cep;
+    private int anoInicio;
+    private int semestreInicio;
+    private int estadoAluno;
+    //  private boolean estadoAluno;
+
+    public Aluno(int matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, int anoInicio, int semestreInicio, int estadoAluno) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataNasc = dataNasc;
@@ -40,10 +41,9 @@ public class Aluno {
         this.anoInicio = anoInicio;
         this.semestreInicio = semestreInicio;
         this.estadoAluno = estadoAluno;
-       // this.estadoAluno = estadoAluno;
+        // this.estadoAluno = estadoAluno;
     }
 
- 
     public int getMatricula() {
         return matricula;
     }
@@ -163,7 +163,7 @@ public class Aluno {
     public void setSemestreInicio(int semestreInicio) {
         this.semestreInicio = semestreInicio;
     }
-    
+
     public int getEstadoAluno() {
         return estadoAluno;
     }
@@ -172,24 +172,22 @@ public class Aluno {
         this.estadoAluno = estadoAluno;
     }
 
-  /*  public boolean isEstadoAluno() {
+    /*  public boolean isEstadoAluno() {
         return estadoAluno;
     }
 
     public void setEstadoAluno(boolean estadoAluno) {
         this.estadoAluno = estadoAluno;
     }*/
-    
-    
-    public static void obterAluno(int matricula) throws ClassNotFoundException{
-        AlunoDAO.obterAluno(matricula);
+    public static Aluno obterAluno(int matricula) throws ClassNotFoundException {
+        return AlunoDAO.obterAluno(matricula);
     }
-    
+
     public static List<Aluno> obterAlunos() throws ClassNotFoundException {
         return AlunoDAO.obterAlunos();
     }
-    
-    public void gravar() throws SQLException , ClassNotFoundException {
+
+    public void gravar() throws SQLException, ClassNotFoundException {
         AlunoDAO.gravar(this);
     }
 }

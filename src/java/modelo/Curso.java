@@ -59,8 +59,8 @@ public class Curso {
         this.codigoCoordenador = codigoCoordenador;
     }
     
-    public static void obterCurso(int codigo) throws ClassNotFoundException {
-        CursoDAO.obterCurso(codigo);
+    public static Curso obterCurso(int codigo) throws ClassNotFoundException {
+        return CursoDAO.obterCurso(codigo);
     }
 
     public static List<Curso> obterCursos() throws ClassNotFoundException {

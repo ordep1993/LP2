@@ -96,8 +96,8 @@ public class Matricula {
         this.codigoAluno = codigoAluno;
     }
 
-    public static void obterMatricula(int codigo) throws ClassNotFoundException {
-        MatriculaDAO.obterMatricula(codigo);
+    public static Matricula obterMatricula(int codigo) throws ClassNotFoundException {
+        return MatriculaDAO.obterMatricula(codigo);
     }
     
     public static List<Matricula> obterMatriculas() throws ClassNotFoundException {

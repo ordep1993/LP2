@@ -17,21 +17,49 @@
                     <td><input type="text" name="txtCodigo" value="${matricula.codigo}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
-                        <td>Código do Curso:</td> 
-                        <td><input type="text" name="txtCodigoCurso" value="${matricula.codigoCurso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                    </tr>
-                    <tr>
-                        <td>Código da Disciplina:</td> 
-                        <td><input type="text" name="txtCodigoDisciplina" value="${matricula.codigoDisciplina}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                    </tr>
-                    <tr>
-                        <td>Código da Turma:</td> 
-                        <td><input type="text" name="txtCodigoTurma" value="${matricula.codigoTurma}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                    </tr>
-                    <tr>
-                        <td>Código do Aluno:</td> 
-                        <td><input type="text" name="txtCodigoAluno" value="${matricula.codigoAluno}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                    </tr>
+                        <td>Codigo do Curso:</td>
+                        <td>
+                            <select name="optCodigoCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${matricula.curso.codigo == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${cursos}" var="curso">
+                                <option value="${curso.codigo}" <c:if test="${matricula.curso.codigo == curso.codigo}"> selected</c:if>>${curso.nome}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Codigo da Disciplina:</td>
+                    <td>
+                        <select name="optCodigoDisciplina" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${matricula.disciplina.codigo == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${disciplinas}" var="disciplina">
+                                <option value="${disciplina.codigo}" <c:if test="${matricula.disciplina.codigo == disciplina.codigo}"> selected</c:if>>${disciplina.descricao}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Codigo da Turma:</td>
+                    <td>
+                        <select name="optCodigoCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${matricula.curso.codigo == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${cursos}" var="curso">
+                                <option value="${curso.codigo}" <c:if test="${matricula.curso.codigo == curso.codigo}"> selected</c:if>>${curso.nome}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Codigo do Aluno:</td>
+                    <td>
+                        <select name="optCodigoCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${matricula.curso.codigo == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${cursos}" var="curso">
+                                <option value="${curso.codigo}" <c:if test="${matricula.curso.codigo == curso.codigo}"> selected</c:if>>${curso.nome}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
