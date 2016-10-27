@@ -50,8 +50,8 @@ public class Turma {
         this.maxAlunos = maxAlunos;
     }
     
-    public static void obterTurma(int codigo) throws ClassNotFoundException {
-        TurmaDAO.obterTurma(codigo);
+    public static Turma obterTurma(int codigo) throws ClassNotFoundException {
+        return TurmaDAO.obterTurma(codigo);
     }
 
     public static List<Turma> obterTurmas() throws ClassNotFoundException {

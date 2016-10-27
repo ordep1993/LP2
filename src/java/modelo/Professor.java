@@ -160,8 +160,8 @@ public class Professor {
         this.cep = cep;
     }
     
-        public static void obterProfessor(int codigo) throws ClassNotFoundException {
-        ProfessorDAO.obterProfessor(codigo);
+        public static Professor obterProfessor(int codigo) throws ClassNotFoundException {
+        return ProfessorDAO.obterProfessor(codigo);
     }
     
         public static List<Professor> obterProfessores() throws ClassNotFoundException {
