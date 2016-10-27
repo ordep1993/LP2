@@ -24,9 +24,16 @@
                     <td>Carga Horária:</td> 
                     <td><input type="text" name="txtCargaHoraria" value="${curso.cargaHoraria}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>      
-               <tr>
-                   <td>Código do Coordenador:</td>
-                   <td><input type="text" name="txtCodigoCoordenador" value="${curso.codigoCoordenador}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>               
+                <tr>
+                    <td>Coordenador:</td>
+                    <td>
+                        <select name="optCoordenador" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${curso.coordenador.matricula == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${professores}" var="professor">
+                                <option value="${professor.matricula}" <c:if test="${curso.coordenador.matricula == professor.matricula}"> selected</c:if>>${professor.nome}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>
                 </tr>                
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
