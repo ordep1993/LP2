@@ -50,8 +50,8 @@ public class Avaliacao {
         this.avaliacaoFinal = avaliacaoFinal;
     }
 
-    public static void obterAvaliacao(int codigo) throws ClassNotFoundException {
-        AvaliacaoDAO.obterAvaliacao(codigo);
+    public static Avaliacao obterAvaliacao(int codigo) throws ClassNotFoundException {
+        return AvaliacaoDAO.obterAvaliacao(codigo);
     }
     
     public static List<Avaliacao> obterAvaliacoes() throws ClassNotFoundException {
