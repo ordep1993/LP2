@@ -31,11 +31,11 @@
                 </tr> 
                 <tr>
                     <td>Ementa:</td> 
-                    <td><textarea name="txtEmenta" value="${disciplina.ementa}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
+                    <td><input name="txtEmenta" value="${disciplina.ementa}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
                 </tr>
                 <tr>
                     <td>Bibliografia:</td> 
-                    <td><textarea name="txtBibliografia" value="${disciplina.bibliografia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
+                    <td><input name="txtBibliografia" value="${disciplina.bibliografia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
                 </tr>                
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
