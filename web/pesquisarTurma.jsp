@@ -33,6 +33,5 @@
         <form action="ManterTurmaController?acao=prepararIncluir" method="post">
             <input type="submit" name="btnIncluir" value="Incluir">
         </form>
-        </form>
     </body>
 </html>
