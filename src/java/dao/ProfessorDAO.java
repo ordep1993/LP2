@@ -46,7 +46,7 @@ public class ProfessorDAO {
         return professores;
     }
 
-    public static Professor obterProfessor(int codigo) throws ClassNotFoundException {
+        public static Professor obterProfessor(int codigo) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Professor professor = null;
@@ -70,16 +70,16 @@ public class ProfessorDAO {
                     rs.getString("complemento"),
                     rs.getString("bairro"),
                     rs.getInt("cep"));
-            //NULL PARA SER SETADO
-            //turma.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador")); CASO TENHA CHAVE ESTRANGEIRA
-        } catch (SQLException e) {
+          
+                    //NULL PARA SER SETADO
+                //turma.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador")); CASO TENHA CHAVE ESTRANGEIRA
+        } catch (SQLException e){
             e.printStackTrace();
         } finally {
-            fecharConexao(conexao, comando);
+            fecharConexao(conexao , comando);
         }
         return professor;
     }
-
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {
             if (comando != null) {

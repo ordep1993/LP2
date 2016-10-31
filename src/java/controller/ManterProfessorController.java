@@ -115,13 +115,13 @@ public class ManterProfessorController extends HttpServlet {
         } catch (SQLException ex) {
         }
     }
-     private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Editar");
             request.setAttribute("professores", Professor.obterProfessores());
             
-            int codigo = Integer.parseInt(request.getParameter("codigo"));
-            Professor professor = Professor.obterProfessor(codigo);
+            int matricula = Integer.parseInt(request.getParameter("codigo"));
+            Professor professor = Professor.obterProfessor(matricula);
             request.setAttribute("professor", professor);
             
             RequestDispatcher view = request.getRequestDispatcher("/manterProfessor.jsp");
