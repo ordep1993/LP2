@@ -53,13 +53,16 @@ public class Avaliacao {
     public static Avaliacao obterAvaliacao(int codigo) throws ClassNotFoundException {
         return AvaliacaoDAO.obterAvaliacao(codigo);
     }
-    
+
     public static List<Avaliacao> obterAvaliacoes() throws ClassNotFoundException {
         return AvaliacaoDAO.obterAvaliacoes();
     }
-    
-        public void gravar() throws SQLException, ClassNotFoundException {
+
+    public void gravar() throws SQLException, ClassNotFoundException {
         AvaliacaoDAO.gravar(this);
     }
 
+    public void alterar() throws SQLException, ClassNotFoundException {
+        AvaliacaoDAO.alterar(this);
+    }
 }

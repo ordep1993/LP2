@@ -94,4 +94,23 @@ public class AvaliacaoDAO {
             throw e;
         }
     }
+    
+    public static void alterar (Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update avaliacao set avaliacao1 = ?, avaliacao2 = ?, avaliacaoFinal = ? where codigo = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, avaliacao.getAvaliacao1());
+            comando.setInt(2, avaliacao.getAvaliacao2());
+            comando.setInt(3, avaliacao.getAvaliacaoFinal());
+            comando.setInt(4, avaliacao.getCodigo());
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 }
