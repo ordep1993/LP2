@@ -75,7 +75,7 @@ public class CursoDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "insert into curso(codigo, descricao, cargaHoraria" + "coordenador)" + "values (?,?,?,?)";
+            String sql = "insert into curso(codigo, descricao, cargaHoraria ,codigoCoordenador) values (?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, curso.getCodigo());
             comando.setString(2, curso.getDescricao());

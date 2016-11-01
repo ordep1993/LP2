@@ -55,7 +55,7 @@ public class ManterCursoController extends HttpServlet {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
         int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
-        int codigoCoordenador = Integer.parseInt(request.getParameter("txtCodigoCoordenador"));
+        int codigoCoordenador = Integer.parseInt(request.getParameter("optCoordenador"));
         try {
             Professor coordenador = null;
             if (codigoCoordenador != 0) {
