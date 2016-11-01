@@ -11,10 +11,10 @@ public class Matricula {
     private Disciplina disciplina;
     private Turma turma;
     private Aluno aluno;
-    private String codigoCurso;
-    private String codigoDisciplina;
-    private String codigoTurma;
-    private String codigoAluno;
+    private int codigoCurso;
+    private int codigoDisciplina;
+    private int codigoTurma;
+    private int codigoAluno;
 
     public Matricula(int codigo, Curso curso, Disciplina disciplina, Turma turma, Aluno aluno) {
         this.codigo = codigo;
@@ -23,7 +23,7 @@ public class Matricula {
         this.turma = turma;
         this.aluno = aluno;
     }
-   
+
     public int getCodigo() {
         return codigo;
     }
@@ -64,47 +64,47 @@ public class Matricula {
         this.aluno = aluno;
     }
 
-    public String getCodigoCurso() {
+    public int getCodigoCurso() {
         return codigoCurso;
     }
 
-    public void setCodigoCurso(String codigoCurso) {
+    public void setCodigoCurso(int codigoCurso) {
         this.codigoCurso = codigoCurso;
     }
 
-    public String getCodigoDisciplina() {
+    public int getCodigoDisciplina() {
         return codigoDisciplina;
     }
 
-    public void setCodigoDisciplina(String codigoDisciplina) {
+    public void setCodigoDisciplina(int codigoDisciplina) {
         this.codigoDisciplina = codigoDisciplina;
     }
 
-    public String getCodigoTurma() {
+    public int getCodigoTurma() {
         return codigoTurma;
     }
 
-    public void setCodigoTurma(String codigoTurma) {
+    public void setCodigoTurma(int codigoTurma) {
         this.codigoTurma = codigoTurma;
     }
 
-    public String getCodigoAluno() {
+    public int getCodigoAluno() {
         return codigoAluno;
     }
 
-    public void setCodigoAluno(String codigoAluno) {
+    public void setCodigoAluno(int codigoAluno) {
         this.codigoAluno = codigoAluno;
     }
 
     public static Matricula obterMatricula(int codigo) throws ClassNotFoundException {
         return MatriculaDAO.obterMatricula(codigo);
     }
-    
+
     public static List<Matricula> obterMatriculas() throws ClassNotFoundException {
         return MatriculaDAO.obterMatriculas();
     }
-    
-    public void gravar() throws SQLException , ClassNotFoundException  {
+
+    public void gravar() throws SQLException, ClassNotFoundException {
         MatriculaDAO.gravar(this);
     }
 }

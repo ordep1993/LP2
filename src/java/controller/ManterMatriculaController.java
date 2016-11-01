@@ -41,8 +41,8 @@ public class ManterMatriculaController extends HttpServlet {
             request.setAttribute("operacao", "Incluir");
             request.setAttribute("cursos", Curso.obterCursos());
             request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
-            //  request.setAttribute("turmas", Turma.obterTurmas());
-            //request.setAttribute("alunos", Aluno.obterAlunos());
+            request.setAttribute("turmas", Turma.obterTurmas());
+            request.setAttribute("alunos", Aluno.obterAlunos());
 
             RequestDispatcher view = request.getRequestDispatcher("/manterMatricula.jsp");
             view.forward(request, response);
@@ -58,11 +58,12 @@ public class ManterMatriculaController extends HttpServlet {
         int codigoDisciplina = Integer.parseInt(request.getParameter("txtCodigoDisciplina"));
         int codigoTurma = Integer.parseInt(request.getParameter("txtCodigoTurma"));
         int codigoAluno = Integer.parseInt(request.getParameter("txtCodigoAluno"));
-        try {
+        try{
             Curso curso = null;
             if (codigoCurso != 0) {
                 curso = Curso.obterCurso(codigoCurso);
             }
+
             Disciplina disciplina = null;
             if (codigoDisciplina != 0) {
                 disciplina = Disciplina.obterDisciplina(codigoDisciplina);

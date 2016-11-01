@@ -26,10 +26,10 @@ public class MatriculaDAO {
                         null,
                         null,
                         null);
-                matricula.setCodigoCurso(rs.getString("codigoCurso"));
-                matricula.setCodigoDisciplina(rs.getString("codigoDisciplina"));
-                matricula.setCodigoTurma(rs.getString("codigoTurma"));
-                matricula.setCodigoAluno(rs.getString("codigoAluno"));
+                matricula.setCodigoCurso(rs.getInt("codigoCurso"));
+                matricula.setCodigoDisciplina(rs.getInt("codigoDisciplina"));
+                matricula.setCodigoTurma(rs.getInt("codigoTurma"));
+                matricula.setCodigoAluno(rs.getInt("codigoAluno"));
                 matriculas.add(matricula);
             }
         } catch (SQLException e) {
@@ -50,10 +50,10 @@ public class MatriculaDAO {
             ResultSet rs = comando.executeQuery("select * from matricula where codigo = " + codigo);
             rs.first();
             matricula = new Matricula(rs.getInt("codigo"), null, null, null, null);
-            matricula.setCodigoCurso(rs.getString("codigoCurso"));
-            matricula.setCodigoDisciplina(rs.getString("codigoDisciplina"));
-            matricula.setCodigoTurma(rs.getString("codigoTurma"));
-            matricula.setCodigoAluno(rs.getString("codigoAluno"));
+            matricula.setCodigoCurso(rs.getInt("codigoCurso"));
+            matricula.setCodigoDisciplina(rs.getInt("codigoDisciplina"));
+            matricula.setCodigoTurma(rs.getInt("codigoTurma"));
+            matricula.setCodigoAluno(rs.getInt("codigoAluno"));
             //NULL PARA SER SETADO
             //turma.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador")); CASO TENHA CHAVE ESTRANGEIRA
         } catch (SQLException e) {

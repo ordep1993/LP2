@@ -99,12 +99,6 @@ public class ManterProfessorController extends HttpServlet {
         String bairro = request.getParameter("txtBairro");
         int cep = Integer.parseInt(request.getParameter("txtCEP"));
         try {
-            /*  caso seja necessário
-            Professor professor = null;
-            if (coordenador != 0) {
-                professor = Professor.obterProfessor(coordenador);
-        }
-             */
             Professor professor = new Professor(matricula, nome, dataNasc, cpf, dataExpedicao, orgaoExpedidor, ufExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, cep);
             professor.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarProfessorController");
