@@ -95,4 +95,22 @@ public class TurmaDAO {
         }
     }
 
+        public static void alterar(Turma turma) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update turma set ano = ?, semestre = ?, maxAlunos = ? where codigo = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, turma.getAno());
+            comando.setInt(2, turma.getSemestre());
+            comando.setInt(3, turma.getMaxAlunos());
+            comando.setInt(4, turma.getCodigo());
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 }

@@ -22,7 +22,7 @@ public class ManterTurmaController extends HttpServlet {
         } else if (acao.equals("prepararEditar")) {
             prepararEditar(request, response);
         } else if (acao.equals("confirmarEditar")) {
-            //confirmarEditar(request , response);
+            confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
             //prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
@@ -113,5 +113,23 @@ public class ManterTurmaController extends HttpServlet {
         }
 
     }
+    
+        public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        int ano = Integer.parseInt(request.getParameter("txtAno"));
+        int semestre = Integer.parseInt(request.getParameter("txtSemestre"));
+        int maxAlunos = Integer.parseInt(request.getParameter("txtMaxAlunos"));
+        try {
+            Turma turma = new Turma(codigo, ano, semestre, maxAlunos);
+            turma.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarTurmaController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
+
 
 }

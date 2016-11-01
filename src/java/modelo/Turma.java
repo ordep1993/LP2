@@ -63,7 +63,7 @@ public class Turma {
     }
 
     public void alterar() throws SQLException, ClassNotFoundException {
-        //  TurmaDAO.alterar(this);
+        TurmaDAO.alterar(this);
     }
 
     public void excluir() throws SQLException, ClassNotFoundException {
