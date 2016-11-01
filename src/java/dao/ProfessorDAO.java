@@ -123,4 +123,35 @@ public class ProfessorDAO {
             throw e;
         }
     }
+
+    public static void alterar(Professor professor) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update professor set nome = ? , dataNasc = ? , cpf = ? , dataExpedicao = ? , orgaoExpedidor = ? , ufExpedicao = ?, email = ?, telefone = ?, celular = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, cep = ? where matricula = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, professor.getNome());
+            comando.setString(2, professor.getDataNasc());
+            comando.setInt(3, professor.getCpf());
+            comando.setString(4, professor.getDataExpedicao());
+            comando.setString(5, professor.getOrgaoExpedidor());
+            comando.setString(6, professor.getUfExpedicao());
+            comando.setString(7, professor.getEmail());
+            comando.setInt(8, professor.getTelefone());
+            comando.setInt(9, professor.getCelular());
+            comando.setString(10, professor.getLogradouro());
+            comando.setInt(11, professor.getNumero());
+            comando.setString(12, professor.getComplemento());
+            comando.setString(13, professor.getBairro());
+            comando.setInt(14, professor.getCep());
+            comando.setInt(15, professor.getMatricula());
+            
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 }

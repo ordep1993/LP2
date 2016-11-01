@@ -171,4 +171,8 @@ public class Professor {
     public void gravar() throws SQLException, ClassNotFoundException {
         ProfessorDAO.gravar(this);
     } 
+
+     public void alterar() throws SQLException, ClassNotFoundException {
+        ProfessorDAO.alterar(this);
+    } 
 }

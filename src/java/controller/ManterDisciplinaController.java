@@ -22,7 +22,7 @@ public class ManterDisciplinaController extends HttpServlet {
         } else if (acao.equals("prepararEditar")) {
             prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
-            //confirmarEditar(request , response);
+            confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
             //prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
@@ -114,6 +114,24 @@ public class ManterDisciplinaController extends HttpServlet {
         } catch (ServletException ex) {
         } catch (IOException ex) {
         } catch (ClassNotFoundException ex) {
+        }
+    }
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        String descricao = request.getParameter("txtDescricao");
+        int numAula = Integer.parseInt(request.getParameter("txtNumAula"));
+        String ementa = request.getParameter("txtEmenta");
+        String bibliografia = request.getParameter("txtBibliografia");
+        try{
+            Disciplina disciplina = new Disciplina(codigo, descricao, numAula, ementa, bibliografia);
+            disciplina.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarDisciplinaController");
+            view.forward(request, response);
+        }catch (ServletException ex) {
+        }catch (IOException ex) {
+        }catch (ClassNotFoundException ex) {
+        }catch (SQLException ex){
+            
         }
     }
 }

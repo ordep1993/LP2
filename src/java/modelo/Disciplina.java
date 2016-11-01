@@ -71,4 +71,8 @@ public class Disciplina {
     public void gravar() throws SQLException, ClassNotFoundException {
         DisciplinaDAO.gravar(this);
     }
+
+   public void alterar() throws SQLException, ClassNotFoundException {
+        DisciplinaDAO.alterar(this);
+    }
 }
