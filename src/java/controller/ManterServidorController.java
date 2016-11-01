@@ -22,7 +22,7 @@ public class ManterServidorController extends HttpServlet {
         } else if (acao.equals("prepararEditar")) {
             prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
-            //confirmarEditar(request , response);
+            confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
             //prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
@@ -130,6 +130,40 @@ public class ManterServidorController extends HttpServlet {
         } catch (ServletException ex) {
         } catch (IOException ex) {
         } catch (ClassNotFoundException ex) {
+        }
+    }
+     public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
+        int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
+        String nome = request.getParameter("txtNome");
+        String dataNasc = request.getParameter("txtDataNasc");
+        int cpf = Integer.parseInt(request.getParameter("txtCPF"));
+        String dataExpedicao = request.getParameter("txtDataExpedicao");
+        String orgaoExpedidor = request.getParameter("txtOrgaoExpedidor");
+        String ufExpedicao = request.getParameter("txtUFExpedicao");
+        String email = request.getParameter("txtEmail");
+        int telefone = Integer.parseInt(request.getParameter("txtTelefone"));
+        int celular = Integer.parseInt(request.getParameter("txtCelular"));
+        String logradouro = request.getParameter("txtLogradouro");
+        int numero = Integer.parseInt(request.getParameter("txtNumero"));
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        int cep = Integer.parseInt(request.getParameter("txtCEP"));
+        String dataAdmissao = request.getParameter("txtDataAdmissao");
+        try {
+            /*  caso seja necessário
+            Professor professor = null;
+            if (coordenador != 0) {
+                professor = Professor.obterProfessor(coordenador);
+        }
+             */
+            Servidor servidor = new Servidor(matricula, nome, dataNasc, cpf, dataExpedicao, orgaoExpedidor, ufExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, cep, dataAdmissao);
+            servidor.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarServidorController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
         }
     }
 }

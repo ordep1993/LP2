@@ -181,4 +181,8 @@ public class Servidor {
     public void gravar() throws SQLException, ClassNotFoundException {
         ServidorDAO.gravar(this);
     }
+
+     public void alterar() throws SQLException, ClassNotFoundException {
+        ServidorDAO.alterar(this);
+    }
 }
