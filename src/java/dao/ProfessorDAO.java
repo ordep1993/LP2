@@ -154,4 +154,21 @@ public class ProfessorDAO {
             throw e;
         }
     }
+    public static void excluir(Professor professor) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "delete from professor where matricula = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            
+            comando.setInt(1, professor.getMatricula());
+            
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 }

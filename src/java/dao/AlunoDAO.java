@@ -95,11 +95,11 @@ public class AlunoDAO {
         }
     }
     
-        public static void gravar(Aluno aluno) throws SQLException, ClassNotFoundException {
+    public static void gravar(Aluno aluno) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into aluno (matricula, nome, dataNasc, cpf, dataExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, cep, anoInicio, semestreInicio, estadoAluno) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into aluno (matricula, nome, dataNasc, CPF,dataExpedicao, orgaoExpedidor, ufExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, CEP, anoInicio, semestreInicio, estadoAluno) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, aluno.getMatricula());
             comando.setString(2, aluno.getNome());
@@ -117,6 +117,57 @@ public class AlunoDAO {
             comando.setInt(14, aluno.getAnoInicio());
             comando.setInt(15, aluno.getSemestreInicio());
             comando.setInt(16 , aluno.getEstadoAluno());
+            //comando.setBoolean(16 , aluno.isEstadoAluno());
+
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public static void excluir(Aluno aluno) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "delete from aluno where matricula = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, aluno.getMatricula());
+            //comando.setBoolean(16 , aluno.isEstadoAluno());
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public static void alterar(Aluno aluno) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update aluno set nome = ?, dataNasc = ?, CPF = ?,dataExpedicao = ?, orgaoExpedidor = ?, ufExpedicao = ?, email = ?, telefone = ?, celular = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, CEP = ?, anoInicio = ?, semestreInicio = ?, estadoAluno = ? where matricula = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            
+            comando.setString(1, aluno.getNome());
+            comando.setString(2, aluno.getDataNasc());
+            comando.setInt(3, aluno.getCpf());
+            comando.setString(4, aluno.getDataExpedicao());
+            comando.setString(5, aluno.getEmail());
+            comando.setInt(6, aluno.getTelefone());
+            comando.setInt(7, aluno.getCelular());
+            comando.setString(8, aluno.getLogradouro());
+            comando.setInt(9, aluno.getNumero());
+            comando.setString(10, aluno.getComplemento());
+            comando.setString(11, aluno.getBairro());
+            comando.setInt(12, aluno.getCep());
+            comando.setInt(13, aluno.getAnoInicio());
+            comando.setInt(14, aluno.getSemestreInicio());
+            comando.setInt(15 , aluno.getEstadoAluno());
+            comando.setInt(16, aluno.getMatricula());
             //comando.setBoolean(16 , aluno.isEstadoAluno());
 
             comando.execute();

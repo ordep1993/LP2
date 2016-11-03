@@ -25,7 +25,7 @@
                     <td> <c:out value="${avaliacao.avaliacao2}" />
                     <td> <c:out value="${avaliacao.avaliacaoFinal}" />
                     <td><a href="ManterAvaliacaoController?acao=prepararEditar&codigo=<c:out value="${avaliacao.codigo}"/>">Editar</a></td>
-                    <td><a href="ManterAvaliacaoController?acao=prepararEditar&codigo=<c:out value="${avaliacao.codigo}"/>">Excluir</a></td>
+                    <td><a href="ManterAvaliacaoController?acao=prepararExcluir&codigo=<c:out value="${avaliacao.codigo}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
          </table>

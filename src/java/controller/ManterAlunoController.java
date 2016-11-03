@@ -24,7 +24,7 @@ public class ManterAlunoController extends HttpServlet {
         } else if (acao.equals("prepararEditar")) {
             prepararEditar(request , response);
         } else if (acao.equals("confirmarEditar")) {
-            //confirmarEditar(request , response);
+            confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
             //prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
@@ -120,7 +120,7 @@ public class ManterAlunoController extends HttpServlet {
         }     
     }
     
-        public void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
+    public void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Editar");
             request.setAttribute("alunos", Aluno.obterAlunos());
@@ -134,6 +134,93 @@ public class ManterAlunoController extends HttpServlet {
         } catch (ClassNotFoundException ex){
         }
 
+    }
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
+        int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
+        String nome = request.getParameter("txtNome");
+        String dataNasc = request.getParameter("txtDataNasc");
+        int cpf = Integer.parseInt(request.getParameter("txtCPF"));
+        String dataExpedicao = request.getParameter("txtDataExpedicao");
+        String email = request.getParameter("txtEmail");
+        int telefone = Integer.parseInt(request.getParameter("txtTelefone"));
+        int celular = Integer.parseInt(request.getParameter("txtCelular"));
+        String logradouro = request.getParameter("txtLogradouro");
+        int numero = Integer.parseInt(request.getParameter("txtNumero"));
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        int cep = Integer.parseInt(request.getParameter("txtCEP"));
+        int anoInicio = Integer.parseInt(request.getParameter("txtAnoInicio"));
+        int semestreInicio = Integer.parseInt(request.getParameter("txtSemestreInicio"));
+        int estadoAluno = Integer.parseInt(request.getParameter("txtEstadoAluno"));
+//    boolean estadoAluno = Boolean.parseBoolean(request.getParameter("txtEstadoAluno")); 
+        
+        try{
+        /*  caso seja necessário
+            Professor professor = null;
+            if (coordenador != 0) {
+                professor = Professor.obterProfessor(coordenador);
+        }
+         */
+        Aluno aluno = new Aluno(matricula, nome, dataNasc, cpf, dataExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, cep, anoInicio, semestreInicio, estadoAluno);
+        aluno.alterar();
+        RequestDispatcher view = request.getRequestDispatcher("PesquisarAlunoController");
+        view.forward(request, response);
+        }catch (ServletException ex){
+        }catch (IOException ex){
+        }catch (ClassNotFoundException ex){    
+        }catch (SQLException ex){    
+        }     
+    }
+    public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Excluir");
+            request.setAttribute("alunos", Aluno.obterAlunos());
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Aluno aluno = Aluno.obterAluno(codigo);
+            request.setAttribute("aluno", aluno);
+            RequestDispatcher view = request.getRequestDispatcher("/manterAluno.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex){
+        }
+
+    }
+    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {
+        int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
+        String nome = request.getParameter("txtNome");
+        String dataNasc = request.getParameter("txtDataNasc");
+        int cpf = Integer.parseInt(request.getParameter("txtCPF"));
+        String dataExpedicao = request.getParameter("txtDataExpedicao");
+        String email = request.getParameter("txtEmail");
+        int telefone = Integer.parseInt(request.getParameter("txtTelefone"));
+        int celular = Integer.parseInt(request.getParameter("txtCelular"));
+        String logradouro = request.getParameter("txtLogradouro");
+        int numero = Integer.parseInt(request.getParameter("txtNumero"));
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        int cep = Integer.parseInt(request.getParameter("txtCEP"));
+        int anoInicio = Integer.parseInt(request.getParameter("txtAnoInicio"));
+        int semestreInicio = Integer.parseInt(request.getParameter("txtSemestreInicio"));
+        int estadoAluno = Integer.parseInt(request.getParameter("txtEstadoAluno"));
+//    boolean estadoAluno = Boolean.parseBoolean(request.getParameter("txtEstadoAluno")); 
+        
+        try{
+        /*  caso seja necessário
+            Professor professor = null;
+            if (coordenador != 0) {
+                professor = Professor.obterProfessor(coordenador);
+        }
+         */
+        Aluno aluno = new Aluno(matricula, nome, dataNasc, cpf, dataExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, cep, anoInicio, semestreInicio, estadoAluno);
+        aluno.excluir();
+        RequestDispatcher view = request.getRequestDispatcher("PesquisarAlunoController");
+        view.forward(request, response);
+        }catch (ServletException ex){
+        }catch (IOException ex){
+        }catch (ClassNotFoundException ex){    
+        }catch (SQLException ex){    
+        }     
     }
     }
 

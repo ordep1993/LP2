@@ -24,9 +24,9 @@ public class ManterTurmaController extends HttpServlet {
         } else if (acao.equals("confirmarEditar")) {
             confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
-            //prepararExcluir(request , response);
+            prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
-            //confirmarExcluir(request , response);
+            confirmarExcluir(request , response);
         }
     }
 
@@ -130,6 +130,37 @@ public class ManterTurmaController extends HttpServlet {
         } catch (SQLException ex) {
         }
     }
+public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Excluir");
+            request.setAttribute("turmas", Turma.obterTurmas());
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Turma turma = Turma.obterTurma(codigo);
+            request.setAttribute("turma", turma);
+            RequestDispatcher view = request.getRequestDispatcher("/manterTurma.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex){
+        }
 
+    }
+    
+        public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        int ano = Integer.parseInt(request.getParameter("txtAno"));
+        int semestre = Integer.parseInt(request.getParameter("txtSemestre"));
+        int maxAlunos = Integer.parseInt(request.getParameter("txtMaxAlunos"));
+        try {
+            Turma turma = new Turma(codigo, ano, semestre, maxAlunos);
+            turma.excluir();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarTurmaController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
 
 }

@@ -113,4 +113,21 @@ public class TurmaDAO {
             throw e;
         }
     }
+
+    public static void excluir(Turma turma) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "delete from turma  where codigo = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+
+            comando.setInt(1, turma.getCodigo());
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 }

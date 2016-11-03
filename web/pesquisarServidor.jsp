@@ -49,7 +49,7 @@
                     <td> <c:out value="${servidor.cep}" />
                     <td> <c:out value="${servidor.dataAdmissao}" />
                     <td><a href="ManterServidorController?acao=prepararEditar&codigo=<c:out value="${servidor.matricula}"/>">Editar</a></td>
-                    <td><a href="ManterServidorController?acao=prepararEditar&codigo=<c:out value="${servidor.matricula}"/>">Excluir</a></td>
+                    <td><a href="ManterServidorController?acao=prepararExcluir&codigo=<c:out value="${servidor.matricula}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
          </table>

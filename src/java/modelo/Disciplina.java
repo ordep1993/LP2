@@ -75,4 +75,8 @@ public class Disciplina {
    public void alterar() throws SQLException, ClassNotFoundException {
         DisciplinaDAO.alterar(this);
     }
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        DisciplinaDAO.excluir(this);
+    }
 }

@@ -167,4 +167,26 @@ public class ServidorDAO {
             throw e;
         }
     }
+
+    public static void excluir(Servidor servidor) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "delete from servidor where matricula = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            
+            comando.setInt(1, servidor.getMatricula());
+            /* if (curso.getCoordenador() == null){ CASO TENHA CHAVE ESTRANGEIRA
+                comando.setNull(6 , Types.NULL);
+            }else {
+                comando.setInt(6, curso.getCoordenador().getMatricula());
+            }*/
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 }

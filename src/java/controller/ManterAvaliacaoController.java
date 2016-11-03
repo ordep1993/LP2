@@ -24,9 +24,9 @@ public class ManterAvaliacaoController extends HttpServlet {
         } else if (acao.equals("confirmarEditar")) {
             confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
-            //prepararExcluir(request , response);
+            prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
-            //confirmarExcluir(request , response);
+            confirmarExcluir(request , response);
         }
     }
 
@@ -96,6 +96,38 @@ public class ManterAvaliacaoController extends HttpServlet {
         } catch (SQLException ex) {
         }
     }
+    public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Excluir");
+            request.setAttribute("avaliacoes", Avaliacao.obterAvaliacoes());
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Avaliacao avaliacao = Avaliacao.obterAvaliacao(codigo);
+            request.setAttribute("avaliacao", avaliacao);
+            RequestDispatcher view = request.getRequestDispatcher("/manterAvaliacao.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+    }
+     public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        int avaliacao1 = Integer.parseInt(request.getParameter("txtAvaliacao1"));
+        int avaliacao2 = Integer.parseInt(request.getParameter("txtAvaliacao2"));
+        int avaliacaoFinal = Integer.parseInt(request.getParameter("txtAvaliacaoFinal"));
+        try {            
+            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal);
+            avaliacao.excluir();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarAvaliacaoController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
+
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

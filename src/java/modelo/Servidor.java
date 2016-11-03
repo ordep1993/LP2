@@ -182,7 +182,11 @@ public class Servidor {
         ServidorDAO.gravar(this);
     }
 
-     public void alterar() throws SQLException, ClassNotFoundException {
+    public void alterar() throws SQLException, ClassNotFoundException {
         ServidorDAO.alterar(this);
+    }
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        ServidorDAO.excluir(this);
     }
 }

@@ -65,4 +65,8 @@ public class Avaliacao {
     public void alterar() throws SQLException, ClassNotFoundException {
         AvaliacaoDAO.alterar(this);
     }
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        AvaliacaoDAO.excluir(this);
+    }
 }

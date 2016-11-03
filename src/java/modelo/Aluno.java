@@ -190,4 +190,12 @@ public class Aluno {
     public void gravar() throws SQLException, ClassNotFoundException {
         AlunoDAO.gravar(this);
     }
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        AlunoDAO.excluir(this);
+    }
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        AlunoDAO.alterar(this);
+    }
 }

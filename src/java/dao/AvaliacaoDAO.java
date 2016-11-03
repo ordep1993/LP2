@@ -113,4 +113,20 @@ public class AvaliacaoDAO {
             throw e;
         }
     }
+
+    public static void excluir (Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "delete from avaliacao where codigo = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, avaliacao.getCodigo());
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 }

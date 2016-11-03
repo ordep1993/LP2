@@ -24,9 +24,9 @@ public class ManterDisciplinaController extends HttpServlet {
         } else if (acao.equals("confirmarEditar")) {
             confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
-            //prepararExcluir(request , response);
+            prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
-            //confirmarExcluir(request , response);
+            confirmarExcluir(request , response);
         }
     }
 
@@ -125,6 +125,40 @@ public class ManterDisciplinaController extends HttpServlet {
         try{
             Disciplina disciplina = new Disciplina(codigo, descricao, numAula, ementa, bibliografia);
             disciplina.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarDisciplinaController");
+            view.forward(request, response);
+        }catch (ServletException ex) {
+        }catch (IOException ex) {
+        }catch (ClassNotFoundException ex) {
+        }catch (SQLException ex){
+            
+        }
+    }
+    private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Excluir");
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+            
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Disciplina disciplina = Disciplina.obterDisciplina(codigo);
+            request.setAttribute("disciplina", disciplina);
+            
+            RequestDispatcher view = request.getRequestDispatcher("/manterDisciplina.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+    }
+    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        String descricao = request.getParameter("txtDescricao");
+        int numAula = Integer.parseInt(request.getParameter("txtNumAula"));
+        String ementa = request.getParameter("txtEmenta");
+        String bibliografia = request.getParameter("txtBibliografia");
+        try{
+            Disciplina disciplina = new Disciplina(codigo, descricao, numAula, ementa, bibliografia);
+            disciplina.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarDisciplinaController");
             view.forward(request, response);
         }catch (ServletException ex) {
