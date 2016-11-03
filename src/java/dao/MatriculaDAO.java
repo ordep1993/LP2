@@ -54,8 +54,6 @@ public class MatriculaDAO {
             matricula.setCodigoDisciplina(rs.getInt("codigoDisciplina"));
             matricula.setCodigoTurma(rs.getInt("codigoTurma"));
             matricula.setCodigoAluno(rs.getInt("codigoAluno"));
-            //NULL PARA SER SETADO
-            //turma.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador")); CASO TENHA CHAVE ESTRANGEIRA
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -84,27 +82,22 @@ public class MatriculaDAO {
             String sql = "insert into matricula (codigo , codigoCurso , codigoDisciplina , codigoTurma , codigoAluno) values (?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, matricula.getCodigo());
-
-            // comando.setString(2, matricula.getCodigoCurso());
-            if (matricula.getCurso() == null) { //CASO TENHA CHAVE ESTRANGEIRA
+            if (matricula.getCurso() == null) { 
                 comando.setNull(2, Types.NULL);
             } else {
                 comando.setInt(2, matricula.getCurso().getCodigo());
             }
-            //comando.setString(3, matricula.getCodigoDisciplina());
-            if (matricula.getDisciplina() == null) { //CASO TENHA CHAVE ESTRANGEIRA
+            if (matricula.getDisciplina() == null) { 
                 comando.setNull(3, Types.NULL);
             } else {
                 comando.setInt(3, matricula.getDisciplina().getCodigo());
-            }
-            //comando.setString(4, matricula.getCodigoTurma());
-            if (matricula.getTurma() == null) { //CASO TENHA CHAVE ESTRANGEIRA
+            }          
+            if (matricula.getTurma() == null) { 
                 comando.setNull(4, Types.NULL);
             } else {
                 comando.setInt(4, matricula.getTurma().getCodigo());
             }
-            //comando.setString(5, matricula.getCodigoAluno());
-            if (matricula.getAluno() == null) { //CASO TENHA CHAVE ESTRANGEIRA
+            if (matricula.getAluno() == null) {
                 comando.setNull(5, Types.NULL);
             } else {
                 comando.setInt(5, matricula.getAluno().getMatricula());
@@ -117,4 +110,7 @@ public class MatriculaDAO {
             throw e;
         }
     }
+    
+    
+    
 }

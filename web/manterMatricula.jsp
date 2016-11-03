@@ -19,7 +19,7 @@
                     <tr>
                         <td>Codigo do Curso:</td>
                         <td>
-                            <select name="optCodigoCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <select name="optCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${matricula.curso.codigo == null}"> selected</c:if>> </option>  
                             <c:forEach items="${cursos}" var="curso">
                                 <option value="${curso.codigo}" <c:if test="${matricula.curso.codigo == curso.codigo}"> selected</c:if>>${curso.nome}</option>  
@@ -30,7 +30,7 @@
                 <tr>
                     <td>Codigo da Disciplina:</td>
                     <td>
-                        <select name="optCodigoDisciplina" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <select name="optDisciplina" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${matricula.disciplina.codigo == null}"> selected</c:if>> </option>  
                             <c:forEach items="${disciplinas}" var="disciplina">
                                 <option value="${disciplina.codigo}" <c:if test="${matricula.disciplina.codigo == disciplina.codigo}"> selected</c:if>>${disciplina.descricao}</option>  
@@ -41,10 +41,10 @@
                 <tr>
                     <td>Codigo da Turma:</td>
                     <td>
-                        <select name="optCodigoCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                            <option value="0" <c:if test="${matricula.curso.codigo == null}"> selected</c:if>> </option>  
-                            <c:forEach items="${cursos}" var="curso">
-                                <option value="${curso.codigo}" <c:if test="${matricula.curso.codigo == curso.codigo}"> selected</c:if>>${curso.nome}</option>  
+                        <select name="optTurma" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${matricula.turma.codigo == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${turmas}" var="turma">
+                                <option value="${turma.codigo}" <c:if test="${matricula.turma.codigo == turma.codigo}"> selected</c:if>>${curso.nome}</option>  
                             </c:forEach>
                         </select>
                     </td>
@@ -52,10 +52,10 @@
                 <tr>
                     <td>Codigo do Aluno:</td>
                     <td>
-                        <select name="optCodigoCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                            <option value="0" <c:if test="${matricula.curso.codigo == null}"> selected</c:if>> </option>  
-                            <c:forEach items="${cursos}" var="curso">
-                                <option value="${curso.codigo}" <c:if test="${matricula.curso.codigo == curso.codigo}"> selected</c:if>>${curso.nome}</option>  
+                        <select name="optAluno" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${matricula.aluno.codigo == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${alunos}" var="aluno">
+                                <option value="${aluno.codigo}" <c:if test="${matricula.aluno.codigo == aluno.codigo}"> selected</c:if>>${aluno.nome}</option>  
                             </c:forEach>
                         </select>
                     </td>

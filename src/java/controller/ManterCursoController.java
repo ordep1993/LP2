@@ -29,13 +29,13 @@ public class ManterCursoController extends HttpServlet {
         } else if (acao.equals("confirmarIncluir")) {
             confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
-            //prepararEditar(request , response);
+            prepararEditar(request, response);
         } else if (acao.equals("confirmarEditar")) {
-            //confirmarEditar(request , response);
+            confirmarEditar(request, response);
         } else if (acao.equals("prepararExcluir")) {
-            //prepararExcluir(request , response);
+            prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
-            //confirmarExcluir(request , response);
+            confirmarExcluir(request , response);
         }
     }
 
@@ -60,9 +60,83 @@ public class ManterCursoController extends HttpServlet {
             Professor coordenador = null;
             if (codigoCoordenador != 0) {
                 coordenador = Professor.obterProfessor(codigoCoordenador);
-        }
+            }
             Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
             curso.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
+
+    public void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Editar");
+            request.setAttribute("cursos", Curso.obterCursos());
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Curso curso = Curso.obterCurso(codigo);
+            request.setAttribute("curso", curso);
+            RequestDispatcher view = request.getRequestDispatcher("/manterCurso.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+
+    }
+
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        String descricao = request.getParameter("txtDescricao");
+        int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
+        int codigoCoordenador = Integer.parseInt(request.getParameter("optCoordenador"));
+        try {
+            Professor coordenador = null;
+            if (codigoCoordenador != 0) {
+                coordenador = Professor.obterProfessor(codigoCoordenador);
+            }
+            Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
+            curso.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
+
+    public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Editar");
+            request.setAttribute("cursos", Curso.obterCursos());
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Curso curso = Curso.obterCurso(codigo);
+            request.setAttribute("curso", curso);
+            RequestDispatcher view = request.getRequestDispatcher("/manterCurso.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+
+    }
+
+    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        String descricao = request.getParameter("txtDescricao");
+        int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
+        int codigoCoordenador = Integer.parseInt(request.getParameter("optCoordenador"));
+        try {
+            Professor coordenador = null;
+            if (codigoCoordenador != 0) {
+                coordenador = Professor.obterProfessor(codigoCoordenador);
+            }
+            Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
+            curso.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
             view.forward(request, response);
         } catch (ServletException ex) {

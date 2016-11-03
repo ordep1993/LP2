@@ -39,7 +39,8 @@ public class ManterMatriculaController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Incluir");
-            request.setAttribute("cursos", Curso.obterCursos());
+            request.setAttribute("matriculas" , Matricula.obterMatriculas());
+           request.setAttribute("cursos", Curso.obterCursos());
             request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
             request.setAttribute("turmas", Turma.obterTurmas());
             request.setAttribute("alunos", Aluno.obterAlunos());
@@ -54,10 +55,10 @@ public class ManterMatriculaController extends HttpServlet {
 
     public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, IOException {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
-        int codigoCurso = Integer.parseInt(request.getParameter("txtCodigoCurso"));
-        int codigoDisciplina = Integer.parseInt(request.getParameter("txtCodigoDisciplina"));
-        int codigoTurma = Integer.parseInt(request.getParameter("txtCodigoTurma"));
-        int codigoAluno = Integer.parseInt(request.getParameter("txtCodigoAluno"));
+        int codigoCurso = Integer.parseInt(request.getParameter("optCurso"));
+        int codigoDisciplina = Integer.parseInt(request.getParameter("optDisciplina"));
+        int codigoTurma = Integer.parseInt(request.getParameter("optTurma"));
+        int codigoAluno = Integer.parseInt(request.getParameter("optAluno"));
         try{
             Curso curso = null;
             if (codigoCurso != 0) {

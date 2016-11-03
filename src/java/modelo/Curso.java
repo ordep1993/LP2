@@ -70,4 +70,12 @@ public class Curso {
     public void gravar() throws SQLException, ClassNotFoundException {
         CursoDAO.gravar(this);
     }
+    
+    public void alterar() throws SQLException , ClassNotFoundException {
+        CursoDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException {
+        CursoDAO.excluir(this);
+    }
 }

@@ -36,28 +36,29 @@ public class CursoDAO {
         return cursos;
     }
 
-    public static Curso obterCurso(int codigo) throws ClassNotFoundException{
+    public static Curso obterCurso(int codigo) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Curso curso = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from curso where codigo = " + codigo);
             rs.first();
             curso = new Curso(rs.getInt("codigo"),
                     rs.getString("descricao"),
-                        rs.getInt("cargaHoraria"),
-                        null);
+                    rs.getInt("cargaHoraria"),
+                    null);
             curso.setCodigoCoordenador(rs.getString("codigoCoordenador"));
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             fecharConexao(conexao, comando);
-        }return curso;
+        }
+        return curso;
     }
-    
+
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {
             if (comando != null) {
@@ -70,25 +71,60 @@ public class CursoDAO {
         }
 
     }
-    
-    public static void gravar(Curso curso) throws SQLException, ClassNotFoundException{
+
+    public static void gravar(Curso curso) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
-        try{
+        try {
             conexao = BD.getConexao();
             String sql = "insert into curso(codigo, descricao, cargaHoraria ,codigoCoordenador) values (?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, curso.getCodigo());
             comando.setString(2, curso.getDescricao());
             comando.setInt(3, curso.getCargaHoraria());
-            if(curso.getCoordenador() == null){
+            if (curso.getCoordenador() == null) {
                 comando.setNull(4, Types.NULL);
-            }else{
+            } else {
                 comando.setInt(4, curso.getCoordenador().getMatricula());
             }
             comando.execute();
             comando.close();
             conexao.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public static void alterar(Curso curso) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set descricao = ?, cargaHoraria = ?, codigoCoordenador = ? where codigo = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, curso.getDescricao());
+            comando.setInt(2, curso.getCargaHoraria());
+            comando.setString(3, curso.getCodigoCoordenador());
+            comando.setInt(4, curso.getCodigo());
+            comando.execute();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public static void excluir(Curso curso) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "delete from curso where codigo = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, curso.getCodigo());
+            comando.executeUpdate();
+            comando.close();
+            conexao.close();
+
+        } catch (SQLException e) {
             throw e;
         }
     }
