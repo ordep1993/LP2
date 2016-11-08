@@ -149,7 +149,7 @@ public class AlunoDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update aluno set nome = ?, dataNasc = ?, CPF = ?,dataExpedicao = ?, orgaoExpedidor = ?, ufExpedicao = ?, email = ?, telefone = ?, celular = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, CEP = ?, anoInicio = ?, semestreInicio = ?, estadoAluno = ? where matricula = ?";
+            String sql = "update aluno set nome = ?, dataNasc = ?, CPF = ?,dataExpedicao = ?,   email = ?, telefone = ?, celular = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, CEP = ?, anoInicio = ?, semestreInicio = ?, estadoAluno = ? where matricula = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             
             comando.setString(1, aluno.getNome());

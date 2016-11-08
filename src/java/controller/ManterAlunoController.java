@@ -26,9 +26,9 @@ public class ManterAlunoController extends HttpServlet {
         } else if (acao.equals("confirmarEditar")) {
             confirmarEditar(request , response);
         } else if (acao.equals("prepararExcluir")) {
-            //prepararExcluir(request , response);
+            prepararExcluir(request , response);
         } else if (acao.equals("confirmarExcluir")) {
-            //confirmarExcluir(request , response);
+            confirmarExcluir(request , response);
         }
     }
 
