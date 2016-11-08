@@ -72,46 +72,9 @@ public class ManterCursoController extends HttpServlet {
         }
     }
 
-    public void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            request.setAttribute("operacao", "Editar");
-            request.setAttribute("cursos", Curso.obterCursos());
-            int codigo = Integer.parseInt(request.getParameter("codigo"));
-            Curso curso = Curso.obterCurso(codigo);
-            request.setAttribute("curso", curso);
-            RequestDispatcher view = request.getRequestDispatcher("/manterCurso.jsp");
-            view.forward(request, response);
-        } catch (ServletException ex) {
-        } catch (IOException ex) {
-        } catch (ClassNotFoundException ex) {
-        }
-
-    }
-
-    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
-        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
-        String descricao = request.getParameter("txtDescricao");
-        int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
-        int codigoCoordenador = Integer.parseInt(request.getParameter("optCoordenador"));
-        try {
-            Professor coordenador = null;
-            if (codigoCoordenador != 0) {
-                coordenador = Professor.obterProfessor(codigoCoordenador);
-            }
-            Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
-            curso.alterar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
-            view.forward(request, response);
-        } catch (ServletException ex) {
-        } catch (IOException ex) {
-        } catch (ClassNotFoundException ex) {
-        } catch (SQLException ex) {
-        }
-    }
-
     public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
         try {
-            request.setAttribute("operacao", "Editar");
+            request.setAttribute("operacao", "Excluir");
             request.setAttribute("cursos", Curso.obterCursos());
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             Curso curso = Curso.obterCurso(codigo);
@@ -145,7 +108,40 @@ public class ManterCursoController extends HttpServlet {
         } catch (SQLException ex) {
         }
     }
-
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Editar");
+            request.setAttribute("professores", Professor.obterProfessores());
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Curso curso = Curso.obterCurso(codigo);
+            request.setAttribute("curso", curso);
+            RequestDispatcher view = request.getRequestDispatcher("/manterCurso.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+    }
+     public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        String descricao = request.getParameter("txtDescricao");
+        int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
+        int codigoCoordenador = Integer.parseInt(request.getParameter("optCoordenador"));
+        try {
+            Professor coordenador = null;
+            if (codigoCoordenador != 0) {
+                coordenador = Professor.obterProfessor(codigoCoordenador);
+            }
+            Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
+            curso.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
     /* public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
