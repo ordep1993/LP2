@@ -10,7 +10,7 @@ public class Curso {
     private String descricao;
     private int cargaHoraria;
     private Professor coordenador;
-    private String codigoCoordenador;
+    private int codigoCoordenador;
 
     public Curso(int codigo, String descricao, int cargaHoraria, Professor coordenador) {
         this.codigo = codigo;
@@ -43,7 +43,7 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Professor getCoordenador() {
+    public Professor getCoordenador() throws ClassNotFoundException {
         return coordenador;
     }
 
@@ -51,11 +51,11 @@ public class Curso {
         this.coordenador = coordenador;
     }
 
-    public String getCodigoCoordenador() {
+    public int getCodigoCoordenador() {
         return codigoCoordenador;
     }
 
-    public void setCodigoCoordenador(String codigoCoordenador) {
+    public void setCodigoCoordenador(int codigoCoordenador) {
         this.codigoCoordenador = codigoCoordenador;
     }
     

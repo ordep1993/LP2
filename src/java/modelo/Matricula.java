@@ -32,7 +32,10 @@ public class Matricula {
         this.codigo = codigo;
     }
 
-    public Curso getCurso() {
+    public Curso getCurso() throws ClassNotFoundException {
+        if ((this.codigoCurso != 0) && (this.curso == null)){
+            this.curso = Curso.obterCurso(this.codigoCurso);
+        }
         return curso;
     }
 
@@ -40,7 +43,10 @@ public class Matricula {
         this.curso = curso;
     }
 
-    public Disciplina getDisciplina() {
+    public Disciplina getDisciplina() throws ClassNotFoundException {
+        if ((this.codigoDisciplina != 0) && (this.disciplina == null)){
+            this.disciplina = Disciplina.obterDisciplina(this.codigoDisciplina);
+        }
         return disciplina;
     }
 
@@ -48,7 +54,10 @@ public class Matricula {
         this.disciplina = disciplina;
     }
 
-    public Turma getTurma() {
+    public Turma getTurma() throws ClassNotFoundException {
+        if ((this.codigoTurma != 0) && (this.turma == null)){
+            this.turma = Turma.obterTurma(this.codigoTurma);
+        }
         return turma;
     }
 
@@ -56,7 +65,10 @@ public class Matricula {
         this.turma = turma;
     }
 
-    public Aluno getAluno() {
+    public Aluno getAluno() throws ClassNotFoundException {
+        if ((this.codigoAluno != 0) && (this.aluno == null)){
+            this.aluno = Aluno.obterAluno(this.codigoAluno);
+        }
         return aluno;
     }
 
@@ -106,5 +118,13 @@ public class Matricula {
 
     public void gravar() throws SQLException, ClassNotFoundException {
         MatriculaDAO.gravar(this);
+    }
+    
+    public void alterar() throws SQLException, ClassNotFoundException {
+        MatriculaDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException {
+        MatriculaDAO.excluir(this);
     }
 }

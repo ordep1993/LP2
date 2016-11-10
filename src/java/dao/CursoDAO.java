@@ -25,7 +25,7 @@ public class CursoDAO {
                         rs.getString("descricao"),
                         rs.getInt("cargaHoraria"),
                         null);
-                curso.setCodigoCoordenador(rs.getString("codigoCoordenador"));
+                curso.setCodigoCoordenador(rs.getInt("codigoCoordenador"));
                 cursos.add(curso);
             }
         } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class CursoDAO {
                     rs.getString("descricao"),
                     rs.getInt("cargaHoraria"),
                     null);
-            curso.setCodigoCoordenador(rs.getString("codigoCoordenador"));
+            curso.setCodigoCoordenador(rs.getInt("codigoCoordenador"));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,7 +102,7 @@ public class CursoDAO {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, curso.getDescricao());
             comando.setInt(2, curso.getCargaHoraria());
-            comando.setString(3, curso.getCodigoCoordenador());
+            comando.setInt(3, curso.getCoordenador().getMatricula());
             comando.setInt(4, curso.getCodigo());
             comando.execute();
             comando.close();

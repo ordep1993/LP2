@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controller;
 
 import java.io.IOException;
@@ -15,11 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Matricula;
 
-/**
- *
- * @author Aluno
- */
 public class PesquisarMatriculaController extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            request.setAttribute("matriculas", Matricula.obterMatriculas());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisarMatricula.jsp");
+            view.forward(request, response);
+        } catch (ClassNotFoundException ex) {
+
+        }
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,18 +32,6 @@ public class PesquisarMatriculaController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-      
-        try {
-            request.setAttribute("matriculas" , Matricula.obterMatriculas());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisarMatricula.jsp");
-            view.forward(request,response);
-        } catch (ClassNotFoundException ex){
-            
-        }
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -26,25 +26,20 @@ public class ManterMatriculaController extends HttpServlet {
         } else if (acao.equals("confirmarIncluir")) {
             confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
-            prepararEditar(request , response);
+            prepararEditar(request, response);
         } else if (acao.equals("confirmarEditar")) {
-            //confirmarEditar(request , response);
+            confirmarEditar(request, response);
         } else if (acao.equals("prepararExcluir")) {
-            //prepararExcluir(request , response);
+            prepararExcluir(request, response);
         } else if (acao.equals("confirmarExcluir")) {
-            //confirmarExcluir(request , response);
+            confirmarExcluir(request, response);
         }
     }
 
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Incluir");
-            request.setAttribute("matriculas" , Matricula.obterMatriculas());
-           request.setAttribute("cursos", Curso.obterCursos());
-            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
-            request.setAttribute("turmas", Turma.obterTurmas());
-            request.setAttribute("alunos", Aluno.obterAlunos());
-
+            request.setAttribute("matriculas", Matricula.obterMatriculas());
             RequestDispatcher view = request.getRequestDispatcher("/manterMatricula.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -59,21 +54,20 @@ public class ManterMatriculaController extends HttpServlet {
         int codigoDisciplina = Integer.parseInt(request.getParameter("optDisciplina"));
         int codigoTurma = Integer.parseInt(request.getParameter("optTurma"));
         int codigoAluno = Integer.parseInt(request.getParameter("optAluno"));
-        try{
+        try {
             Curso curso = null;
+            Disciplina disciplina = null;
+            Turma turma = null;
+            Aluno aluno = null;
             if (codigoCurso != 0) {
                 curso = Curso.obterCurso(codigoCurso);
             }
-
-            Disciplina disciplina = null;
             if (codigoDisciplina != 0) {
                 disciplina = Disciplina.obterDisciplina(codigoDisciplina);
             }
-            Turma turma = null;
             if (codigoTurma != 0) {
                 turma = Turma.obterTurma(codigoTurma);
             }
-            Aluno aluno = null;
             if (codigoAluno != 0) {
                 aluno = Aluno.obterAluno(codigoAluno);
             }
@@ -103,6 +97,91 @@ public class ManterMatriculaController extends HttpServlet {
         } catch (ServletException ex) {
         } catch (IOException ex) {
         } catch (ClassNotFoundException ex) {
+        }
+    }
+
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        int codigoCurso = Integer.parseInt(request.getParameter("optCurso"));
+        int codigoDisciplina = Integer.parseInt(request.getParameter("optDisciplina"));
+        int codigoTurma = Integer.parseInt(request.getParameter("optTurma"));
+        int codigoAluno = Integer.parseInt(request.getParameter("optAluno"));
+        try {
+            Curso curso = null;
+            Disciplina disciplina = null;
+            Turma turma = null;
+            Aluno aluno = null;
+            if (codigoCurso != 0) {
+                curso = Curso.obterCurso(codigoCurso);
+            }
+            if (codigoDisciplina != 0) {
+                disciplina = Disciplina.obterDisciplina(codigoDisciplina);
+            }
+            if (codigoTurma != 0) {
+                turma = Turma.obterTurma(codigoTurma);
+            }
+            if (codigoAluno != 0) {
+                aluno = Aluno.obterAluno(codigoAluno);
+            }
+            Matricula matricula = new Matricula(codigo, curso, disciplina, turma, aluno);
+            curso.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarMatriculaController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
+
+    private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("operacao", "Excluir");
+            request.setAttribute("matriculas", Matricula.obterMatriculas());
+
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            Matricula matricula = Matricula.obterMatricula(codigo);
+            request.setAttribute("matricula", matricula);
+
+            RequestDispatcher view = request.getRequestDispatcher("/manterMatricula.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+    }
+
+    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {
+        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
+        int codigoCurso = Integer.parseInt(request.getParameter("optCurso"));
+        int codigoDisciplina = Integer.parseInt(request.getParameter("optDisciplina"));
+        int codigoTurma = Integer.parseInt(request.getParameter("optTurma"));
+        int codigoAluno = Integer.parseInt(request.getParameter("optAluno"));
+        try {
+            Curso curso = null;
+            Disciplina disciplina = null;
+            Turma turma = null;
+            Aluno aluno = null;
+            if (codigoCurso != 0) {
+                curso = Curso.obterCurso(codigoCurso);
+            }
+            if (codigoDisciplina != 0) {
+                disciplina = Disciplina.obterDisciplina(codigoDisciplina);
+            }
+            if (codigoTurma != 0) {
+                turma = Turma.obterTurma(codigoTurma);
+            }
+            if (codigoAluno != 0) {
+                aluno = Aluno.obterAluno(codigoAluno);
+            }
+            Matricula matricula = new Matricula(codigo, curso, disciplina, turma, aluno);
+            curso.excluir();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisarMatriculaController");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
         }
     }
 
