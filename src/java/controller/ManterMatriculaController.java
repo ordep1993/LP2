@@ -36,16 +36,20 @@ public class ManterMatriculaController extends HttpServlet {
         }
     }
 
-    private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) {
+    private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         try {
             request.setAttribute("operacao", "Incluir");
             request.setAttribute("matriculas", Matricula.obterMatriculas());
+            request.setAttribute("cursos", Curso.obterCursos());
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+            request.setAttribute("turmas", Turma.obterTurmas());
+            request.setAttribute("alunos", Aluno.obterAlunos());
             RequestDispatcher view = request.getRequestDispatcher("/manterMatricula.jsp");
             view.forward(request, response);
-        } catch (ServletException ex) {
-        } catch (IOException ex) {
-        } catch (ClassNotFoundException ex) {
+        } catch (ServletException | IOException | ClassNotFoundException ex) {
+            throw ex;
         }
+
     }
 
     public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, IOException {
@@ -87,6 +91,10 @@ public class ManterMatriculaController extends HttpServlet {
         try {
             request.setAttribute("operacao", "Editar");
             request.setAttribute("matriculas", Matricula.obterMatriculas());
+            request.setAttribute("cursos", Curso.obterCursos());
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+            request.setAttribute("turmas", Turma.obterTurmas());
+            request.setAttribute("alunos", Aluno.obterAlunos());
 
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             Matricula matricula = Matricula.obterMatricula(codigo);
@@ -124,7 +132,7 @@ public class ManterMatriculaController extends HttpServlet {
                 aluno = Aluno.obterAluno(codigoAluno);
             }
             Matricula matricula = new Matricula(codigo, curso, disciplina, turma, aluno);
-            curso.alterar();
+            matricula.alterar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarMatriculaController");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -175,7 +183,7 @@ public class ManterMatriculaController extends HttpServlet {
                 aluno = Aluno.obterAluno(codigoAluno);
             }
             Matricula matricula = new Matricula(codigo, curso, disciplina, turma, aluno);
-            curso.excluir();
+            matricula.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarMatriculaController");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -185,29 +193,6 @@ public class ManterMatriculaController extends HttpServlet {
         }
     }
 
-    /*public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
-        int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
-        int codigoCurso = Integer.parseInt(request.getParameter("txtCodigoCurso"));
-        int codigoDisciplina = Integer.parseInt(request.getParameter("txtCodigoDisciplina"));
-        int codigoTurma = Integer.parseInt(request.getParameter("txtCodigoTurma"));
-        int codigoAluno = Integer.parseInt(request.getParameter("txtCodigoAluno"));
-        try{
-            Curso curso = null;
-            if (codigoCurso != 0) {
-                curso = Curso.obterProfessor(codigo);
-        }
-       
-        Matricula matricula = new Matricula(codigo, codigoCurso , codigoDisciplina , codigoTurma , codigoAluno);
-        matricula.gravar();
-        RequestDispatcher view = request.getRequestDispatcher("PesquisarMatriculaController");
-        view.forward(request, response);
-        }catch (ServletException ex){
-        }catch (IOException ex){
-        }catch (ClassNotFoundException ex){    
-        }catch (SQLException ex){    
-        }     
-    }
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

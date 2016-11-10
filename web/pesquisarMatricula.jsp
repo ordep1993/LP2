@@ -11,11 +11,11 @@
         <h1>Pesquisa de Matricula</h1>
         <table border="1">
             <tr>
-                <th>Código Matricula</th>
-                <th>Codigo do Curso</th>
-                <th>Codigo da Disciplina</th>
-                <th>Codigo da Turma</th>
-                <th>Codigo do Aluno</th>
+                <th>Matricula</th>
+                <th>Curso</th>
+                <th>Disciplina</th>
+                <th>Turma</th>
+                <th>Aluno</th>
                 <th colspan="2">Ação</th>                         
             </tr>
             <c:forEach items="${matriculas}" var="matricula">

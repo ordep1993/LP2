@@ -115,7 +115,7 @@ public class MatriculaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "delete from aluno where codigo = ?";
+            String sql = "delete from matricula where codigo = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, matricula.getCodigo());
             
@@ -132,13 +132,14 @@ public class MatriculaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update matricula set codigoCurso = ?, codigoDisciplina = ?, codigoTurma = ?,codigoAluno = ? where codigo = ?";
+            String sql = "update matricula set codigoCurso = ?, codigoDisciplina = ?, codigoTurma = ?, codigoAluno = ? where codigo = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             
             comando.setInt(1, matricula.getCurso().getCodigo());
             comando.setInt(2 , matricula.getDisciplina().getCodigo());
             comando.setInt(3 , matricula.getTurma().getCodigo());
             comando.setInt(4 , matricula.getAluno().getMatricula());
+            comando.setInt(5 , matricula.getCodigo());
            
 
             comando.execute();
