@@ -146,6 +146,10 @@ public class ManterMatriculaController extends HttpServlet {
         try {
             request.setAttribute("operacao", "Excluir");
             request.setAttribute("matriculas", Matricula.obterMatriculas());
+             request.setAttribute("cursos", Curso.obterCursos());
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+            request.setAttribute("turmas", Turma.obterTurmas());
+            request.setAttribute("alunos", Aluno.obterAlunos());
 
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             Matricula matricula = Matricula.obterMatricula(codigo);

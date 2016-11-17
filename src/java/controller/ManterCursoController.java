@@ -76,6 +76,7 @@ public class ManterCursoController extends HttpServlet {
         try {
             request.setAttribute("operacao", "Excluir");
             request.setAttribute("cursos", Curso.obterCursos());
+            request.setAttribute("professores", Professor.obterProfessores());
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             Curso curso = Curso.obterCurso(codigo);
             request.setAttribute("curso", curso);
@@ -111,10 +112,10 @@ public class ManterCursoController extends HttpServlet {
     private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Editar");
-            request.setAttribute("professores", Professor.obterProfessores());
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             Curso curso = Curso.obterCurso(codigo);
             request.setAttribute("curso", curso);
+             request.setAttribute("professores", Professor.obterProfessores());
             RequestDispatcher view = request.getRequestDispatcher("/manterCurso.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
