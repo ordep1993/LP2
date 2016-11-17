@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Aluno;
 import modelo.Avaliacao;
+import modelo.Disciplina;
 
 public class ManterAvaliacaoController extends HttpServlet {
 
@@ -86,7 +88,7 @@ public class ManterAvaliacaoController extends HttpServlet {
                 professor = Professor.obterProfessor(coordenador);
         }
              */
-            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal);
+            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal,Aluno aluno, Disciplina disciplina);
             avaliacao.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarAvaliacaoController");
             view.forward(request, response);
