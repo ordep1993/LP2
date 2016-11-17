@@ -99,7 +99,7 @@ public class AlunoDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into aluno (matricula, nome, dataNasc, CPF,dataExpedicao, orgaoExpedidor, ufExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, CEP, anoInicio, semestreInicio, estadoAluno) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into aluno (matricula, nome, dataNasc, CPF,  dataExpedicao, email, telefone, celular, logradouro, numero, complemento, bairro, CEP, anoInicio, semestreInicio, estadoAluno) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, aluno.getMatricula());
             comando.setString(2, aluno.getNome());
