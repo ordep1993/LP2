@@ -65,6 +65,7 @@
                 </tr>
             </table>
         </form>
+        <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
             <!--
             

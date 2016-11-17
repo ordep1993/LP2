@@ -22,7 +22,7 @@
                     <td><input type="text" name="txtCodigo" value="${disciplina.codigo}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>descrição:</td> 
+                    <td>Descrição:</td> 
                     <td><input type="text" name="txtDescricao" value="${disciplina.descricao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
@@ -42,6 +42,7 @@
                 </tr>
             </table>
         </form>
+                <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
             <!--
             

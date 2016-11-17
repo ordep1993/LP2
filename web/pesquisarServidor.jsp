@@ -52,10 +52,10 @@
                     <td><a href="ManterServidorController?acao=prepararExcluir&codigo=<c:out value="${servidor.matricula}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
-         </table>
+        </table>
         <form action="ManterServidorController?acao=prepararIncluir" method="post">
             <input type="submit" name"btnIncluir" value="incluir">
         </form>
-        </form>
+        <br><a href="index.jsp"><button>Inicio</button></a>
     </body>
 </html>

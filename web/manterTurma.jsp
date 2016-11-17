@@ -15,24 +15,25 @@
                 <tr>
                     <td>Código da Turma:</td> 
                     <td><input type="text" name="txtCodigo" value="${turma.codigo}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Ano:</td> 
-                    <td><input type="text" name="txtAno" value="${turma.ano}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Semestre:</td> 
-                    <td><input type="text" name="txtSemestre" value="${turma.semestre}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Máximo de Alunos:</td> 
-                    <td><input type="text" name="txtMaxAlunos" value="${turma.maxAlunos}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    </tr>
+                    <tr>
+                        <td>Ano:</td> 
+                        <td><input type="text" name="txtAno" value="${turma.ano}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    </tr>
+                    <tr>
+                        <td>Semestre:</td> 
+                        <td><input type="text" name="txtSemestre" value="${turma.semestre}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    </tr>
+                    <tr>
+                        <td>Máximo de Alunos:</td> 
+                        <td><input type="text" name="txtMaxAlunos" value="${turma.maxAlunos}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>              
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>
         </form>
+        <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
             <!--
             
@@ -41,10 +42,10 @@
                 var caracteresValidos = "0123456789";
                 var ehNumero = true;
                 var umCaracter;
-                for (i = 0; i < valor.length && ehNumero == true; i++) 
-                { 
-                    umCaracter = valor.charAt(i); 
-                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                for (i = 0; i < valor.length && ehNumero == true; i++)
+                {
+                    umCaracter = valor.charAt(i);
+                    if (caracteresValidos.indexOf(umCaracter) == -1)
                     {
                         ehNumero = false;
                     }
@@ -52,37 +53,37 @@
                 return ehNumero;
             }
 
-            function validarFormulario(form) { 
+            function validarFormulario(form) {
                 var mensagem;
                 mensagem = "";
-                if (form.txtCodCurso.value == ""){
+                if (form.txtCodCurso.value == "") {
                     mensagem = mensagem + "Informe o Código do Curso\n";
-                }                             
-                if (form.txtNomeCurso.value == ""){
+                }
+                if (form.txtNomeCurso.value == "") {
                     mensagem = mensagem + "Informe o Nome do Curso\n";
-                }             
-                if (form.txtTotalPeriodos.value == ""){
+                }
+                if (form.txtTotalPeriodos.value == "") {
                     mensagem = mensagem + "Informe o Total de Períodos\n";
-                }                  
-                if (form.txtCargaHoraria.value == ""){
+                }
+                if (form.txtCargaHoraria.value == "") {
                     mensagem = mensagem + "Informe a Carga Horária\n";
-                }                  
-                if (!campoNumerico(form.txtCodCurso.value)){
+                }
+                if (!campoNumerico(form.txtCodCurso.value)) {
                     mensagem = mensagem + "Código do Curso deve ser numérico\n";
-                }                  
-                if (!campoNumerico(form.txtTotalPeriodos.value)){
+                }
+                if (!campoNumerico(form.txtTotalPeriodos.value)) {
                     mensagem = mensagem + "Total de Períodos deve ser numérico\n";
-                }                  
-                if (!campoNumerico(form.txtCargaHoraria.value)){
+                }
+                if (!campoNumerico(form.txtCargaHoraria.value)) {
                     mensagem = mensagem + "Carga Horária deve ser numérica\n";
-                }                  
-                if (mensagem == ""){
+                }
+                if (mensagem == "") {
                     return true;
-                }else{
+                } else {
                     alert(mensagem);
                     return false;
-                }                
-            } 
+                }
+            }
             //-->
         </SCRIPT>        
     </body>

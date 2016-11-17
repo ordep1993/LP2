@@ -77,13 +77,14 @@
                     <tr> 
                         <td>CEP:</td> 
                         <td><input type="text" name="txtCEP" value="${professor.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>
         </form>
+        <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
             <!--
             

@@ -33,5 +33,6 @@
         <form action="ManterTurmaController?acao=prepararIncluir" method="post">
             <input type="submit" name="btnIncluir" value="Incluir">
         </form>
+        <br><a href="index.jsp"><button>Inicio</button></a>
     </body>
 </html>

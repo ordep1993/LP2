@@ -32,6 +32,6 @@
         <form action="ManterAvaliacaoController?acao=prepararIncluir" method="post">
             <input type="submit" name="btnIncluir" value="incluir">
         </form>
-        </form>
+        <br><a href="index.jsp"><button>Inicio</button></a>
     </body>
 </html>
