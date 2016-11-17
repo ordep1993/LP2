@@ -56,13 +56,13 @@ public class ManterCursoController extends HttpServlet {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
         int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
-        int codigoCoordenador = Integer.parseInt(request.getParameter("optCoordenador"));
+        int codigoProfessor = Integer.parseInt(request.getParameter("optProfessor"));
         try {
-            Professor coordenador = null;
-            if (codigoCoordenador != 0) {
-                coordenador = Professor.obterProfessor(codigoCoordenador);
+            Professor professor = null;
+            if (codigoProfessor != 0) {
+              professor = Professor.obterProfessor(codigoProfessor);
             }
-            Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
+            Curso curso = new Curso(codigo, descricao, cargaHoraria, professor);
             curso.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
             view.forward(request, response);
@@ -94,13 +94,13 @@ public class ManterCursoController extends HttpServlet {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
         int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
-        int codigoCoordenador = Integer.parseInt(request.getParameter("optCoordenador"));
+        int codigoProfessor = Integer.parseInt(request.getParameter("optProfessor"));
         try {
-            Professor coordenador = null;
-            if (codigoCoordenador != 0) {
-                coordenador = Professor.obterProfessor(codigoCoordenador);
+            Professor professor = null;
+            if (codigoProfessor != 0) {
+                professor = Professor.obterProfessor(codigoProfessor);
             }
-            Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
+            Curso curso = new Curso(codigo, descricao, cargaHoraria, professor);
             curso.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
             view.forward(request, response);
@@ -114,8 +114,10 @@ public class ManterCursoController extends HttpServlet {
         try {
             request.setAttribute("operacao", "Editar");
             request.setAttribute("professores", Professor.obterProfessores());
+            request.setAttribute("cursos" , Curso.obterCursos());
             
             int codigo = Integer.parseInt(request.getParameter("codigo"));
+            
             Curso curso = Curso.obterCurso(codigo);
             request.setAttribute("curso", curso);
             
@@ -130,13 +132,13 @@ public class ManterCursoController extends HttpServlet {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         String descricao = request.getParameter("txtDescricao");
         int cargaHoraria = Integer.parseInt(request.getParameter("txtCargaHoraria"));
-        int codigoCoordenador = Integer.parseInt(request.getParameter("optCoordenador"));
+        int codigoProfessor = Integer.parseInt(request.getParameter("optProfessor"));
         try {
-            Professor coordenador = null;
-            if (codigoCoordenador != 0) {
-                coordenador = Professor.obterProfessor(codigoCoordenador);
+            Professor professor = null;
+            if (codigoProfessor != 0) {
+                professor = Professor.obterProfessor(codigoProfessor);
             }
-            Curso curso = new Curso(codigo, descricao, cargaHoraria, coordenador);
+            Curso curso = new Curso(codigo, descricao, cargaHoraria, professor);
             curso.alterar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarCursoController");
             view.forward(request, response);

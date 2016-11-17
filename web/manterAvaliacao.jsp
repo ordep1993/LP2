@@ -40,12 +40,12 @@
                     </td>   
                 </tr>
                 <tr>
-                    <td>Codigo da Disciplina:</td>
+                    <td>Disciplina:</td>
                     <td>
                         <select name="optDisciplina" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                            <option value="0" <c:if test="${matricula.disciplina.codigo == null}"> selected</c:if>> </option>  
+                            <option value="0" <c:if test="${avaliacao.disciplina.codigo == null}"> selected</c:if>> </option>  
                             <c:forEach items="${disciplinas}" var="disciplina">
-                                <option value="${disciplina.codigo}" <c:if test="${matricula.disciplina.codigo == disciplina.codigo}"> selected</c:if>>${disciplina.descricao}</option>  
+                                <option value="${disciplina.codigo}" <c:if test="${avaliacao.disciplina.codigo == disciplina.codigo}"> selected</c:if>>${disciplina.descricao}</option>  
                             </c:forEach>
                         </select>
                     </td>

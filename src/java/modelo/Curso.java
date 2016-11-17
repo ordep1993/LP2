@@ -9,14 +9,14 @@ public class Curso {
     private int codigo;
     private String descricao;
     private int cargaHoraria;
-    private Professor coordenador;
-    private int codigoCoordenador;
+    private Professor professor;
+    private int codigoProfessor;
 
-    public Curso(int codigo, String descricao, int cargaHoraria, Professor coordenador) {
+    public Curso(int codigo, String descricao, int cargaHoraria, Professor professor) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.cargaHoraria = cargaHoraria;
-        this.coordenador = coordenador;
+        this.professor = professor;
     }
 
     public int getCodigo() {
@@ -43,22 +43,22 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Professor getCoordenador() throws ClassNotFoundException {
-        return coordenador;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setCoordenador(Professor coordenador) {
-        this.coordenador = coordenador;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
-    public int getCodigoCoordenador() {
-        return codigoCoordenador;
+    public int getCodigoProfessor() {
+        return codigoProfessor;
     }
 
-    public void setCodigoCoordenador(int codigoCoordenador) {
-        this.codigoCoordenador = codigoCoordenador;
+    public void setCodigoProfessor(int codigoProfessor) {
+        this.codigoProfessor = codigoProfessor;
     }
-    
+
     public static Curso obterCurso(int codigo) throws ClassNotFoundException {
         return CursoDAO.obterCurso(codigo);
     }
@@ -70,11 +70,11 @@ public class Curso {
     public void gravar() throws SQLException, ClassNotFoundException {
         CursoDAO.gravar(this);
     }
-    
-    public void alterar() throws SQLException , ClassNotFoundException {
+
+    public void alterar() throws SQLException, ClassNotFoundException {
         CursoDAO.alterar(this);
     }
-    
+
     public void excluir() throws SQLException, ClassNotFoundException {
         CursoDAO.excluir(this);
     }

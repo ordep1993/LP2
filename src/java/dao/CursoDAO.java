@@ -25,7 +25,7 @@ public class CursoDAO {
                         rs.getString("descricao"),
                         rs.getInt("cargaHoraria"),
                         null);
-                curso.setCodigoCoordenador(rs.getInt("codigoCoordenador"));
+                curso.setCodigoProfessor(rs.getInt("codigoProfessor"));
                 cursos.add(curso);
             }
         } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class CursoDAO {
                     rs.getString("descricao"),
                     rs.getInt("cargaHoraria"),
                     null);
-            curso.setCodigoCoordenador(rs.getInt("codigoCoordenador"));
+            curso.setCodigoProfessor(rs.getInt("codigoProfessor"));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,15 +76,15 @@ public class CursoDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into curso(codigo, descricao, cargaHoraria ,codigoCoordenador) values (?,?,?,?)";
+            String sql = "insert into curso(codigo, descricao, cargaHoraria ,codigoProfessor) values (?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, curso.getCodigo());
             comando.setString(2, curso.getDescricao());
             comando.setInt(3, curso.getCargaHoraria());
-            if (curso.getCoordenador() == null) {
+            if (curso.getProfessor() == null) {
                 comando.setNull(4, Types.NULL);
             } else {
-                comando.setInt(4, curso.getCoordenador().getMatricula());
+                comando.setInt(4, curso.getProfessor().getMatricula());
             }
             comando.execute();
             comando.close();
@@ -102,7 +102,7 @@ public class CursoDAO {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, curso.getDescricao());
             comando.setInt(2, curso.getCargaHoraria());
-            comando.setInt(3, curso.getCoordenador().getMatricula());
+            comando.setInt(3, curso.getProfessor().getMatricula());
             comando.setInt(4, curso.getCodigo());
             comando.execute();
             comando.close();
