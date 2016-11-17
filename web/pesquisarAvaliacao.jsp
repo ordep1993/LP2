@@ -16,6 +16,8 @@
                 <th> Avaliação 1</th> 
                 <th> Avaliação 2</th>
                 <th> Avaliação Final</th>
+                <th> Aluno </th>
+                <th> Disciplina </th>
                 <th colspan="2">Ação</th>  
             </tr>
             <c:forEach items="${avaliacoes}" var="avaliacao">
@@ -24,11 +26,13 @@
                     <td> <c:out value="${avaliacao.avaliacao1}" />
                     <td> <c:out value="${avaliacao.avaliacao2}" />
                     <td> <c:out value="${avaliacao.avaliacaoFinal}" />
+                    <td> <c:out value="${avaliacao.codigoAluno}" />
+                    <td> <c:out value="${avaliacao.codigoDisciplina}" />
                     <td><a href="ManterAvaliacaoController?acao=prepararEditar&codigo=<c:out value="${avaliacao.codigo}"/>">Editar</a></td>
                     <td><a href="ManterAvaliacaoController?acao=prepararExcluir&codigo=<c:out value="${avaliacao.codigo}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
-         </table>
+        </table>
         <form action="ManterAvaliacaoController?acao=prepararIncluir" method="post">
             <input type="submit" name="btnIncluir" value="incluir">
         </form>

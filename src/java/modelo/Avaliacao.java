@@ -25,7 +25,7 @@ public class Avaliacao {
     }
 
     public Disciplina getDisciplina() throws ClassNotFoundException {
-        if ((this.codigoDisciplina != 0) && (this.disciplina == null)){
+        if ((this.codigoDisciplina != 0) && (this.disciplina == null)) {
             this.disciplina = Disciplina.obterDisciplina(this.codigoDisciplina);
         }
         return disciplina;
@@ -34,9 +34,9 @@ public class Avaliacao {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
-    
+
     public Aluno getAluno() throws ClassNotFoundException {
-        if ((this.codigoAluno != 0) && (this.aluno == null)){
+        if ((this.codigoAluno != 0) && (this.aluno == null)) {
             this.aluno = Aluno.obterAluno(this.codigoAluno);
         }
         return aluno;
@@ -45,7 +45,7 @@ public class Avaliacao {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
-    
+
     public int getAvaliacao1() {
         return avaliacao1;
     }
@@ -76,6 +76,22 @@ public class Avaliacao {
 
     public void setAvaliacaoFinal(int avaliacaoFinal) {
         this.avaliacaoFinal = avaliacaoFinal;
+    }
+
+    public int getCodigoDisciplina() {
+        return codigoDisciplina;
+    }
+
+    public void setCodigoDisciplina(int codigoDisciplina) {
+        this.codigoDisciplina = codigoDisciplina;
+    }
+
+    public int getCodigoAluno() {
+        return codigoAluno;
+    }
+
+    public void setCodigoAluno(int codigoAluno) {
+        this.codigoAluno = codigoAluno;
     }
 
     public static Avaliacao obterAvaliacao(int codigo) throws ClassNotFoundException {

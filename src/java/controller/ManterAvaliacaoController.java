@@ -22,13 +22,13 @@ public class ManterAvaliacaoController extends HttpServlet {
         } else if (acao.equals("confirmarIncluir")) {
             confirmarIncluir(request, response);
         } else if (acao.equals("prepararEditar")) {
-            prepararEditar(request , response);
+            prepararEditar(request, response);
         } else if (acao.equals("confirmarEditar")) {
-            confirmarEditar(request , response);
+            confirmarEditar(request, response);
         } else if (acao.equals("prepararExcluir")) {
-            prepararExcluir(request , response);
+            prepararExcluir(request, response);
         } else if (acao.equals("confirmarExcluir")) {
-            confirmarExcluir(request , response);
+            confirmarExcluir(request, response);
         }
     }
 
@@ -36,6 +36,8 @@ public class ManterAvaliacaoController extends HttpServlet {
         try {
             request.setAttribute("operacao", "Incluir");
             request.setAttribute("avaliacoes", Avaliacao.obterAvaliacoes());
+            request.setAttribute("alunos", Aluno.obterAlunos());
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
             RequestDispatcher view = request.getRequestDispatcher("/manterAvaliacao.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -43,15 +45,26 @@ public class ManterAvaliacaoController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
         }
     }
-    
-    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
+
+    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         int avaliacao1 = Integer.parseInt(request.getParameter("txtAvaliacao1"));
         int avaliacao2 = Integer.parseInt(request.getParameter("txtAvaliacao2"));
         int avaliacaoFinal = Integer.parseInt(request.getParameter("txtAvaliacaoFinal"));
-        try {            
-            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal);
-            avaliacao.alterar();
+        int codigoAluno = Integer.parseInt(request.getParameter("optAluno"));
+        int codigoDisciplina = Integer.parseInt(request.getParameter("optDisciplina"));
+        try {
+            Aluno aluno = null;
+            Disciplina disciplina = null;
+            if (codigoAluno != 0) {
+                aluno = Aluno.obterAluno(codigoAluno);
+            }
+            if (codigoDisciplina != 0) {
+                disciplina = Disciplina.obterDisciplina(codigoDisciplina);
+            }
+
+            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal, aluno, disciplina);
+            avaliacao.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarAvaliacaoController");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -65,9 +78,13 @@ public class ManterAvaliacaoController extends HttpServlet {
         try {
             request.setAttribute("operacao", "Editar");
             request.setAttribute("avaliacoes", Avaliacao.obterAvaliacoes());
+            request.setAttribute("alunos", Aluno.obterAlunos());
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             Avaliacao avaliacao = Avaliacao.obterAvaliacao(codigo);
             request.setAttribute("avaliacao", avaliacao);
+
             RequestDispatcher view = request.getRequestDispatcher("/manterAvaliacao.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -75,21 +92,27 @@ public class ManterAvaliacaoController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
         }
     }
-    
-    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         int avaliacao1 = Integer.parseInt(request.getParameter("txtAvaliacao1"));
         int avaliacao2 = Integer.parseInt(request.getParameter("txtAvaliacao2"));
         int avaliacaoFinal = Integer.parseInt(request.getParameter("txtAvaliacaoFinal"));
+        int codigoAluno = Integer.parseInt(request.getParameter("optAluno"));
+        int codigoDisciplina = Integer.parseInt(request.getParameter("optDisciplina"));
         try {
-            /*  caso seja necessário
-            Professor professor = null;
-            if (coordenador != 0) {
-                professor = Professor.obterProfessor(coordenador);
-        }
-             */
-            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal,Aluno aluno, Disciplina disciplina);
-            avaliacao.gravar();
+            Aluno aluno = null;
+            Disciplina disciplina = null;
+
+            if (codigoAluno != 0) {
+                aluno = Aluno.obterAluno(codigoAluno);
+            }
+            if (codigoDisciplina != 0) {
+                disciplina = Disciplina.obterDisciplina(codigoDisciplina);
+            }
+
+            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal, aluno, disciplina);
+            avaliacao.alterar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarAvaliacaoController");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -98,13 +121,18 @@ public class ManterAvaliacaoController extends HttpServlet {
         } catch (SQLException ex) {
         }
     }
+
     public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Excluir");
             request.setAttribute("avaliacoes", Avaliacao.obterAvaliacoes());
+            request.setAttribute("alunos", Aluno.obterAlunos());
+            request.setAttribute("disciplinas", Disciplina.obterDisciplinas());
+
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             Avaliacao avaliacao = Avaliacao.obterAvaliacao(codigo);
             request.setAttribute("avaliacao", avaliacao);
+
             RequestDispatcher view = request.getRequestDispatcher("/manterAvaliacao.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -112,13 +140,26 @@ public class ManterAvaliacaoController extends HttpServlet {
         } catch (ClassNotFoundException ex) {
         }
     }
-     public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {
+
+    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {
         int codigo = Integer.parseInt(request.getParameter("txtCodigo"));
         int avaliacao1 = Integer.parseInt(request.getParameter("txtAvaliacao1"));
         int avaliacao2 = Integer.parseInt(request.getParameter("txtAvaliacao2"));
         int avaliacaoFinal = Integer.parseInt(request.getParameter("txtAvaliacaoFinal"));
-        try {            
-            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal);
+        int codigoAluno = Integer.parseInt(request.getParameter("optAluno"));
+        int codigoDisciplina = Integer.parseInt(request.getParameter("optDisciplina"));
+        try {
+            Aluno aluno = null;
+            Disciplina disciplina = null;
+
+            if (codigoAluno != 0) {
+                aluno = Aluno.obterAluno(codigoAluno);
+            }
+            if (codigoDisciplina != 0) {
+                disciplina = Disciplina.obterDisciplina(codigoDisciplina);
+            }
+
+            Avaliacao avaliacao = new Avaliacao(codigo, avaliacao1, avaliacao2, avaliacaoFinal, aluno, disciplina);
             avaliacao.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisarAvaliacaoController");
             view.forward(request, response);
@@ -128,8 +169,6 @@ public class ManterAvaliacaoController extends HttpServlet {
         } catch (SQLException ex) {
         }
     }
-
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

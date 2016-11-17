@@ -29,6 +29,28 @@
                         <td><input type="text" name="txtAvaliacaoFinal" value="${avaliacao.avaliacaoFinal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
+                    <td>Aluno</td>
+                    <td>
+                        <select name="optAluno" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${avaliacao.aluno.matricula == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${alunos}" var="aluno">
+                                <option value="${aluno.matricula}" <c:if test="${avaliacao.aluno.matricula == aluno.matricula}"> selected</c:if>>${aluno.nome}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>   
+                </tr>
+                <tr>
+                    <td>Codigo da Disciplina:</td>
+                    <td>
+                        <select name="optDisciplina" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${matricula.disciplina.codigo == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${disciplinas}" var="disciplina">
+                                <option value="${disciplina.codigo}" <c:if test="${matricula.disciplina.codigo == disciplina.codigo}"> selected</c:if>>${disciplina.descricao}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>

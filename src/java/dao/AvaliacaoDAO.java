@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Avaliacao;
@@ -24,7 +25,11 @@ public class AvaliacaoDAO {
                 Avaliacao avaliacao = new Avaliacao(rs.getInt("codigo"),
                         rs.getInt("avaliacao1"),
                         rs.getInt("avaliacao2"),
-                        rs.getInt("avaliacaoFinal"));
+                        rs.getInt("avaliacaoFinal"),
+                        null,
+                        null);
+                avaliacao.setCodigoAluno(rs.getInt("codigoAluno"));
+                avaliacao.setCodigoDisciplina(rs.getInt("codigoDisciplina"));
                 avaliacoes.add(avaliacao);
             }
         } catch (SQLException e) {
@@ -47,9 +52,11 @@ public class AvaliacaoDAO {
             avaliacao = new Avaliacao(rs.getInt("codigo"),
                     rs.getInt("avaliacao1"),
                     rs.getInt("avaliacao2"),
-                    rs.getInt("avaliacaoFinal"));
-            //NULL PARA SER SETADO
-            //turma.setMatriculaProfessorCoordenador(rs.getInt("professorCoordenador")); CASO TENHA CHAVE ESTRANGEIRA
+                    rs.getInt("avaliacaoFinal"),
+                    null,
+                    null);
+            avaliacao.setCodigoAluno(rs.getInt("codigoAluno"));
+            avaliacao.setCodigoDisciplina(rs.getInt("codigoDisciplina"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -75,17 +82,22 @@ public class AvaliacaoDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into avaliacao (codigo , avaliacao1 , avaliacao2 , avaliacaoFinal) values (?,?,?,?)";
+            String sql = "insert into avaliacao (codigo , avaliacao1 , avaliacao2 , avaliacaoFinal,codigoAluno,codigoDisciplina) values (?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, avaliacao.getCodigo());
             comando.setInt(2, avaliacao.getAvaliacao1());
             comando.setInt(3, avaliacao.getAvaliacao2());
             comando.setInt(4, avaliacao.getAvaliacaoFinal());
-            /* if (curso.getCoordenador() == null){ CASO TENHA CHAVE ESTRANGEIRA
-                comando.setNull(6 , Types.NULL);
+            if (avaliacao.getAluno() == null){
+                comando.setNull(5, Types.NULL);
             }else {
-                comando.setInt(6, curso.getCoordenador().getMatricula());
-            }*/
+                comando.setInt(5 , avaliacao.getAluno().getMatricula());
+            }
+            if (avaliacao.getDisciplina() == null){
+                comando.setNull(6, Types.NULL);
+            } else {
+                comando.setInt(6, avaliacao.getDisciplina().getCodigo());
+            }
             comando.execute();
             comando.close();
             conexao.close();
@@ -94,17 +106,19 @@ public class AvaliacaoDAO {
             throw e;
         }
     }
-    
-    public static void alterar (Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
+
+    public static void alterar(Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update avaliacao set avaliacao1 = ?, avaliacao2 = ?, avaliacaoFinal = ? where codigo = ?";
+            String sql = "update avaliacao set avaliacao1 = ?, avaliacao2 = ?, avaliacaoFinal = ?, codigoAluno = ? , codigoDisciplina = ? where codigo = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, avaliacao.getAvaliacao1());
             comando.setInt(2, avaliacao.getAvaliacao2());
             comando.setInt(3, avaliacao.getAvaliacaoFinal());
-            comando.setInt(4, avaliacao.getCodigo());
+            comando.setInt(4, avaliacao.getAluno().getMatricula());
+            comando.setInt(5, avaliacao.getDisciplina().getCodigo());
+            comando.setInt(6, avaliacao.getCodigo());
             comando.execute();
             comando.close();
             conexao.close();
@@ -114,7 +128,7 @@ public class AvaliacaoDAO {
         }
     }
 
-    public static void excluir (Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
+    public static void excluir(Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
