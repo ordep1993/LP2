@@ -21,10 +21,10 @@
             <c:forEach items="${matriculas}" var="matricula">
                 <tr>
                     <td><c:out value="${matricula.codigo}"/></td>
-                    <td><c:out value="${matricula.codigoCurso}"/></td>
-                    <td><c:out value="${matricula.codigoDisciplina}"/></td>
+                    <td><c:out value="${matricula.curso.descricao}"/></td>
+                    <td><c:out value="${matricula.disciplina.descricao}"/></td>
                     <td><c:out value="${matricula.codigoTurma}"/></td>
-                    <td><c:out value="${matricula.codigoAluno}"/></td>
+                    <td><c:out value="${matricula.aluno.nome}"/></td>
 
                     <td><a href="ManterMatriculaController?acao=prepararEditar&codigo=<c:out value="${matricula.codigo}"/>">Editar</a></td>
                     <td><a href="ManterMatriculaController?acao=prepararExcluir&codigo=<c:out value="${matricula.codigo}"/>">Excluir</a></td>          

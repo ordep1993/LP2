@@ -22,7 +22,7 @@
                     <td><c:out value="${curso.codigo}"/></td>
                     <td><c:out value="${curso.descricao}"/></td>
                     <td><c:out value="${curso.cargaHoraria}"/></td>
-                    <td><c:out value="${curso.codigoProfessor}"/></td>
+                    <td><c:out value="${curso.professor.nome}"/></td>
                     <td><a href="ManterCursoController?acao=prepararEditar&codigo=<c:out value="${curso.codigo}"/>">Editar</a></td>
                     <td><a href="ManterCursoController?acao=prepararExcluir&codigo=<c:out value="${curso.codigo}"/>">Excluir</a></td>
                 </tr> 

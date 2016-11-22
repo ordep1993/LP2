@@ -43,7 +43,10 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Professor getProfessor() {
+    public Professor getProfessor() throws ClassNotFoundException {
+        if ((this.codigoProfessor != 0) && (this.professor == null)){
+            this.professor = Professor.obterProfessor(this.codigoProfessor);
+        }
         return professor;
     }
 

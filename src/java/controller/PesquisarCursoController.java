@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Curso;
+import modelo.Professor;
 
 /**
  *
@@ -34,6 +35,7 @@ public class PesquisarCursoController extends HttpServlet {
 
         try {
             request.setAttribute("cursos", Curso.obterCursos());
+            request.setAttribute("professores" , Professor.obterProfessores());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisarCurso.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {
