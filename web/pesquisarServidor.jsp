@@ -13,21 +13,21 @@
         <table border="1">
             <tr>
                 <th>Matricula</th>
-                <th> Nome</th>
-                <th> Data Nasc</th>
-                <th> CPF</th>
-                <th> Data Expediçãoo</th>
-                <th> Orgao Expedidor</th>
-                <th> UF Expedição</th>
-                <th> Email</th>
-                <th> Telefone</th>
-                <th> Celular</th>
-                <th> Logradouro</th>
-                <th> Número</th>
-                <th> Complemento</th>
-                <th> Bairro</th>
-                <th> CEP</th>
-                <th> Data Admissão</th>
+                <th>Nome</th>
+                <th>Data Nasc</th>
+                <th>CPF</th>
+                <th>Data Expedição</th>
+                <th>Orgao Expedidor</th>
+                <th>UF Expedição</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Celular</th>
+                <th>Logradouro</th>
+                <th>Número</th>
+                <th>Complemento</th>
+                <th>Bairro</th>
+                <th>CEP</th>
+                <th>Data Admissão</th>
                 <th colspan="2">Ação</th>  
             </tr>
             <c:forEach items="${servidores}" var="servidor">
