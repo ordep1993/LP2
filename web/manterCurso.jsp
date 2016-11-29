@@ -42,9 +42,7 @@
         </form>
         <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
-            <!--
-            
-            function campoNumerico(valor)
+           function campoNumerico(valor)
             {
                 var caracteresValidos = "0123456789";
                 var ehNumero = true;
@@ -62,27 +60,19 @@
 
             function validarFormulario(form) {
                 var mensagem;
+                var p = document.getElementsByName("optProfessor")[0];
                 mensagem = "";
-                if (form.txtCodCurso.value == "") {
-                    mensagem = mensagem + "Informe o Código do Curso\n";
+                if (form.txtCodigo.value == "") {
+                    mensagem = mensagem + "Codigo\n";
                 }
-                if (form.txtNomeCurso.value == "") {
-                    mensagem = mensagem + "Informe o Nome do Curso\n";
+                if (form.txtDescricao.value == "") {
+                    mensagem = mensagem + "Informe o NOme do Curso\n";
                 }
-                if (form.txtTotalPeriodos.value == "") {
-                    mensagem = mensagem + "Informe o Total de Períodos\n";
+                if (!campoNumerico(form.txtCargaHoraria.value) || form.txtCargaHoraria.value == "") {
+                    mensagem = mensagem + "Carga Horária deve ser numérico\n";
                 }
-                if (form.txtCargaHoraria.value == "") {
-                    mensagem = mensagem + "Informe a Carga Horária\n";
-                }
-                if (!campoNumerico(form.txtCodCurso.value)) {
-                    mensagem = mensagem + "Código do Curso deve ser numérico\n";
-                }
-                if (!campoNumerico(form.txtTotalPeriodos.value)) {
-                    mensagem = mensagem + "Total de Períodos deve ser numérico\n";
-                }
-                if (!campoNumerico(form.txtCargaHoraria.value)) {
-                    mensagem = mensagem + "Carga Horária deve ser numérica\n";
+                if (form.p == null) {
+                    mensagem = mensagem + "Informe o Professor\n";
                 }
                 if (mensagem == "") {
                     return true;
@@ -91,7 +81,6 @@
                     return false;
                 }
             }
-            //-->
         </SCRIPT>        
     </body>
 </html>

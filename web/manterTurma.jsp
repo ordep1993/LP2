@@ -35,8 +35,6 @@
         </form>
         <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
-            <!--
-            
             function campoNumerico(valor)
             {
                 var caracteresValidos = "0123456789";
@@ -56,35 +54,26 @@
             function validarFormulario(form) {
                 var mensagem;
                 mensagem = "";
-                if (form.txtCodCurso.value == "") {
-                    mensagem = mensagem + "Informe o Código do Curso\n";
+                if (!campoNumerico(form.txtCodigo.value) || form.txtCodigo.value == "") {
+                    mensagem = mensagem + "Código da Turma deve ser numérico\n";
                 }
-                if (form.txtNomeCurso.value == "") {
-                    mensagem = mensagem + "Informe o Nome do Curso\n";
+                if (!campoNumerico(form.txtAno.value) || form.txtAno.value == "") {
+                    mensagem = mensagem + "Ano deve ser numrico\n";
                 }
-                if (form.txtTotalPeriodos.value == "") {
-                    mensagem = mensagem + "Informe o Total de Períodos\n";
+                if (!campoNumerico(form.txtSemestre.value) || form.txtSemestre.value == "") {
+                    mensagem = mensagem + "Semestre deve ser numérico\n";
                 }
-                if (form.txtCargaHoraria.value == "") {
-                    mensagem = mensagem + "Informe a Carga Horária\n";
+                if (!campoNumerico(form.txtMaxAlunos.value) || form.txtMaxAlunos.value == "") {
+                    mensagem = mensagem + "Máximo de Alunos deve ser numérico\n";
                 }
-                if (!campoNumerico(form.txtCodCurso.value)) {
-                    mensagem = mensagem + "Código do Curso deve ser numérico\n";
-                }
-                if (!campoNumerico(form.txtTotalPeriodos.value)) {
-                    mensagem = mensagem + "Total de Períodos deve ser numérico\n";
-                }
-                if (!campoNumerico(form.txtCargaHoraria.value)) {
-                    mensagem = mensagem + "Carga Horária deve ser numérica\n";
-                }
-                if (mensagem == "") {
+                 if (mensagem == ""){
                     return true;
-                } else {
+                }else{
                     alert(mensagem);
                     return false;
-                }
+                }  
             }
-            //-->
+           
         </SCRIPT>        
     </body>
 </html>

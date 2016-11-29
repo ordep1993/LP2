@@ -92,9 +92,7 @@
         </form>
         <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
-                    <!--
-            
-            function campoNumerico(valor)
+         function campoNumerico(valor)
             {
                 var caracteresValidos = "0123456789";
                 var ehNumero = true;
@@ -113,26 +111,54 @@
             function validarFormulario(form) {
                 var mensagem;
                 mensagem = "";
-                if (form.txtCodCurso.value == "") {
-                    mensagem = mensagem + "Informe o Código do Curso\n";
+                if (!campoNumerico(form.txtMatricula.value) ||form.txtMatricula.value == "") {
+                    mensagem = mensagem + "Matrícula deve ser numérico\n";
                 }
-                if (form.txtNomeCurso.value == "") {
-                    mensagem = mensagem + "Informe o Nome do Curso\n";
+                if(campoNumerico(form.txtNome.value) || form.txtNome.value == ""){
+                     mensagem = mensagem + "Informe o nome\n";
                 }
-                if (form.txtTotalPeriodos.value == "") {
-                    mensagem = mensagem + "Informe o Total de Períodos\n";
+                if(form.txtDataNasc.value == ""){
+                     mensagem = mensagem + "Informe a Data de Nascimento\n";
                 }
-                if (form.txtCargaHoraria.value == "") {
-                    mensagem = mensagem + "Informe a Carga Horária\n";
+                 if (!campoNumerico(form.txtCPF.value) ||form.txtCPF.value == "") {
+                    mensagem = mensagem + "Informe o CPF\n";
                 }
-                if (!campoNumerico(form.txtCodCurso.value)) {
-                    mensagem = mensagem + "Código do Curso deve ser numérico\n";
+                if(form.txtDataExpedicao.value == ""){
+                     mensagem = mensagem + "Informe a Data de Expedição\n";
                 }
-                if (!campoNumerico(form.txtTotalPeriodos.value)) {
-                    mensagem = mensagem + "Total de Períodos deve ser numérico\n";
+                if(form.txtEmail.value == ""){
+                     mensagem = mensagem + "Informe o Email\n";
                 }
-                if (!campoNumerico(form.txtCargaHoraria.value)) {
-                    mensagem = mensagem + "Carga Horária deve ser numérica\n";
+               
+                if (!campoNumerico(form.txtTelefone.value) ||form.txtTelefone.value == "") {
+                    mensagem = mensagem + "Informe o Telefone\n";
+                }
+                if (!campoNumerico(form.txtCelular.value) ||form.txtCelular.value == "") {
+                    mensagem = mensagem + "Informe o Celular\n";
+                }
+                if(form.txtLogradouro.value == ""){
+                     mensagem = mensagem + "Informe o Logradouro\n";
+                }
+                if (!campoNumerico(form.txtNumero.value) ||form.txtNumero.value == "") {
+                    mensagem = mensagem + "Informe o Numero\n";
+                }
+                if(form.txtComplemento.value == ""){
+                     mensagem = mensagem + "Informe o Complemento\n";
+                }
+                if(form.txtBairro.value == ""){
+                     mensagem = mensagem + "Informe o Bairro\n";
+                }
+                if(form.txtComplemento.value == ""){
+                     mensagem = mensagem + "Informe o CEP\n";
+                }
+                if (!campoNumerico(form.txtAnoInicio.value) ||form.txtAnoInicio.value == "") {
+                    mensagem = mensagem + "Ano Início deve Numérico\n";
+                }
+                if (!campoNumerico(form.txtSemestreInicio.value) ||form.txtSemestreInicio.value == "") {
+                    mensagem = mensagem + "Semestre Início deve Numérico\n";
+                }
+                if(form.txtEstadoAluno.value == ""){
+                     mensagem = mensagem + "Informe o Estado do Aluno\n";
                 }
                 if (mensagem == "") {
                     return true;
@@ -141,7 +167,7 @@
                     return false;
                 }
             }
-            //-->
+
         </SCRIPT>        
     </body>
 </html>

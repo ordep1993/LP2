@@ -57,9 +57,7 @@
         </form>
         <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
-            <!--
-            
-            function campoNumerico(valor)
+           function campoNumerico(valor)
             {
                 var caracteresValidos = "0123456789";
                 var ehNumero = true;
@@ -77,27 +75,26 @@
 
             function validarFormulario(form) {
                 var mensagem;
+                var d = document.getElementsByName("optDisciplina")[0];
+                var a = document.getElementsByName("optAluno")[0];
                 mensagem = "";
-                if (form.txtCodCurso.value == "") {
-                    mensagem = mensagem + "Informe o Código do Curso\n";
+                if (form.txtCodigo.value == "") {
+                    mensagem = mensagem + "Informe o Código da Avaliação\n";
                 }
-                if (form.txtNomeCurso.value == "") {
-                    mensagem = mensagem + "Informe o Nome do Curso\n";
+                if (!campoNumerico(form.txtAvaliacao1.value) || form.txtAvaliacao1.value == "") {
+                    mensagem = mensagem + "Avaliação 1 deve ser numérico\n";
                 }
-                if (form.txtTotalPeriodos.value == "") {
-                    mensagem = mensagem + "Informe o Total de Períodos\n";
+                if (!campoNumerico(form.txtAvaliacao2.value) || form.txtAvaliacao2.value == "") {
+                    mensagem = mensagem + "Avaliação 2 deve ser numérico\n";
                 }
-                if (form.txtCargaHoraria.value == "") {
-                    mensagem = mensagem + "Informe a Carga Horária\n";
+                if (!campoNumerico(form.txtAvaliacaoFinal.value) || form.txtAvaliacaoFinal.value == "") {
+                    mensagem = mensagem + "Avaliação Final deve ser numérico\n";
                 }
-                if (!campoNumerico(form.txtCodCurso.value)) {
-                    mensagem = mensagem + "Código do Curso deve ser numérico\n";
+                if (form.a == null) {
+                    mensagem = mensagem + "Informe o Aluno\n";
                 }
-                if (!campoNumerico(form.txtTotalPeriodos.value)) {
-                    mensagem = mensagem + "Total de Períodos deve ser numérico\n";
-                }
-                if (!campoNumerico(form.txtCargaHoraria.value)) {
-                    mensagem = mensagem + "Carga Horária deve ser numérica\n";
+                if (form.d == null) {
+                    mensagem = mensagem + "Informe a Disciplina\n";
                 }
                 if (mensagem == "") {
                     return true;
@@ -106,7 +103,6 @@
                     return false;
                 }
             }
-            //-->
         </SCRIPT>        
     </body>
 </html>

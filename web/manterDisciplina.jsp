@@ -44,9 +44,7 @@
         </form>
                 <br><a href="index.jsp"><button>Inicio</button></a>
         <SCRIPT language="JavaScript">
-            <!--
-            
-            function campoNumerico(valor)
+           function campoNumerico(valor)
             {
                 var caracteresValidos = "0123456789";
                 var ehNumero = true;
@@ -65,27 +63,21 @@
             function validarFormulario(form) { 
                 var mensagem;
                 mensagem = "";
-                if (form.txtCodCurso.value == ""){
-                    mensagem = mensagem + "Informe o Código do Curso\n";
-                }                             
-                if (form.txtNomeCurso.value == ""){
-                    mensagem = mensagem + "Informe o Nome do Curso\n";
-                }             
-                if (form.txtTotalPeriodos.value == ""){
-                    mensagem = mensagem + "Informe o Total de Períodos\n";
-                }                  
-                if (form.txtCargaHoraria.value == ""){
-                    mensagem = mensagem + "Informe a Carga Horária\n";
-                }                  
-                if (!campoNumerico(form.txtCodCurso.value)){
-                    mensagem = mensagem + "Código do Curso deve ser numérico\n";
-                }                  
-                if (!campoNumerico(form.txtTotalPeriodos.value)){
-                    mensagem = mensagem + "Total de Períodos deve ser numérico\n";
-                }                  
-                if (!campoNumerico(form.txtCargaHoraria.value)){
-                    mensagem = mensagem + "Carga Horária deve ser numérica\n";
-                }                  
+                if (!campoNumerico(form.txtCodigo.value) || form.txtCodigo.value == "") {
+                    mensagem = mensagem + "Código da Disciplina deve ser numérico\n";
+                }
+                if (form.txtDescricao.value == "") {
+                    mensagem = mensagem + "Informe a Descrição\n";
+                }
+                if (!campoNumerico(form.txtNumAula.value) || form.txtNumAula.value == "") {
+                    mensagem = mensagem + "Número de Aulas deve ser numérico\n";
+                }
+                if (form.txtEmenta.value == "") {
+                    mensagem = mensagem + "Informe a Ementa\n";
+                }
+                if (form.txtBibliografia.value == "") {
+                    mensagem = mensagem + "Informe a Bibliografia\n";
+                }
                 if (mensagem == ""){
                     return true;
                 }else{
@@ -93,7 +85,6 @@
                     return false;
                 }                
             } 
-            //-->
         </SCRIPT>        
     </body>
 </html>
