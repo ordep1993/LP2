@@ -26,8 +26,8 @@
                     <td> <c:out value="${avaliacao.avaliacao1}" />
                     <td> <c:out value="${avaliacao.avaliacao2}" />
                     <td> <c:out value="${avaliacao.avaliacaoFinal}" />
-                    <td> <c:out value="${avaliacao.codigoAluno}" />
-                    <td> <c:out value="${avaliacao.codigoDisciplina}" />
+                    <td> <c:out value="${avaliacao.aluno.nome}" />
+                    <td> <c:out value="${avaliacao.disciplina.descricao}" />
                     <td><a href="ManterAvaliacaoController?acao=prepararEditar&codigo=<c:out value="${avaliacao.codigo}"/>">Editar</a></td>
                     <td><a href="ManterAvaliacaoController?acao=prepararExcluir&codigo=<c:out value="${avaliacao.codigo}"/>">Excluir</a></td>
                 </tr>
