@@ -60,19 +60,18 @@
 
             function validarFormulario(form) {
                 var mensagem;
-                var p = document.getElementsByName("optProfessor")[0];
                 mensagem = "";
                 if (form.txtCodigo.value == "") {
                     mensagem = mensagem + "Codigo\n";
                 }
                 if (form.txtDescricao.value == "") {
-                    mensagem = mensagem + "Informe o NOme do Curso\n";
+                    mensagem = mensagem + "Informe o Nome do Curso\n";
                 }
                 if (!campoNumerico(form.txtCargaHoraria.value) || form.txtCargaHoraria.value == "") {
                     mensagem = mensagem + "Carga Horária deve ser numérico\n";
                 }
-                if (form.p == null) {
-                    mensagem = mensagem + "Informe o Professor\n";
+                if (form.optProfessor.value == "0") {
+                    mensagem = mensagem + "Informe o Coordenador\n";
                 }
                 if (mensagem == "") {
                     return true;

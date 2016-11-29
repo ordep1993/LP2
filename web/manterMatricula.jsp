@@ -85,25 +85,21 @@
 
             function validarFormulario(form) {
                 var mensagem;
-                var c = document.getElementsByName("optCurso")[0];
-                var d = document.getElementsByName("optDisciplina")[0];
-                var t = document.getElementsByName("optTurma")[0];
-                var a = document.getElementsByName("optAluno")[0];
                 mensagem = "";
                
                 if (!campoNumerico(form.txtCodigo.value)|| form.txtCodigo.value == "") {
                     mensagem = mensagem + "Código da Matrícula deve ser numérico\n";
                 }
-                if (form.c == null) {
+                if (form.optCurso.value == "0") {
                     mensagem = mensagem + "Informe um Curso\n";
                 }
-                if (form.d == null) {
+                if (form.optDisciplina.value == "0") {
                     mensagem = mensagem + "Informe a Disciplina\n";
                 }
-                if (form.t == null) {
+                if (form.optTurma.value == "0") {
                     mensagem = mensagem + "Informe a Turma\n";
                 }
-                if (form.a == null) {
+                if (form.optAluno.value == "0") {
                     mensagem = mensagem + "Informe o Aluno\n";
                 }
                 if (mensagem == "") {

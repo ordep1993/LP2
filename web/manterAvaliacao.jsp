@@ -75,8 +75,6 @@
 
             function validarFormulario(form) {
                 var mensagem;
-                var d = document.getElementsByName("optDisciplina")[0];
-                var a = document.getElementsByName("optAluno")[0];
                 mensagem = "";
                 if (form.txtCodigo.value == "") {
                     mensagem = mensagem + "Informe o Código da Avaliação\n";
@@ -90,10 +88,10 @@
                 if (!campoNumerico(form.txtAvaliacaoFinal.value) || form.txtAvaliacaoFinal.value == "") {
                     mensagem = mensagem + "Avaliação Final deve ser numérico\n";
                 }
-                if (form.a == null) {
+                if (form.optAluno.value == "0") {
                     mensagem = mensagem + "Informe o Aluno\n";
                 }
-                if (form.d == null) {
+                if (form.optDisciplina.value == "0") {
                     mensagem = mensagem + "Informe a Disciplina\n";
                 }
                 if (mensagem == "") {
