@@ -108,7 +108,7 @@
                 if (!campoNumerico(form.txtMatricula.value) ||form.txtMatricula.value == "") {
                     mensagem = mensagem + "Matrícula deve ser numérico\n";
                 }
-                if(campoNumerico(form.txtNome.value) || form.txtNome.value == ""){
+                if(form.txtNome.value == ""){
                      mensagem = mensagem + "Informe o nome\n";
                 }
                 if(form.txtDataNasc.value == ""){
