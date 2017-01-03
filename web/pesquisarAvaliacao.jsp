@@ -14,7 +14,7 @@
             <h1>Sistema de Controle de Curso de Extensão</h1>
         </div>
         <div id="container">
-            <h4>Pesquisa Avaviações</h4>
+            <h4>Pesquisa Avaliações</h4>
         <table id="tbPesqAvaliacao">
             <tr>
                 <th class="title"> Codigo </th>

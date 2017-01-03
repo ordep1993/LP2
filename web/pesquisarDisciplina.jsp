@@ -13,7 +13,7 @@
             <h1>Sistema de Controle de Curso de Extensão</h1>
         </div>
         <div id="container">
-            <h4>Pesquisa Diciplina</h4>
+            <h4>Pesquisa Disciplina</h4>
         <table id="tbPesqAvaliacao">
             <tr>
                 <th class="title">Código Disciplina</th>
