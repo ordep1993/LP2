@@ -7,28 +7,33 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Servidores</title>
+        <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
     <body>
-        <h1>Pesquisar Servidores</h1>
-        <table border="1">
+        <div id="top">
+            <h1>Sistema de Controle de Curso de Extensão</h1>
+        </div>
+        <div id="container">
+            <h4>Pesquisa Servidores</h4>
+        <table id ="tbPesqServ">
             <tr>
-                <th>Matricula</th>
-                <th>Nome</th>
-                <th>Data Nasc</th>
-                <th>CPF</th>
-                <th>Data Expedição</th>
-                <th>Orgao Expedidor</th>
-                <th>UF Expedição</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Celular</th>
-                <th>Logradouro</th>
-                <th>Número</th>
-                <th>Complemento</th>
-                <th>Bairro</th>
-                <th>CEP</th>
-                <th>Data Admissão</th>
-                <th colspan="2">Ação</th>  
+                <th class="title">Matricula</th>
+                <th class="title">Nome</th>
+                <th class="title">Data Nasc</th>
+                <th class="title">CPF</th>
+                <th class="title">Data Expedição</th>
+                <th class="title">Orgao Expedidor</th>
+                <th class="title">UF Expedição</th>
+                <th class="title">Email</th>
+                <th class="title">Telefone</th>
+                <th class="title">Celular</th>
+                <th class="title">Logradouro</th>
+                <th class="title">Número</th>
+                <th class="title">Complemento</th>
+                <th class="title">Bairro</th>
+                <th class="title">CEP</th>
+                <th class="title">Data Admissão</th>
+                <th colspan="2" class="title">Ação</th>  
             </tr>
             <c:forEach items="${servidores}" var="servidor">
                 <tr>
@@ -57,5 +62,6 @@
             <input type="submit" name"btnIncluir" value="incluir">
         </form>
         <br><a href="index.jsp"><button>Inicio</button></a>
+        </div>
     </body>
 </html>

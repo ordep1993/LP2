@@ -5,13 +5,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="Style/style.css">
         <title>Manter Avaliação</title>
     </head>
     <body>
-        <h1>Manter Avaliação - ${operacao}</h1>
+        <div id="top">
+            <h1>Sistema de Controle de Curso de Extensão</h1>
+        </div>
+        <div id="container">
+            <h4>Manter Avaliação</h4>
 
         <form action="ManterAvaliacaoController?acao=confirmar${operacao}" method="post" name="frmManterAvaliacao" onsubmit="return validarFormulario(this)">
-            <table>
+            <table id="tbManter">
                 <tr>
                     <td>Código:</td> 
                     <td><input type="text" name="txtCodigo" value="${avaliacao.codigo}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
@@ -51,7 +56,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                    <td><input type="submit" name="btnConfirmar" value="Confirmar" class="btnConf"></td>
                 </tr>
             </table>
         </form>
@@ -101,6 +106,7 @@
                     return false;
                 }
             }
-        </SCRIPT>        
+        </SCRIPT>     
+        </div>
     </body>
 </html>

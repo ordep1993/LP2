@@ -6,17 +6,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa de Matricula</title>
+        <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
     <body>
-        <h1>Pesquisa de Matricula</h1>
-        <table border="1">
+       <div id="top">
+            <h1>Sistema de Controle de Curso de Extensão</h1>
+        </div>
+        <div id="container">
+            <h4>Pesquisa Matricula</h4>
+        <table id="tbPesqAvaliacao">
             <tr>
-                <th>Matricula</th>
-                <th>Curso</th>
-                <th>Disciplina</th>
-                <th>Turma</th>
-                <th>Aluno</th>
-                <th colspan="2">Ação</th>                         
+                <th class="title">Matricula</th>
+                <th class="title">Curso</th>
+                <th class="title">Disciplina</th>
+                <th class="title">Turma</th>
+                <th class="title">Aluno</th>
+                <th colspan="2" class="title">Ação</th>                         
             </tr>
             <c:forEach items="${matriculas}" var="matricula">
                 <tr>
@@ -35,6 +40,7 @@
             <input type="submit" name="btnIncluir" value="Incluir">
         </form>
         <br><a href="index.jsp"><button>Inicio</button></a>
+        </div>
     </body>
 </html>
 

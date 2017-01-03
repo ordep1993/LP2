@@ -6,13 +6,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Aluno</title>
+        <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
     <body>
 
-        <h1>Manter Aluno - ${operacao}</h1>
+        <div id="top">
+            <h1>Sistema de Controle de Curso de Extensão</h1>
+        </div>
+        <div id="container">
+            <h4>Manter Aluno</h4>
 
         <form action="ManterAlunoController?acao=confirmar${operacao}" method="post" name="frmManterAluno" onsubmit="return validarFormulario(this)">
-            <table>
+            <table id="tbManter">
                 <tr>
                     <td>Matricula:</td> 
                     <td><input type="text" name="txtMatricula" value="${aluno.matricula}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
@@ -86,7 +91,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                    <td ><input type="submit" name="btnConfirmar" value="Confirmar" class="btnConf"></td>
                 </tr>
             </table>
         </form>
@@ -168,6 +173,7 @@
                 }
             }
 
-        </SCRIPT>        
+        </SCRIPT>  
+        </div>
     </body>
 </html>

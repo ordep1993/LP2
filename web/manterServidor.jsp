@@ -11,12 +11,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Servidor</title>
+        <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
     <body>
-        <h1>Manter Servidor - ${operacao}</h1>
+        <div id="top">
+            <h1>Sistema de Controle de Curso de Extensão</h1>
+        </div>
+        <div id="container">
+            <h4>Manter Servidor</h4>
 
         <form action="ManterServidorController?acao=confirmar${operacao}" method="post" name="frmManterServidor" onsubmit="return validarFormulario(this)">
-            <table>
+            <table id="tbManter">
                 <tr>
                     <td>Matricula:</td> 
                     <td><input type="text" name="txtMatricula" value="${servidor.matricula}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
@@ -89,7 +94,7 @@
                     </td>
                 </tr>                    
                 <tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                    <td><input type="submit" name="btnConfirmar" value="Confirmar" class="btnConf"></td>
                 </tr>
             </table>
         </form>
@@ -166,6 +171,7 @@
                     return false;
                 }
             }
-        </SCRIPT>        
+        </SCRIPT>     
+        </div>
     </body>
 </html>

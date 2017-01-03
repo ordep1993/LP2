@@ -6,27 +6,32 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Professor</title>
+        <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
     <body>
-        <h1>Pesquisa Professor</h1>
-        <table border="1">
+         <div id="top">
+            <h1>Sistema de Controle de Curso de Extensão</h1>
+        </div>
+        <div id="container">
+            <h4>Pesquisa Professores</h4>
+        <table id="tbPesqProf">
             <tr>
-                <th>Matricula</th>
-                <th>Nome</th>
-                <th>Data de Nascimento</th>
-                <th>CPF</th>
-                <th>Data de Expedicao</th>
-                <th>Orgão Expedidor</th>
-                <th>UF Expedicao</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Celular</th>
-                <th>Logradouro</th>
-                <th>Numero</th>
-                <th>Complemento</th>
-                <th>Bairro</th>
-                <th>Cep</th>
-                <th colspan="2">Ação</th>
+                <th class="title">Matricula</th>
+                <th class="title">Nome</th>
+                <th class="title">Data de Nascimento</th>
+                <th class="title">CPF</th>
+                <th class="title">Data de Expedicao</th>
+                <th class="title">Orgão Expedidor</th>
+                <th class="title">UF Expedicao</th>
+                <th class="title">Email</th>
+                <th class="title">Telefone</th>
+                <th class="title">Celular</th>
+                <th class="title">Logradouro</th>
+                <th class="title" >Numero</th>
+                <th class="title">Complemento</th>
+                <th class="title">Bairro</th>
+                <th class="title">Cep</th>
+                <th colspan="2" class="title">Ação</th>
             </tr>
             <c:forEach items="${professores}" var="professor">
                 <tr>
@@ -53,6 +58,7 @@
         <form action="ManterProfessorController?acao=prepararIncluir" method="post">
             <input type="submit" name="btnIncluir" value="Incluir">
         </form>
-        <br><a href="index.jsp"><button>Inicio</button></a>
+        <a href="index.jsp"><button>Inicio</button></a>
+        </div>
     </body>
 </html>
