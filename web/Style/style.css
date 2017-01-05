@@ -113,9 +113,30 @@ body{
 }
 #tbManter {
     margin: 0 auto;
-}.btnConf{
+}
+.btnConf{
     color: #0cc713;
     width: 75px;
     font-weight: bold;
+}
+.btnIncluir {
+    font-size: 14px;
+    padding: 5px 20px;
+    color: #ffffff;
+    background-color: #5c9048;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px #464646;
+}
+.btnInicio{
+    font-size: 14px;
+    padding: 5px 20px;
+    color: #ffffff;
+    background-color: #b4bd02;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px #464646;
 }
    

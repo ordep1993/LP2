@@ -55,10 +55,18 @@
                 </tr> 
             </c:forEach>
         </table>
+        <Table id="btn">
         <form action="ManterProfessorController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <tr>
+                <td>
+                    <input type="submit" name="btnIncluir" value="Incluir" class="btnIncluir">
+                </td>
         </form>
-        <a href="index.jsp"><button>Inicio</button></a>
+                 <td>
+                    <a href="index.jsp"><button class="btnInicio">Inicio</button></a>
+                </td>
+            </tr>
+        </table>
         </div>
     </body>
 </html>

@@ -58,10 +58,18 @@
                 </tr>
             </c:forEach>
         </table>
+        <Table id="btn">    
         <form action="ManterServidorController?acao=prepararIncluir" method="post">
-            <input type="submit" name"btnIncluir" value="incluir">
+             <tr>
+                <td>
+                    <input type="submit" name"btnIncluir" value="incluir" class="btnIncluir">
+                </td>
         </form>
-        <br><a href="index.jsp"><button>Inicio</button></a>
+                 <td>
+                    <a href="index.jsp"><button class="btnInicio">Inicio</button></a>
+                </td>
+            </tr>
+        </table>
         </div>
     </body>
 </html>

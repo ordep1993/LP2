@@ -13,7 +13,7 @@
             <h1>Sistema de Controle de Curso de Extensão</h1>
         </div>
         <div id="container">
-            <h4>Pesquisa Disciplina</h4>
+            <h4>Pesquisa Diciplina</h4>
         <table id="tbPesqAvaliacao">
             <tr>
                 <th class="title">Código Disciplina</th>
@@ -35,10 +35,18 @@
                 </tr>      
             </c:forEach>
         </table>
+        <Table id="btn">
         <form action="ManterDisciplinaController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <tr>
+                <td>
+                    <input type="submit" name="btnIncluir" value="Incluir" class="btnIncluir">
+                </td>
         </form>
-        <br><a href="index.jsp"><button>Inicio</button></a>
+                <td>
+                    <a href="index.jsp"><button class="btnInicio">Inicio</button></a>
+                </td>
+            </tr>
+        </table>
         </div>
     </body>
 </html>

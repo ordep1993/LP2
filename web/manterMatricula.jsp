@@ -70,7 +70,7 @@
                 </tr>
             </table>
         </form>
-        <br><a href="index.jsp"><button>Inicio</button></a>
+        <br><a href="index.jsp"><button class="btnInicio">Inicio</button></a>
         <SCRIPT language="JavaScript">
            function campoNumerico(valor)
             {

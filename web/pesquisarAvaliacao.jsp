@@ -14,7 +14,7 @@
             <h1>Sistema de Controle de Curso de Extensão</h1>
         </div>
         <div id="container">
-            <h4>Pesquisa Avaliações</h4>
+            <h4>Pesquisa Avaviações</h4>
         <table id="tbPesqAvaliacao">
             <tr>
                 <th class="title"> Codigo </th>
@@ -38,10 +38,18 @@
                 </tr>
             </c:forEach>
         </table>
+        <Table id="btn">
         <form action="ManterAvaliacaoController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="incluir">
+            <tr>
+                <td>
+                    <input type="submit" name="btnIncluir" value="incluir" class="btnIncluir">
+                </td>
         </form>
-            <br><a href="index.jsp"><button>Inicio</button></a>
+                <td>
+                    <a href="index.jsp"><button class="btnInicio">Inicio</button></a>
+                </td>
+                </tr>
+        </table>
         </div>
     </body>
 </html>
