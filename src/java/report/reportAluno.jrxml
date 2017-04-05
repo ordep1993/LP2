@@ -3,7 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="P_ALUNO" class="java.lang.String"/>
+	<parameter name="P_MATRICULA" class="java.lang.Integer"/>
+	<queryString>
 		<![CDATA[SELECT
      aluno.`matricula` AS aluno_matricula,
      aluno.`nome` AS aluno_nome,
@@ -22,7 +24,8 @@
      aluno.`semestreInicio` AS aluno_semestreInicio,
      aluno.`estadoAluno` AS aluno_estadoAluno
 FROM
-     `aluno` aluno]]>
+     `aluno` aluno
+where $P{P_ALUNO} =  aluno.`nome` and $P{P_MATRICULA} = aluno.`matricula`]]>
 	</queryString>
 	<field name="aluno_matricula" class="java.lang.Integer"/>
 	<field name="aluno_nome" class="java.lang.String"/>
