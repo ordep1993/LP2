@@ -64,6 +64,10 @@
         <servlet-name>ManterServidorController</servlet-name>
         <servlet-class>controller.ManterServidorController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioController</servlet-name>
+        <servlet-class>controller.RelatorioController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisarAlunoController</servlet-name>
         <url-pattern>/PesquisarAlunoController</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>ManterServidorController</servlet-name>
         <url-pattern>/ManterServidorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioController</servlet-name>
+        <url-pattern>/RelatorioController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
