@@ -20,7 +20,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
-public class RelatorioControllerAluno extends HttpServlet {
+public class RelatorioProfessorController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
  Connection conexao = null;
         try {
@@ -29,14 +29,16 @@ public class RelatorioControllerAluno extends HttpServlet {
             HashMap parametros = new HashMap();
             
             parametros.put("P_MATRICULA", Integer.parseInt(request.getParameter("txtMatricula")));
-            parametros.put("P_ALUNO", request.getParameter("txtNome"));
+            parametros.put("P_NOME", request.getParameter("txtNome"));
             
-            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio")+"/reportAluno.jasper";
+            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio")+"/reportProfessor.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
             byte[] relat = JasperExportManager.exportReportToPdf(jp);
+           
             response.setHeader("Content-Disposition", "attachment;filename=relatorio.pdf");
             response.setContentType("application/pdf");
             response.getOutputStream().write(relat);
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {

@@ -72,6 +72,10 @@
         <servlet-name>RelatorioControllerAluno</servlet-name>
         <servlet-class>controller.RelatorioControllerAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioProfessorController</servlet-name>
+        <servlet-class>controller.RelatorioProfessorController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisarAlunoController</servlet-name>
         <url-pattern>/PesquisarAlunoController</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>RelatorioControllerAluno</servlet-name>
         <url-pattern>/RelatorioControllerAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioProfessorController</servlet-name>
+        <url-pattern>/RelatorioProfessorController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

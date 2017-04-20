@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProfessor" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04f1c6d0-2a61-40e2-a325-1dadec0657ac">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProfessor" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04f1c6d0-2a61-40e2-a325-1dadec0657ac">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="P_NOME" class="java.lang.String"/>
+	<parameter name="P_MATRICULA" class="java.lang.Integer"/>
+	<queryString>
 		<![CDATA[SELECT
      professor.`matricula` AS professor_matricula,
      professor.`nome` AS professor_nome,
@@ -21,7 +23,8 @@
      professor.`bairro` AS professor_bairro,
      professor.`CEP` AS professor_CEP
 FROM
-     `professor` professor]]>
+     `professor` professor
+where $P{P_MATRICULA} =  professor.`matricula`  and $P{P_NOME} =  professor.`nome`]]>
 	</queryString>
 	<field name="professor_matricula" class="java.lang.Integer"/>
 	<field name="professor_nome" class="java.lang.String"/>
