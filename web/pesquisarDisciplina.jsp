@@ -14,39 +14,42 @@
         </div>
         <div id="container">
             <h4>Pesquisa Diciplina</h4>
-        <table id="tbPesqAvaliacao">
-            <tr>
-                <th class="title">Código Disciplina</th>
-                <th class="title">Nome Disciplina</th>
-                <th class="title">Num Aulas</th>
-                <th class="title">Ementa</th>
-                <th class="title">Bibliografia</th>
-                <th colspan="2" class="title">Ação</th>                         
-            </tr>
-            <c:forEach items="${disciplinas}" var="disciplina">
+            <table id="tbPesqAvaliacao">
                 <tr>
-                    <td><c:out value="${disciplina.codigo}"/></td>
-                    <td><c:out value="${disciplina.descricao}"/></td>
-                    <td><c:out value="${disciplina.numAula}"/></td>
-                    <td><c:out value="${disciplina.ementa}"/></td>
-                    <td><c:out value="${disciplina.bibliografia}"/></td>
-                    <td><a href="ManterDisciplinaController?acao=prepararEditar&codigo=<c:out value="${disciplina.codigo}"/>">Editar</a></td>
-                    <td><a href="ManterDisciplinaController?acao=prepararExcluir&codigo=<c:out value="${disciplina.codigo}"/>">Excluir</a></td>          
-                </tr>      
-            </c:forEach>
-        </table>
-        <Table id="btn">
-        <form action="ManterDisciplinaController?acao=prepararIncluir" method="post">
-            <tr>
-                <td>
-                    <input type="submit" name="btnIncluir" value="Incluir" class="btnIncluir">
-                </td>
-        </form>
+                    <th class="title">Código Disciplina</th>
+                    <th class="title">Nome Disciplina</th>
+                    <th class="title">Num Aulas</th>
+                    <th class="title">Ementa</th>
+                    <th class="title">Bibliografia</th>
+                    <th colspan="2" class="title">Ação</th>                         
+                </tr>
+                <c:forEach items="${disciplinas}" var="disciplina">
+                    <tr>
+                        <td><c:out value="${disciplina.codigo}"/></td>
+                        <td><c:out value="${disciplina.descricao}"/></td>
+                        <td><c:out value="${disciplina.numAula}"/></td>
+                        <td><c:out value="${disciplina.ementa}"/></td>
+                        <td><c:out value="${disciplina.bibliografia}"/></td>
+                        <td><a href="ManterDisciplinaController?acao=prepararEditar&codigo=<c:out value="${disciplina.codigo}"/>">Editar</a></td>
+                        <td><a href="ManterDisciplinaController?acao=prepararExcluir&codigo=<c:out value="${disciplina.codigo}"/>">Excluir</a></td>          
+                    </tr>      
+                </c:forEach>
+            </table>
+            <Table id="btn">
+                <form action="ManterDisciplinaController?acao=prepararIncluir" method="post">
+                    <tr>
+                        <td>
+                            <input type="submit" name="btnIncluir" value="Incluir" class="btnIncluir">
+                        </td>
+                </form>
                 <td>
                     <a href="index.jsp"><button class="btnInicio">Inicio</button></a>
                 </td>
-            </tr>
-        </table>
+                <td>
+                    <a href="reportDisciplina.jsp"><button class="btnInicio">Relatorio</button></td>
+                </td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>

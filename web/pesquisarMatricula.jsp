@@ -9,45 +9,48 @@
         <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
     <body>
-       <div id="top">
+        <div id="top">
             <h1>Sistema de Controle de Curso de Extensão</h1>
         </div>
         <div id="container">
             <h4>Pesquisa Matricula</h4>
-        <table id="tbPesqAvaliacao">
-            <tr>
-                <th class="title">Matricula</th>
-                <th class="title">Curso</th>
-                <th class="title">Disciplina</th>
-                <th class="title">Turma</th>
-                <th class="title">Aluno</th>
-                <th colspan="2" class="title">Ação</th>                         
-            </tr>
-            <c:forEach items="${matriculas}" var="matricula">
+            <table id="tbPesqAvaliacao">
                 <tr>
-                    <td><c:out value="${matricula.codigo}"/></td>
-                    <td><c:out value="${matricula.curso.descricao}"/></td>
-                    <td><c:out value="${matricula.disciplina.descricao}"/></td>
-                    <td><c:out value="${matricula.codigoTurma}"/></td>
-                    <td><c:out value="${matricula.aluno.nome}"/></td>
+                    <th class="title">Matricula</th>
+                    <th class="title">Curso</th>
+                    <th class="title">Disciplina</th>
+                    <th class="title">Turma</th>
+                    <th class="title">Aluno</th>
+                    <th colspan="2" class="title">Ação</th>                         
+                </tr>
+                <c:forEach items="${matriculas}" var="matricula">
+                    <tr>
+                        <td><c:out value="${matricula.codigo}"/></td>
+                        <td><c:out value="${matricula.curso.descricao}"/></td>
+                        <td><c:out value="${matricula.disciplina.descricao}"/></td>
+                        <td><c:out value="${matricula.codigoTurma}"/></td>
+                        <td><c:out value="${matricula.aluno.nome}"/></td>
 
-                    <td><a href="ManterMatriculaController?acao=prepararEditar&codigo=<c:out value="${matricula.codigo}"/>">Editar</a></td>
-                    <td><a href="ManterMatriculaController?acao=prepararExcluir&codigo=<c:out value="${matricula.codigo}"/>">Excluir</a></td>          
-                </tr>      
-            </c:forEach>
-        </table>
-        <Table id="btn">
-        <form action="ManterMatriculaController?acao=prepararIncluir" method="post">
-            <tr>
+                        <td><a href="ManterMatriculaController?acao=prepararEditar&codigo=<c:out value="${matricula.codigo}"/>">Editar</a></td>
+                        <td><a href="ManterMatriculaController?acao=prepararExcluir&codigo=<c:out value="${matricula.codigo}"/>">Excluir</a></td>          
+                    </tr>      
+                </c:forEach>
+            </table>
+            <Table id="btn">
+                <form action="ManterMatriculaController?acao=prepararIncluir" method="post">
+                    <tr>
+                        <td>
+                            <input type="submit" name="btnIncluir" value="Incluir" class="btnIncluir">
+                        </td>
+                </form>
                 <td>
-                    <input type="submit" name="btnIncluir" value="Incluir" class="btnIncluir">
-                </td>
-        </form>
-                 <td>
                     <a href="index.jsp"><button class="btnInicio">Inicio</button></a>
                 </td>
-            </tr>
-        </table>
+                <td>
+                    <a href="reportMatricula.jsp"><button class="btnInicio">Relatorio</button></td>
+                </td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>

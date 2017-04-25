@@ -24,8 +24,7 @@
                     <td><a href="PesquisarMatriculaController"><button>Matrículas</button></a></td>
                     <td><a href="PesquisarProfessorController"><button>Professores</button></a></td>
                     <td><a href="PesquisarServidorController"><button>Servidores</button></a></td>
-                    <td><a href="PesquisarTurmaController"><button>Turmas</button></a></td>
-                    <td><a href="RelatorioController"><button>R</button></a></td>
+                    <td><a href="PesquisarTurmaController"><button>Turmas</button></a></td>                    
                 </tr>
             </table>
         </div>
