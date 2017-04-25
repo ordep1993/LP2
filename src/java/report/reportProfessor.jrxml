@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProfessor" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04f1c6d0-2a61-40e2-a325-1dadec0657ac">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<parameter name="P_NOME" class="java.lang.String"/>
-	<parameter name="P_MATRICULA" class="java.lang.Integer"/>
-	<queryString>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProfessor" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e88bab87-25ba-4cbb-ab71-60aa1d2b230e">
+	<queryString language="SQL">
 		<![CDATA[SELECT
      professor.`matricula` AS professor_matricula,
      professor.`nome` AS professor_nome,
@@ -23,8 +18,7 @@
      professor.`bairro` AS professor_bairro,
      professor.`CEP` AS professor_CEP
 FROM
-     `professor` professor
-where $P{P_MATRICULA} =  professor.`matricula`  and $P{P_NOME} =  professor.`nome`]]>
+     `professor` professor]]>
 	</queryString>
 	<field name="professor_matricula" class="java.lang.Integer"/>
 	<field name="professor_nome" class="java.lang.String"/>
@@ -47,16 +41,16 @@ where $P{P_MATRICULA} =  professor.`matricula`  and $P{P_NOME} =  professor.`nom
 	<title>
 		<band height="72">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="52a781dd-efd4-4080-83b8-9d099d3da745"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="92b6af71-fa7a-434c-a35f-643cdf9802d2"/>
 				<staticText>
-					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="17005dd6-76c6-48bd-85ab-7050075b53df"/>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="e2207e78-0d59-4103-8702-b700610e1a6d"/>
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[Professores]]></text>
+					<text><![CDATA[TITLE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="30627ab9-3e87-465d-aecd-ad727b4efbf3"/>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="712996f1-50b0-43d1-bbfc-da850cd9b2d1"/>
 					<textElement textAlignment="Right">
 						<font size="14" isBold="false"/>
 					</textElement>
@@ -71,220 +65,220 @@ where $P{P_MATRICULA} =  professor.`matricula`  and $P{P_NOME} =  professor.`nom
 	<columnHeader>
 		<band height="21">
 			<line>
-				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="903ee119-21a0-477a-906a-968e651df1cd"/>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="55144f24-b924-43f0-9878-1ef8b830c244"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9678cfd5-8642-4442-8c55-2f994fc14f2d"/>
+				<reportElement mode="Opaque" x="0" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8b319a12-a9be-44e0-905d-6bfe75c884d3"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Matrícula]]></text>
+				<text><![CDATA[professor_matricula]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="37" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8dfd1989-e0ed-44ad-bd78-6df9eefe908e"/>
+				<reportElement mode="Opaque" x="37" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ddf29e23-8bb5-43f9-9e92-89fdf207cd0b"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nome]]></text>
+				<text><![CDATA[professor_nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="74" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="95d3c2d6-83ed-407c-ba89-ee8e23b7c475"/>
+				<reportElement mode="Opaque" x="74" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1adf22fa-cc3c-48ed-9a5c-b33526611b62"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Data Nascimento]]></text>
+				<text><![CDATA[professor_dataNasc]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="111" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9c3f898c-8be0-4199-a96e-bde7588ebfd7"/>
+				<reportElement mode="Opaque" x="111" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7f6199d7-e75b-42c1-a776-66944e595b8f"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[CPF]]></text>
+				<text><![CDATA[professor_CPF]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="148" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ee7b9c84-99a2-40d1-9921-6e486da0d41b"/>
+				<reportElement mode="Opaque" x="148" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="657d460d-f4fa-488e-bf22-9801e5b97257"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Data expedicao]]></text>
+				<text><![CDATA[professor_dataExpedicao]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="185" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="dfe539b8-7b6d-4996-95a3-8a3d727624e0"/>
+				<reportElement mode="Opaque" x="185" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9e8a5612-8833-428f-b735-a7709bf40cc6"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Orgao expedidor]]></text>
+				<text><![CDATA[professor_orgaoExpedidor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="222" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="77275afb-c380-4f8b-b140-15ab89c6290f"/>
+				<reportElement mode="Opaque" x="222" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f0026228-0217-4ffa-86f8-b9d223cf6111"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[UF expedicao]]></text>
+				<text><![CDATA[professor_ufExpedicao]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="259" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="416ebde0-4e01-4206-b15f-e1996d1951cb"/>
+				<reportElement mode="Opaque" x="259" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d35bc6f5-b4e8-4f97-9541-ecc27206805f"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Email]]></text>
+				<text><![CDATA[professor_email]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="296" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b60a3dc4-da73-491e-8dbc-11226019befe"/>
+				<reportElement mode="Opaque" x="296" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="63f6a5c3-467b-49c7-8a90-2e6b8043ed7d"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Telefone]]></text>
+				<text><![CDATA[professor_telefone]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="333" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1780371b-03ef-47aa-b8e7-df500878b4c4"/>
+				<reportElement mode="Opaque" x="333" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e3b7b76e-0b5b-44e3-acb3-4b5e7035ce98"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Celular]]></text>
+				<text><![CDATA[professor_celular]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="370" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="05fdc60e-cbaa-4dbf-99e3-eff2d631adb3"/>
+				<reportElement mode="Opaque" x="370" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5884307e-57b4-48f0-b0a6-840c5e82b829"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Logradouro]]></text>
+				<text><![CDATA[professor_Logradouro]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="407" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cd8e2a70-c7be-49d3-b8cd-5eef43016e47"/>
+				<reportElement mode="Opaque" x="407" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="19861904-0311-4404-ad1a-c220babcf183"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Número]]></text>
+				<text><![CDATA[professor_numero]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="444" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="eb9e87e9-9288-41e2-9ddf-b82bfdea0474"/>
+				<reportElement mode="Opaque" x="444" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9a151893-15e2-4733-99c8-b995c8b43ed3"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Complemento]]></text>
+				<text><![CDATA[professor_complemento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="481" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a1859b89-7a73-460a-b055-0b16465b0fcf"/>
+				<reportElement mode="Opaque" x="481" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0c314e8d-625d-4a77-b106-72cf452dd237"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Bairro]]></text>
+				<text><![CDATA[professor_bairro]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="518" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3ccb5c51-1f3f-4211-b754-95d0881fb80b"/>
+				<reportElement mode="Opaque" x="518" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cfb8e7ca-8154-4972-a4eb-0f85a387a3a5"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[CEP]]></text>
+				<text><![CDATA[professor_CEP]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="ca48cea3-7f8d-4db5-a441-932d5521cf53"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="90f06a63-1018-4aab-9279-2bb87199c80f"/>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="0" width="37" height="20" uuid="40e1c76d-2bd4-46d2-a228-6120257f226c"/>
+				<reportElement x="0" y="0" width="37" height="20" uuid="f3070878-d044-4d4d-a520-f01c0e241e6a"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_matricula}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="37" y="0" width="37" height="20" uuid="5c4a768c-19af-40f6-8a40-00ea947ab701"/>
+				<reportElement x="37" y="0" width="37" height="20" uuid="784c58af-22c9-411d-886c-9ed4db83fac6"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_nome}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="74" y="0" width="37" height="20" uuid="150b4e67-1447-4831-bd9f-17e4850c9975"/>
+				<reportElement x="74" y="0" width="37" height="20" uuid="9790a904-537d-4509-b7ba-4b9dcd056863"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_dataNasc}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="111" y="0" width="37" height="20" uuid="23b86e14-34dc-4d08-ac22-3a257ded3587"/>
+				<reportElement x="111" y="0" width="37" height="20" uuid="5f900abe-4d0e-4fe2-b8f0-d18ab0da58ec"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_CPF}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="148" y="0" width="37" height="20" uuid="7faeed97-8416-42cb-995e-f77f6075f49f"/>
+				<reportElement x="148" y="0" width="37" height="20" uuid="290ad1a4-bb43-4390-871f-ed240b57fb72"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_dataExpedicao}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="185" y="0" width="37" height="20" uuid="73af904c-8981-4d13-afdc-e2f1b7c27217"/>
+				<reportElement x="185" y="0" width="37" height="20" uuid="568bb0e1-5c1e-4aa9-b075-5a29d24bb109"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_orgaoExpedidor}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="222" y="0" width="37" height="20" uuid="2d261b5d-6fdd-41ea-8c4f-2fa1f48a6fc8"/>
+				<reportElement x="222" y="0" width="37" height="20" uuid="1fe98f23-cdcf-4926-ae9b-e69dc7fe572e"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_ufExpedicao}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="259" y="0" width="37" height="20" uuid="54ad9825-936c-4dca-9993-d2905e736366"/>
+				<reportElement x="259" y="0" width="37" height="20" uuid="e3d38a8a-e725-45c4-b8a3-e8aa2c2efd1c"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_email}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="296" y="0" width="37" height="20" uuid="85b9ffd2-e788-449a-95db-b8bc658bc886"/>
+				<reportElement x="296" y="0" width="37" height="20" uuid="8d3d48d7-b634-406e-ab26-a72f7ba031a3"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_telefone}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="333" y="0" width="37" height="20" uuid="ecfdf4c9-aa10-4603-a4a8-c2c2f6ae699c"/>
+				<reportElement x="333" y="0" width="37" height="20" uuid="085c1652-b12f-4ce6-b959-76f81de0ece8"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_celular}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="370" y="0" width="37" height="20" uuid="52c6492a-67e2-4f38-b6db-8028d1526392"/>
+				<reportElement x="370" y="0" width="37" height="20" uuid="6319074f-e926-45c5-a8cc-401d81f4cc25"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_Logradouro}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="407" y="0" width="37" height="20" uuid="67ce0f92-48d2-4a3d-b70a-40c889bd59f1"/>
+				<reportElement x="407" y="0" width="37" height="20" uuid="26f78fd3-fa3b-471c-a541-ac883f90b8c1"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_numero}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="444" y="0" width="37" height="20" uuid="914d1ab5-fcd3-4212-8d2c-1855421e45dd"/>
+				<reportElement x="444" y="0" width="37" height="20" uuid="b10d2266-cc2e-43ca-91e8-e4ad2ef76dd3"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_complemento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="481" y="0" width="37" height="20" uuid="ea945303-d3f9-4c7b-ac8a-63ee1877d7d2"/>
+				<reportElement x="481" y="0" width="37" height="20" uuid="7e88ad6d-9cfe-4ca5-bcf0-b6b364f175fc"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{professor_bairro}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="518" y="0" width="37" height="20" uuid="bbc01623-f197-4623-a21b-a78f7d9ec3b2"/>
+				<reportElement x="518" y="0" width="37" height="20" uuid="caf5bbf6-c684-458f-b87c-9397637314cc"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
@@ -298,16 +292,16 @@ where $P{P_MATRICULA} =  professor.`matricula`  and $P{P_NOME} =  professor.`nom
 	<pageFooter>
 		<band height="17">
 			<textField>
-				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="ad4b388e-e154-4429-92f6-88791849e7a4"/>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="7f4a1712-c242-47ba-a51a-c772956d2133"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="b5aa7ee9-3281-4e66-9f05-b16adbb9c2a9"/>
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="63fe3400-2797-4578-8801-b038698a503e"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="4" width="100" height="13" uuid="3be15a4d-87a6-45c5-8554-55916487c296"/>
+				<reportElement x="0" y="4" width="100" height="13" uuid="93b8f137-0db1-4ba9-8095-f542e7837e3d"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
