@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProfessor" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e88bab87-25ba-4cbb-ab71-60aa1d2b230e">
-	<queryString language="SQL">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProfessor" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e88bab87-25ba-4cbb-ab71-60aa1d2b230e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_NOME" class="java.lang.String"/>
+	<parameter name="P_CODIGO" class="java.lang.Integer"/>
+	<queryString>
 		<![CDATA[SELECT
      professor.`matricula` AS professor_matricula,
      professor.`nome` AS professor_nome,
@@ -18,7 +23,8 @@
      professor.`bairro` AS professor_bairro,
      professor.`CEP` AS professor_CEP
 FROM
-     `professor` professor]]>
+     `professor` professor
+where $P{P_CODIGO}=  professor.`matricula` or $P{P_NOME}=   professor.`nome` order by   professor.`nome`]]>
 	</queryString>
 	<field name="professor_matricula" class="java.lang.Integer"/>
 	<field name="professor_nome" class="java.lang.String"/>
@@ -47,7 +53,7 @@ FROM
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[TITLE]]></text>
+					<text><![CDATA[Professor]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="712996f1-50b0-43d1-bbfc-da850cd9b2d1"/>
@@ -72,105 +78,105 @@ FROM
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_matricula]]></text>
+				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="37" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ddf29e23-8bb5-43f9-9e92-89fdf207cd0b"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_nome]]></text>
+				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="74" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1adf22fa-cc3c-48ed-9a5c-b33526611b62"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_dataNasc]]></text>
+				<text><![CDATA[DataNasc]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="111" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7f6199d7-e75b-42c1-a776-66944e595b8f"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_CPF]]></text>
+				<text><![CDATA[CPF]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="148" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="657d460d-f4fa-488e-bf22-9801e5b97257"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_dataExpedicao]]></text>
+				<text><![CDATA[Data Expedicao]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="185" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9e8a5612-8833-428f-b735-a7709bf40cc6"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_orgaoExpedidor]]></text>
+				<text><![CDATA[Orgao Expedidor]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="222" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f0026228-0217-4ffa-86f8-b9d223cf6111"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_ufExpedicao]]></text>
+				<text><![CDATA[Uf Expedicao]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="259" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d35bc6f5-b4e8-4f97-9541-ecc27206805f"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_email]]></text>
+				<text><![CDATA[Email]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="296" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="63f6a5c3-467b-49c7-8a90-2e6b8043ed7d"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_telefone]]></text>
+				<text><![CDATA[Telefone]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="333" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e3b7b76e-0b5b-44e3-acb3-4b5e7035ce98"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_celular]]></text>
+				<text><![CDATA[Celular]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="370" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5884307e-57b4-48f0-b0a6-840c5e82b829"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_Logradouro]]></text>
+				<text><![CDATA[Logradouro]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="407" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="19861904-0311-4404-ad1a-c220babcf183"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_numero]]></text>
+				<text><![CDATA[Número]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="444" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9a151893-15e2-4733-99c8-b995c8b43ed3"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_complemento]]></text>
+				<text><![CDATA[Complemento]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="481" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0c314e8d-625d-4a77-b106-72cf452dd237"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_bairro]]></text>
+				<text><![CDATA[Bairro]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="518" y="0" width="37" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cfb8e7ca-8154-4972-a4eb-0f85a387a3a5"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor_CEP]]></text>
+				<text><![CDATA[CEP]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
