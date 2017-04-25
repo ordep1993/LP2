@@ -65,6 +65,9 @@
                  <td>
                     <a href="index.jsp"><button class="btnInicio">Inicio</button></a>
                 </td>
+                                <td>
+                    <a href="reportProfessor.jsp"><button class="btnInicio">Relatorio</button></td>
+                </td>
             </tr>
         </table>
         </div>

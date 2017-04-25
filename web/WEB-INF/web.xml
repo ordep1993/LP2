@@ -72,6 +72,22 @@
         <servlet-name>RelatorioControllerAluno</servlet-name>
         <servlet-class>controller.RelatorioControllerAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioControllerAvaliacao</servlet-name>
+        <servlet-class>controller.RelatorioControllerAvaliacao</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioControllerCurso</servlet-name>
+        <servlet-class>controller.RelatorioControllerCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioControllerDisciplina</servlet-name>
+        <servlet-class>controller.RelatorioControllerDisciplina</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioControllerMatricula</servlet-name>
+        <servlet-class>controller.RelatorioControllerMatricula</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisarAlunoController</servlet-name>
         <url-pattern>/PesquisarAlunoController</url-pattern>
@@ -143,6 +159,22 @@
     <servlet-mapping>
         <servlet-name>RelatorioControllerAluno</servlet-name>
         <url-pattern>/RelatorioControllerAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioControllerAvaliacao</servlet-name>
+        <url-pattern>/RelatorioControllerAvaliacao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioControllerCurso</servlet-name>
+        <url-pattern>/RelatorioControllerCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioControllerDisciplina</servlet-name>
+        <url-pattern>/RelatorioControllerDisciplina</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioControllerMatricula</servlet-name>
+        <url-pattern>/RelatorioControllerMatricula</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
