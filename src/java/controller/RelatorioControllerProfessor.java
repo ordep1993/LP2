@@ -28,10 +28,10 @@ public class RelatorioControllerProfessor extends HttpServlet {
             conexao = BD.getConexao();
             HashMap parametros = new HashMap();
             
-            parametros.put("P_MATRICULA", Integer.parseInt(request.getParameter("txtMatricula")));
-            parametros.put("P_ALUNO", request.getParameter("txtNome"));
+            parametros.put("P_CODIGO", Integer.parseInt(request.getParameter("txtMatricula")));
+            parametros.put("P_NOME", request.getParameter("txtNome"));
             
-            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio")+"/reportAluno.jasper";
+            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio")+"/reportProfessor.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
             byte[] relat = JasperExportManager.exportReportToPdf(jp);
             response.setHeader("Content-Disposition", "attachment;filename=relatorio.pdf");
