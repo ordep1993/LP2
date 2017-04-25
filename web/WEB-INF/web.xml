@@ -73,6 +73,7 @@
         <servlet-class>controller.RelatorioControllerAluno</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>RelatorioControllerAvaliacao</servlet-name>
         <servlet-class>controller.RelatorioControllerAvaliacao</servlet-class>
     </servlet>
@@ -87,6 +88,10 @@
     <servlet>
         <servlet-name>RelatorioControllerMatricula</servlet-name>
         <servlet-class>controller.RelatorioControllerMatricula</servlet-class>
+=======
+        <servlet-name>RelatorioProfessorController</servlet-name>
+        <servlet-class>controller.RelatorioProfessorController</servlet-class>
+>>>>>>> origin/master
     </servlet>
     <servlet-mapping>
         <servlet-name>PesquisarAlunoController</servlet-name>
@@ -161,6 +166,7 @@
         <url-pattern>/RelatorioControllerAluno</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>RelatorioControllerAvaliacao</servlet-name>
         <url-pattern>/RelatorioControllerAvaliacao</url-pattern>
     </servlet-mapping>
@@ -175,6 +181,10 @@
     <servlet-mapping>
         <servlet-name>RelatorioControllerMatricula</servlet-name>
         <url-pattern>/RelatorioControllerMatricula</url-pattern>
+=======
+        <servlet-name>RelatorioProfessorController</servlet-name>
+        <url-pattern>/RelatorioProfessorController</url-pattern>
+>>>>>>> origin/master
     </servlet-mapping>
     <session-config>
         <session-timeout>
