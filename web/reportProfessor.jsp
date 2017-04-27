@@ -1,14 +1,18 @@
-<<<<<<< HEAD
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Relatório Professor</title>
+        <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
-         <form action="RelatorioControllerProfessor?acao=confirmar${operacao}" method="post" name="frmManterAluno" onsubmit="return validarFormulario(this)">
+        <div id="top">
+            <h1>Sistema de Controle de Curso de Extensão</h1>
+        </div>
+        <div id="container">
+            <h4>Relatório Professor</h4>
+        <form action="RelatorioControllerProfessor?acao=confirmar${operacao}" method="post" name="frmManterAluno" onsubmit="return validarFormulario(this)">
             <table id="tbManter">
                 <tr>
                     <td>Matricula:</td> 
@@ -21,5 +25,16 @@
                         <td ><input type="submit" name="btnConfirmar" value="Confirmar" class="btnConf"></td>
                     </tr>
              </table>
+        </form>
+        <Table id="btn">
+            <tr>
+                <td>
+                    <a href="PesquisarProfessorController"><button class="btnIncluir">Voltar</button></a>
+                </td>
+                <td>
+                    <a href="index.jsp"><button class="btnInicio">Inicio</button></a>
+                </td>
+            </tr>
+        </table>   
     </body>
 </html>
