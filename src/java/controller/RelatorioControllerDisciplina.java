@@ -29,7 +29,7 @@ public class RelatorioControllerDisciplina extends HttpServlet {
             HashMap parametros = new HashMap();
             
             parametros.put("P_CODIGO", Integer.parseInt(request.getParameter("txtCodigo")));
-            parametros.put("P_DISCIPLINA", Integer.parseInt(request.getParameter("txtDescricao")));
+            parametros.put("P_DISCIPLINA", request.getParameter("txtDescricao"));
             
             String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio")+"/reportDisciplina.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);

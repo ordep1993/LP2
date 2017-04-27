@@ -14,7 +14,7 @@
      disciplina.`bibliografia` AS disciplina_bibliografia
 FROM
      `disciplina` disciplina
-where $P_{P_CODIGO} =  disciplina.`codigo` or $P_{P_DISCIPLINA} =  disciplina.`descricao` order by disciplina.`descricao`]]>
+where $P{P_CODIGO} =  disciplina.`codigo` or $P{P_DISCIPLINA} =  disciplina.`descricao` order by disciplina.`descricao` ]]>
 	</queryString>
 	<field name="disciplina_codigo" class="java.lang.Integer"/>
 	<field name="disciplina_descricao" class="java.lang.String"/>
