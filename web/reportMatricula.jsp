@@ -20,7 +20,7 @@
                     </tr>
                     <tr>
                         <td>Curso:</td> 
-                        <td><input type="text" name="txtCurso" value="${curso.nome}" </td>
+                        <td><input type="text" name="optCurso" value="${curso.nome}" </td>
                     </tr>
                     <tr>
                         <td>Disciplina:</td> 
