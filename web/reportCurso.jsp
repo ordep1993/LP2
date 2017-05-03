@@ -12,7 +12,7 @@
         </div>
         <div id="container">
             <h4>Relatório Cursos</h4>
-         <form action="RelatorioControllerCurso?acao=confirmar${operacao}" method="post" name="frmManterAluno" onsubmit="return validarFormulario(this)">
+         <form action="RelatorioControllerCurso?acao=relatorioSemParametro" method="post" name="frmManterAluno" onsubmit="return validarFormulario(this)">
                 <table id="tbManter">
                     <tr>
                         <td>Codigo:</td> 
@@ -23,6 +23,7 @@
                         <td><input type="text" name="txtNome" value="${codigo.nome}"></td>
                     <tr>
                         <td ><input type="submit" name="btnConfirmar" value="Confirmar" class="btnConf"></td>
+                        <td><a href="RelatorioControllerCurso?acao=relatorioSemParametro"/>Gerar</a></td>
                     </tr>
                 </table>
             </form>

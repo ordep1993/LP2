@@ -12,18 +12,20 @@
         </div>
         <div id="container">
             <h4>Relatório Turma</h4>
-            <form action="RelatorioControllerTurma?acao=confirmar${operacao}" method="post" name="frmManterAluno" onsubmit="return validarFormulario(this)">
+            <form action="RelatorioControllerTurma?acao=relatorioComParametro" method="post" name="frmManterAluno" onsubmit="return validarFormulario(this)">
                 <table id="tbManter">
                     <tr>
                         <td>Código:</td> 
-                        <td><input type="text" name="txtCodigo" value="${turma.codigo}" </td>
+                        <td><input type="text" name="txtCodigo" value="${turma.codigo}"</td>
                     </tr>
                     <tr>
                         <td>Ano:</td> 
-                        <td><input type="text" name="txtAno" value="${turma.ano}" </td>
+                        <td><input type="text" name="txtAno" value="${turma.ano}"</td>
                     </tr>
                     <tr>
                         <td ><input type="submit" name="btnConfirmar" value="Confirmar" class="btnConf"></td>
+                        <td><a href="RelatorioControllerTurma?acao=relatorioSemParametro"/>Gerar</a></td>
+                       
                     </tr>
                 </table>
             </form>

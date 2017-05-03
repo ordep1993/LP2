@@ -21,7 +21,49 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
 public class RelatorioControllerAluno extends HttpServlet {
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String acao = request.getParameter("acao");
+        if (acao.equals("relatorioSemParametro")) {
+            relatorioSemParametro(request, response);
+        } else if (acao.equals("relatorioComParametro")) {
+            relatorioComParametro(request, response);
+        } 
+     }
+private void relatorioSemParametro(HttpServletRequest request, HttpServletResponse response) {
+ Connection conexao = null;
+        try {
+            
+            conexao = BD.getConexao();
+            HashMap parametros = new HashMap();
+            
+            //parametros.put("P_MATRICULA", Integer.parseInt(request.getParameter("txtMatricula")));
+            //parametros.put("P_ALUNO", request.getParameter("txtNome"));
+            
+            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio")+"/reportAlunoSemParamentro.jasper";
+            JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
+            byte[] relat = JasperExportManager.exportReportToPdf(jp);
+            response.setHeader("Content-Disposition", "attachment;filename=relatorio.pdf");
+            response.setContentType("application/pdf");
+            response.getOutputStream().write(relat);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (JRException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (!conexao.isClosed()) {
+                    conexao.close();
+                }
+            } catch (SQLException ex) {
+            }
+        }
+    }
+private void relatorioComParametro(HttpServletRequest request, HttpServletResponse response) {
  Connection conexao = null;
         try {
             
