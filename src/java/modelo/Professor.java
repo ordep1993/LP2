@@ -1,27 +1,120 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
-import dao.ProfessorDAO;
-import java.sql.SQLException;
-import java.util.List;
+import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-public class Professor {
-     private int matricula;
-     private String nome;
-     private String dataNasc;
-     private int cpf;
-     private String dataExpedicao;
-     private String orgaoExpedidor;
-     private String ufExpedicao;
-     private String email;
-     private int telefone;
-     private int celular;
-     private String logradouro;
-     private int numero;
-     private String complemento;
-     private String bairro;
-     private int cep;
+/**
+ *
+ * @author weber
+ */
+@Entity
+@Table(name = "professor")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Professor.findAll", query = "SELECT p FROM Professor p")})
+public class Professor implements Serializable {
 
-    public Professor(int matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String orgaoExpedidor, String ufExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep) {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "matricula")
+    private Integer matricula;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "nome")
+    private String nome;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "dataNasc")
+    private String dataNasc;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CPF")
+    private int cpf;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "dataExpedicao")
+    private String dataExpedicao;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 80)
+    @Column(name = "orgaoExpedidor")
+    private String orgaoExpedidor;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
+    @Column(name = "ufExpedicao")
+    private String ufExpedicao;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "email")
+    private String email;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "telefone")
+    private int telefone;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "celular")
+    private int celular;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 200)
+    @Column(name = "Logradouro")
+    private String logradouro;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "numero")
+    private int numero;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
+    @Column(name = "complemento")
+    private String complemento;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 80)
+    @Column(name = "bairro")
+    private String bairro;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CEP")
+    private int cep;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoProfessor")
+    private Collection<Curso> cursoCollection;
+
+    public Professor() {
+    }
+
+    public Professor(Integer matricula) {
+        this.matricula = matricula;
+    }
+
+    public Professor(Integer matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String orgaoExpedidor, String ufExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataNasc = dataNasc;
@@ -39,12 +132,11 @@ public class Professor {
         this.cep = cep;
     }
 
-     
-    public int getMatricula() {
+    public Integer getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }
 
@@ -159,24 +251,39 @@ public class Professor {
     public void setCep(int cep) {
         this.cep = cep;
     }
-    
-        public static Professor obterProfessor(int codigo) throws ClassNotFoundException {
-        return ProfessorDAO.obterProfessor(codigo);
-    }
-    
-        public static List<Professor> obterProfessores() throws ClassNotFoundException {
-        return ProfessorDAO.obterProfessores();
-    }
-        
-    public void gravar() throws SQLException, ClassNotFoundException {
-        ProfessorDAO.gravar(this);
-    } 
 
-    public void alterar() throws SQLException, ClassNotFoundException {
-        ProfessorDAO.alterar(this);
-    } 
-
-    public void excluir() throws SQLException, ClassNotFoundException {
-        ProfessorDAO.excluir(this);
+    @XmlTransient
+    public Collection<Curso> getCursoCollection() {
+        return cursoCollection;
     }
+
+    public void setCursoCollection(Collection<Curso> cursoCollection) {
+        this.cursoCollection = cursoCollection;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (matricula != null ? matricula.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Professor)) {
+            return false;
+        }
+        Professor other = (Professor) object;
+        if ((this.matricula == null && other.matricula != null) || (this.matricula != null && !this.matricula.equals(other.matricula))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "modelo.Professor[ matricula=" + matricula + " ]";
+    }
+    
 }

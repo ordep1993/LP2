@@ -1,49 +1,81 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
-import dao.AvaliacaoDAO;
-import java.sql.SQLException;
-import java.util.List;
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Avaliacao {
+/**
+ *
+ * @author weber
+ */
+@Entity
+@Table(name = "avaliacao")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Avaliacao.findAll", query = "SELECT a FROM Avaliacao a")})
+public class Avaliacao implements Serializable {
 
-    private int codigo;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "codigo")
+    private Integer codigo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "avaliacao1")
     private int avaliacao1;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "avaliacao2")
     private int avaliacao2;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "avaliacaoFinal")
     private int avaliacaoFinal;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "codigoDisciplina")
     private int codigoDisciplina;
-    private int codigoAluno;
-    private Aluno aluno;
-    private Disciplina disciplina;
+    @JoinColumn(name = "codigoAluno", referencedColumnName = "matricula")
+    @ManyToOne(optional = false)
+    private Aluno codigoAluno;
 
-    public Avaliacao(int codigo, int avaliacao1, int avaliacao2, int avaliacaoFinal, Aluno aluno, Disciplina disciplina) {
+    public Avaliacao() {
+    }
+
+    public Avaliacao(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public Avaliacao(Integer codigo, int avaliacao1, int avaliacao2, int avaliacaoFinal, int codigoDisciplina) {
         this.codigo = codigo;
         this.avaliacao1 = avaliacao1;
         this.avaliacao2 = avaliacao2;
         this.avaliacaoFinal = avaliacaoFinal;
-        this.aluno = aluno;
-        this.disciplina = disciplina;
+        this.codigoDisciplina = codigoDisciplina;
     }
 
-    public Disciplina getDisciplina() throws ClassNotFoundException {
-        if ((this.codigoDisciplina != 0) && (this.disciplina == null)) {
-            this.disciplina = Disciplina.obterDisciplina(this.codigoDisciplina);
-        }
-        return disciplina;
+    public Integer getCodigo() {
+        return codigo;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
-
-    public Aluno getAluno() throws ClassNotFoundException {
-        if ((this.codigoAluno != 0) && (this.aluno == null)) {
-            this.aluno = Aluno.obterAluno(this.codigoAluno);
-        }
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public int getAvaliacao1() {
@@ -66,14 +98,6 @@ public class Avaliacao {
         return avaliacaoFinal;
     }
 
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
     public void setAvaliacaoFinal(int avaliacaoFinal) {
         this.avaliacaoFinal = avaliacaoFinal;
     }
@@ -86,31 +110,37 @@ public class Avaliacao {
         this.codigoDisciplina = codigoDisciplina;
     }
 
-    public int getCodigoAluno() {
+    public Aluno getCodigoAluno() {
         return codigoAluno;
     }
 
-    public void setCodigoAluno(int codigoAluno) {
+    public void setCodigoAluno(Aluno codigoAluno) {
         this.codigoAluno = codigoAluno;
     }
 
-    public static Avaliacao obterAvaliacao(int codigo) throws ClassNotFoundException {
-        return AvaliacaoDAO.obterAvaliacao(codigo);
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (codigo != null ? codigo.hashCode() : 0);
+        return hash;
     }
 
-    public static List<Avaliacao> obterAvaliacoes() throws ClassNotFoundException {
-        return AvaliacaoDAO.obterAvaliacoes();
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Avaliacao)) {
+            return false;
+        }
+        Avaliacao other = (Avaliacao) object;
+        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
+            return false;
+        }
+        return true;
     }
 
-    public void gravar() throws SQLException, ClassNotFoundException {
-        AvaliacaoDAO.gravar(this);
+    @Override
+    public String toString() {
+        return "modelo.Avaliacao[ codigo=" + codigo + " ]";
     }
-
-    public void alterar() throws SQLException, ClassNotFoundException {
-        AvaliacaoDAO.alterar(this);
-    }
-
-    public void excluir() throws SQLException, ClassNotFoundException {
-        AvaliacaoDAO.excluir(this);
-    }
+    
 }

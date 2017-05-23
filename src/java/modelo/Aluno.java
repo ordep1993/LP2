@@ -1,30 +1,124 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
-import dao.AlunoDAO;
-import java.sql.SQLException;
-import java.util.List;
+import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-public class Aluno {
+/**
+ *
+ * @author weber
+ */
+@Entity
+@Table(name = "aluno")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Aluno.findAll", query = "SELECT a FROM Aluno a")})
+public class Aluno implements Serializable {
 
-    private int matricula;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "matricula")
+    private Integer matricula;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "nome")
     private String nome;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "dataNasc")
     private String dataNasc;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CPF")
     private int cpf;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "dataExpedicao")
     private String dataExpedicao;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
+    @Column(name = "email")
     private String email;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "telefone")
     private int telefone;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "celular")
     private int celular;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "logradouro")
     private String logradouro;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "numero")
     private int numero;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
+    @Column(name = "complemento")
     private String complemento;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
+    @Column(name = "bairro")
     private String bairro;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CEP")
     private int cep;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "anoInicio")
     private int anoInicio;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "semestreInicio")
     private int semestreInicio;
-    private int estadoAluno;
-    //  private boolean estadoAluno;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "estadoAluno")
+    private boolean estadoAluno;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoAluno")
+    private Collection<Avaliacao> avaliacaoCollection;
+    @OneToMany(mappedBy = "codigoAluno")
+    private Collection<Matricula> matriculaCollection;
 
-    public Aluno(int matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, int anoInicio, int semestreInicio, int estadoAluno) {
+    public Aluno() {
+    }
+
+    public Aluno(Integer matricula) {
+        this.matricula = matricula;
+    }
+
+    public Aluno(Integer matricula, String nome, String dataNasc, int cpf, String dataExpedicao, String email, int telefone, int celular, String logradouro, int numero, String complemento, String bairro, int cep, int anoInicio, int semestreInicio, boolean estadoAluno) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataNasc = dataNasc;
@@ -41,14 +135,13 @@ public class Aluno {
         this.anoInicio = anoInicio;
         this.semestreInicio = semestreInicio;
         this.estadoAluno = estadoAluno;
-        // this.estadoAluno = estadoAluno;
     }
 
-    public int getMatricula() {
+    public Integer getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }
 
@@ -164,38 +257,55 @@ public class Aluno {
         this.semestreInicio = semestreInicio;
     }
 
-    public int getEstadoAluno() {
-        return estadoAluno;
-    }
-
-    public void setEstadoAluno(int estadoAluno) {
-        this.estadoAluno = estadoAluno;
-    }
-
-    /*  public boolean isEstadoAluno() {
+    public boolean getEstadoAluno() {
         return estadoAluno;
     }
 
     public void setEstadoAluno(boolean estadoAluno) {
         this.estadoAluno = estadoAluno;
-    }*/
-    public static Aluno obterAluno(int matricula) throws ClassNotFoundException {
-        return AlunoDAO.obterAluno(matricula);
     }
 
-    public static List<Aluno> obterAlunos() throws ClassNotFoundException {
-        return AlunoDAO.obterAlunos();
+    @XmlTransient
+    public Collection<Avaliacao> getAvaliacaoCollection() {
+        return avaliacaoCollection;
     }
 
-    public void gravar() throws SQLException, ClassNotFoundException {
-        AlunoDAO.gravar(this);
+    public void setAvaliacaoCollection(Collection<Avaliacao> avaliacaoCollection) {
+        this.avaliacaoCollection = avaliacaoCollection;
     }
 
-    public void excluir() throws SQLException, ClassNotFoundException {
-        AlunoDAO.excluir(this);
+    @XmlTransient
+    public Collection<Matricula> getMatriculaCollection() {
+        return matriculaCollection;
     }
 
-    public void alterar() throws SQLException, ClassNotFoundException {
-        AlunoDAO.alterar(this);
+    public void setMatriculaCollection(Collection<Matricula> matriculaCollection) {
+        this.matriculaCollection = matriculaCollection;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (matricula != null ? matricula.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Aluno)) {
+            return false;
+        }
+        Aluno other = (Aluno) object;
+        if ((this.matricula == null && other.matricula != null) || (this.matricula != null && !this.matricula.equals(other.matricula))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "modelo.Aluno[ matricula=" + matricula + " ]";
+    }
+    
 }
